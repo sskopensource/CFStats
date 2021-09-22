@@ -28,6 +28,7 @@ namespace Pages
             InitializeComponent();
 
             //test comment 
+            Label x;
 
         }
     }
