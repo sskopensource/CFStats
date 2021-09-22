@@ -29,6 +29,7 @@ namespace Pages
 
             //test comment 
             Label x;
+            Label xy;
 
         }
     }
