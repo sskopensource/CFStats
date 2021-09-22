@@ -30,6 +30,7 @@ namespace Pages
             //test comment 
             Label x;
             Label xy;
+            Label xyz;
 
         }
     }
