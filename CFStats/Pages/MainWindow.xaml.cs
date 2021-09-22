@@ -18,10 +18,7 @@ namespace Pages
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    /// 
-    /// 
-    /// //sajdfdfjsd new change
-    /// 
+   ///
 
 
     public partial class MainWindow : Window
@@ -29,6 +26,9 @@ namespace Pages
         public MainWindow()
         {
             InitializeComponent();
+
+            //test comment 
+
         }
     }
 }
