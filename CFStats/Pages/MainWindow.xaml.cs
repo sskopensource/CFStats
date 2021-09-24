@@ -26,7 +26,6 @@ namespace Pages
         public MainWindow()
         {
             InitializeComponent();
-
         }
     }
 }
