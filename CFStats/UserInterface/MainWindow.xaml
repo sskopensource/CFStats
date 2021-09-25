@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
         Height="850" Width="1500"
+        
         WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         Background="Transparent"
