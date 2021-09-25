@@ -1,0 +1,44 @@
+//url--> https://codeforces.com/api/user.status?handle=Fefer_Ivan&from=1&count=10
+{
+    "status": "OK",
+    "result": [
+        {
+            "id": 77888833,
+            "contestId": 1340,
+            "creationTimeSeconds": 1587713653,
+            "relativeTimeSeconds": 2147483647,
+            "problem": {
+                "contestId": 1340,
+                "index": "C",
+                "name": "Nastya and Unexpected Guest",
+                "type": "PROGRAMMING",
+                "points": 1250.0,
+                "rating": 2400,
+                "tags": [
+                    "dfs and similar",
+                    "dp",
+                    "graphs",
+                    "shortest paths"
+                ]
+            },
+            "author": {
+                "contestId": 1340,
+                "members": [
+                    {
+                        "handle": "Fefer_Ivan"
+                    }
+                ],
+                "participantType": "PRACTICE",
+                "ghost": false,
+                "startTimeSeconds": 1587653100
+            },
+            "programmingLanguage": "GNU C++17",
+            "verdict": "TIME_LIMIT_EXCEEDED",
+            "testset": "TESTS",
+            "passedTestCount": 76,
+            "timeConsumedMillis": 1000,
+            "memoryConsumedBytes": 40652800
+        }
+    ]
+}
+      
