@@ -1,0 +1,39 @@
+﻿<Page x:Class="UserInterface.Pages.OverviewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UserInterface.CFControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="850"
+      Title="OverviewPage">
+    <Grid>
+        <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="img" Margin="56,41,450,257" Source="tourist.jpg"/>
+        <StackPanel Margin="400,51,50,-41" Width="400">
+            <local:LongBrick/>
+            <local:LongBrick/>
+            <local:LongBrick/>
+            <local:LongBrick/>
+            <local:LongBrick/>
+        </StackPanel>
+        
+        <Grid Margin="147,286,147,15"  Width="550" Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <local:Brick Grid.Row="0" Grid.Column="0"/>
+            <local:Brick Grid.Row="0" Grid.Column="1"/>
+            <local:Brick Grid.Row="0" Grid.Column="2"/>
+            <local:Brick Grid.Row="1" Grid.Column="0"/>
+            <local:Brick Grid.Row="1" Grid.Column="1"/>
+            <local:Brick Grid.Row="1" Grid.Column="2"/>
+
+        </Grid>
+    </Grid>
+</Page>
