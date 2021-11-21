@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CFVisualizer", "CFVisualize
 		ThirdParty\CFVisualizer\CFVisualizerJsonParsing.js = ThirdParty\CFVisualizer\CFVisualizerJsonParsing.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleApplication", "SampleApplication", "{37D5A3CF-9463-4008-A28D-670478191CB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUi", "SampleUi\SampleUi.csproj", "{0BAC01D2-2014-44E6-9A56-7EA7574EBFA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +38,10 @@ Global
 		{7B8A51A1-0DB8-4ABC-9A91-42C91801A993}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B8A51A1-0DB8-4ABC-9A91-42C91801A993}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B8A51A1-0DB8-4ABC-9A91-42C91801A993}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BAC01D2-2014-44E6-9A56-7EA7574EBFA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BAC01D2-2014-44E6-9A56-7EA7574EBFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BAC01D2-2014-44E6-9A56-7EA7574EBFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BAC01D2-2014-44E6-9A56-7EA7574EBFA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +49,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EB2F0084-47E6-4432-9FD9-514338E450FC} = {0251AC31-7211-4199-B207-F5DCE7AED3CB}
 		{DAE71947-898D-49F0-8232-6D818A417BB5} = {0251AC31-7211-4199-B207-F5DCE7AED3CB}
+		{0BAC01D2-2014-44E6-9A56-7EA7574EBFA8} = {37D5A3CF-9463-4008-A28D-670478191CB1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98703ACA-569E-420C-9C02-2A59C3A8AD56}

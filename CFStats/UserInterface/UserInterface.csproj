@@ -71,7 +71,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="UiViews\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -82,23 +82,29 @@
     <Compile Include="CFControls\Brick.xaml.cs">
       <DependentUpon>Brick.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CFControls\Controls\BrickControl.cs" />
     <Compile Include="CFControls\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="CFControls\LongBrick.xaml.cs">
       <DependentUpon>LongBrick.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="CFControls\Models\BrickModel.cs" />
+    <Compile Include="CFControls\Models\LoginModel.cs" />
+    <Compile Include="Core\ObservableObject.cs" />
+    <Compile Include="UiModels\MainWindowModel.cs" />
+    <Compile Include="UiViewModels\MainWindowViewModel.cs" />
+    <Compile Include="UiViews\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\OverviewPage.xaml">
+    <Page Include="UiViews\Pages\OverviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\OverviewPage.xaml.cs">
+    <Compile Include="UiViews\Pages\OverviewPage.xaml.cs">
       <DependentUpon>OverviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -133,21 +139,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Themes\WhiteConcreteWall.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="WhiteConcreteWall.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\" />
-    <Folder Include="Fonts\" />
-    <Folder Include="Images\" />
-    <Folder Include="MVC\Control\" />
-    <Folder Include="MVC\Model\" />
-    <Folder Include="MVC\View\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\tourist.jpg" />
+    <Folder Include="UiModels\PageModels\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="CFControls\tourist.jpg" />

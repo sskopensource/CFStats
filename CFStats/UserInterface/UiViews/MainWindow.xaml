@@ -1,0 +1,39 @@
+﻿<Window x:Class="UserInterface.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:UserInterface.CFControls"
+        xmlns:VM="clr-namespace:UserInterface.UiViewModels"
+        mc:Ignorable="d"
+        Height="650" Width="1100"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        >
+    <Window.DataContext>
+        <VM:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Column="0" Grid.RowSpan="2" Background="White">
+        </Border>
+        <Border Grid.Column="1" Grid.RowSpan="2" Background="#FFF8EFFF">
+        </Border>
+       <uc:Login Margin="592,0,2,0" Grid.Column="1" />
+        <TextBlock Text="CFStats"
+                       FontSize="50"
+                       VerticalAlignment="Bottom"
+                       HorizontalAlignment="Right"
+                       Margin="0,0,42,12" Foreground="Black"/>
+        <Frame Grid.Row="1" Grid.Column="1" x:Name="Main"/>
+    </Grid>
+</Window>
