@@ -10,20 +10,19 @@ namespace UserInterface.UiModels
 {
     public class MainWindowModel
     {
-        public LoginModel _loginModel=new LoginModel();
-        public BrickModel _maxRating=new BrickModel();
+        public LoginModel _loginModel= new LoginModel();
+        public BrickModel _maxRating = new BrickModel();
 
         public LoginModel loginModel
-
         {
-            get
+            get 
             {
                 return _loginModel;
             }
             set
             {
                 _loginModel = value;
-                ////OnPropertyChanged("loginModel");
+                //OnPropertyChanged("loginModel");
             }
         }
 
@@ -37,9 +36,8 @@ namespace UserInterface.UiModels
             set
             {
                 _maxRating = value;
-                ////OnPropertyChanged("loginModel");
+              //  OnPropertyChanged("MaxRating");
             }
         }
-
     }
 } 

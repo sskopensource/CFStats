@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Api;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,13 +13,15 @@ namespace UserInterface.UiViewModels
     public class MainWindowViewModel
     {
         public MainWindowModel mainwindowmodel { get; set; }
+        public ApiControl apicontrol { get; set; }
         public MainWindowViewModel()
         {
             mainwindowmodel = new MainWindowModel();
+            apicontrol = new ApiControl();
             mainwindowmodel.loginModel.imageurl = "https://userpic.codeforces.org/422/avatar/2b5dbe87f0d859a2.jpg";
             mainwindowmodel.loginModel.handle = "tourist";
-            mainwindowmodel.MaxRating.TextLabel = "Max Ratings";
-            mainwindowmodel.MaxRating.ValueLabel = "8888";
+            mainwindowmodel.MaxRating.ValueLabel = apicontrol.maxRating;
+            Console.WriteLine(mainwindowmodel.MaxRating.ValueLabel);
         }
     }
 }

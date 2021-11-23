@@ -27,7 +27,7 @@ namespace UserInterface
         {
             InitializeComponent();
             Main.Content = new OverviewPage();
-            ApiHelper.InitializeClient();
+           // ApiHelper.InitializeClient();
         }
         //private async Task LoadApi()
         //{

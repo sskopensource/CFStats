@@ -82,7 +82,6 @@
     <Compile Include="CFControls\Brick.xaml.cs">
       <DependentUpon>Brick.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CFControls\Controls\BrickControl.cs" />
     <Compile Include="CFControls\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -91,6 +90,7 @@
     </Compile>
     <Compile Include="CFControls\Models\BrickModel.cs" />
     <Compile Include="CFControls\Models\LoginModel.cs" />
+    <Compile Include="CFControls\Models\LongBrickModel.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="UiModels\MainWindowModel.cs" />
     <Compile Include="UiViewModels\MainWindowViewModel.cs" />

@@ -4,19 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UserInterface.CFControls"
-             xmlns:UiViewModels="clr-namespace:UserInterface.UiViewModels" xmlns:Controls="clr-namespace:UserInterface.CFControls.Controls" x:Class="UserInterface.CFControls.Brick"
+             xmlns:UiViewModels="clr-namespace:UserInterface.UiViewModels" x:Class="UserInterface.CFControls.Brick"
              mc:Ignorable="d" 
+             Name="BrickControl"
              d:DesignHeight="100" d:DesignWidth="200">
     <Grid>
         <StackPanel Background="White" Margin="15,10,15,10" Height="80" Width="150" >
             <StackPanel.Effect>
                 <DropShadowEffect ShadowDepth="2"/>
             </StackPanel.Effect>
-            <StackPanel.DataContext>
-                <Controls:BrickControl/>
-            </StackPanel.DataContext>
-            <Label Content="{Binding TextLabel}"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
-            <Label Content="{Binding ValueLabel}"  x:Name="ratingValueLabel" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25"/>
+            <Label Content="{Binding TxtLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+            <Label Content="{Binding ValLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25"/>
         </StackPanel>
     </Grid>
 </UserControl>

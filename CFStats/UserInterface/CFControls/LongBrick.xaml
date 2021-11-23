@@ -7,10 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="800">
     <Grid>
-        <StackPanel Orientation="Horizontal" Background="White" Margin="5,5,0,0" Height="35" Width="350" >
-           
-            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Current Ratings" FontSize="18"/>
-            <Label Margin="20,0,0,0" x:Name="ratingValueLabel" VerticalAlignment="Center" HorizontalAlignment="Center" Content="" FontWeight="Bold" FontSize="25"/>
-        </StackPanel>
+        <Canvas Background="White" Height="35" Width="350" >
+            <Label Content="{Binding TextLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" Margin="10,0,0,0"/>
+            <Label Content="{Binding ValueLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}"  x:Name="ratingValueLabel" VerticalAlignment="Center" FontSize="18" Width="Auto" HorizontalAlignment="Right" Canvas.Right="10"/>
+        </Canvas>
     </Grid>
 </UserControl>

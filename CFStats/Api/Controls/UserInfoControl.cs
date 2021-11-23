@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -9,23 +10,14 @@ namespace Api
 {
     public class UserInfoControl
     {
-        public static async Task<UserInfoModel> LoadUserInfo(string handle)
+        public static UserInfoModel LoadUserInfo()
         {
-            string url = "https://codeforces.com/api/user.info?handles=";
-            url += (handle);
-            Console.WriteLine(handle);
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            string url = "https://codeforces.com/api/user.info?handles=suveen";
+            using (var httpClient = new HttpClient())
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    Console.WriteLine("okhttpresponse");
-                    UserInfoModel userModel = await response.Content.ReadAsAsync<UserInfoModel>();
-                    return userModel;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+                var json = httpClient.GetStringAsync(url);
+                UserInfoModel info = JsonConvert.DeserializeObject<UserInfoModel>(json.Result);
+                return info;
             }
         }
     }

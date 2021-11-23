@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiHelper.cs" />
+    <Compile Include="Controls\ApiControl.cs" />
     <Compile Include="Controls\UserInfoControl.cs" />
     <Compile Include="Controls\UserStatusControl.cs" />
     <Compile Include="Models\UserInfoModel.cs" />

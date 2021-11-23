@@ -9,7 +9,7 @@ namespace Api
 {
     public class UserStatusControl
     {
-        public static async Task<UserStatusModel> LoadUserStatus(string handle)
+        public static async Task<UserStatusModel> LoadUserStatus(string handle="tourist")
         {
             string url = "https://codeforces.com/api/user.status?handle=";
             url += handle;

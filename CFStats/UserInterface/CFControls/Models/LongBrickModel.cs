@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UserInterface.Core;
 
 namespace UserInterface.CFControls.Models
 {
-    public class BrickModel
+    public class LongBrickModel
     {
         public string _textLabel;
         public string _valueLabel;
@@ -20,7 +19,7 @@ namespace UserInterface.CFControls.Models
             set
             {
                 _textLabel = value;
-             //   OnPropertyChanged("TextLabel");
+                //OnPropertyChanged("handle");
             }
         }
         public string ValueLabel
@@ -32,7 +31,7 @@ namespace UserInterface.CFControls.Models
             set
             {
                 _valueLabel = value;
-             //   OnPropertyChanged("ValueLabel");
+                //OnPropertyChanged("handle");
             }
         }
     }

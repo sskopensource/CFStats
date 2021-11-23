@@ -12,13 +12,13 @@
         <UiViewModels:MainWindowViewModel/>
     </Page.DataContext>
     <Grid>
-        <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="img" Margin="56,41,450,257" Source="tourist.jpg"/>
+        <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="img" Margin="56,41,450,257" />
         <StackPanel Margin="400,51,50,-41" Width="400">
-            <local:LongBrick/>
-            <local:LongBrick/>
-            <local:LongBrick/>
-            <local:LongBrick/>
-            <local:LongBrick/>
+            <local:LongBrick local:LongBrick.TextLabel="Name" local:LongBrick.ValueLabel="" />
+            <local:LongBrick local:LongBrick.TextLabel="Rating" local:LongBrick.ValueLabel="asdasd"/>
+            <local:LongBrick local:LongBrick.TextLabel="Rank"/>
+            <local:LongBrick local:LongBrick.TextLabel="Organisation"/>
+            <local:LongBrick local:LongBrick.TextLabel="Country"/>
         </StackPanel>
 
         <Grid Margin="147,286,147,15"  Width="550" Grid.Row="1" Grid.Column="1">
@@ -31,13 +31,12 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <local:Brick  Grid.Row="0" Grid.Column="0"/>
-            <local:Brick Grid.Row="0" Grid.Column="1"/>
-            <local:Brick Grid.Row="0" Grid.Column="2"/>
-            <local:Brick Grid.Row="1" Grid.Column="0"/>
-            <local:Brick Grid.Row="1" Grid.Column="1"/>
-            <local:Brick Grid.Row="1" Grid.Column="2"/>
-
+            <local:Brick TxtLabel="Max Rating" ValLabel="{Binding Path=mainwindowmodel.MaxRating.ValueLabel}"  Grid.Row="0" Grid.Column="0"/>
+            <local:Brick TxtLabel="Contests" ValLabel="" Grid.Row="0" Grid.Column="1"/>
+            <local:Brick TxtLabel="Contributions" ValLabel="" Grid.Row="0" Grid.Column="2"/>
+            <local:Brick TxtLabel="Problems Solved" ValLabel="" Grid.Row="1" Grid.Column="0"/>
+            <local:Brick TxtLabel="Friends Of" ValLabel="" Grid.Row="1" Grid.Column="1"/>
+            <local:Brick TxtLabel="Blog Entries" ValLabel="" Grid.Row="1" Grid.Column="2"/>
         </Grid>
     </Grid>
 </Page>
