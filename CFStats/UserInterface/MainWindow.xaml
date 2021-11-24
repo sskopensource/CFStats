@@ -3,92 +3,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UserInterface"
+        xmlns:local="clr-namespace:UserInterface.Pages" xmlns:local1="clr-namespace:UserInterface.CFControls"
         mc:Ignorable="d"
-        Height="850" Width="1500"
+        Height="650" Width="1100"
         
         WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         Background="Transparent"
         >
-    <Border Background="#FF2F0D3B">
-        <Grid>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Rectangle 
-                       Fill="#FFD7D4F3"
-                       Height="850"
-                       Grid.Column="1"
-                       Grid.RowSpan="2" 
-                       Width="1250"/>
-            <Border 
-                CornerRadius="20,20,20,20"
-                Grid.RowSpan="2"
-                Grid.ColumnSpan="2"
-                Margin="59,36,71,36">
-                <Border.Background>
-                    <ImageBrush ImageSource="WhiteConcreteWall.jpg" Stretch="None"/>
-                </Border.Background>
-                <Image x:Name="img" Margin="416,59,833,568"  />
-
-            </Border>
-            <Border
-                Background="#FF441C5D"
-                Grid.RowSpan="2"
-                CornerRadius="20,0,0,20"
-                Margin="36,36,1270,36" AllowDrop="True" Grid.ColumnSpan="2"/>
-            <TextBlock Text="CFStats"
+        <Border Grid.Column="0" Grid.RowSpan="2" Background="White">
+        </Border>
+        <Border Grid.Column="1" Grid.RowSpan="2" Background="#FFF8EFFF">
+        </Border>
+        <local1:Login Margin="592,0,2,0" Grid.Column="1" />
+        <TextBlock Text="CFStats"
                        FontSize="50"
-                       
                        VerticalAlignment="Bottom"
                        HorizontalAlignment="Right"
-                       Margin="0,0,20,0" Foreground="White"/>
-            <UniformGrid Grid.Column="1"
-                         Height="118" 
-                         Margin="162,141.638,208,461.362" 
-                         Rows="1"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center" Grid.Row="1">
-                <StackPanel Background="#FFE1C8F3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15" Width="200">
-                    <StackPanel.Effect>
-                        <DropShadowEffect ShadowDepth="4"/>
-                    </StackPanel.Effect>
-                    <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Current Ratings" FontSize="20"/>
-                    <Label x:Name="ratingValueLabel" VerticalAlignment="Center" HorizontalAlignment="Center" Content="" FontWeight="Bold" FontSize="30"/>
-                </StackPanel>
-                <StackPanel Background="#FFE1C8F3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15" Width="200">
-                    <StackPanel.Effect>
-                        <DropShadowEffect ShadowDepth="4"/>
-                    </StackPanel.Effect>
-                    <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Problems" FontSize="20"/>
-                    <Label x:Name="problemsValueLabel" VerticalAlignment="Center" HorizontalAlignment="Center" Content="" FontWeight="Bold" FontSize="30"/>
-                </StackPanel>
-                <StackPanel Background="#FFE1C8F3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15" Width="200">
-                    <StackPanel.Effect>
-                        <DropShadowEffect ShadowDepth="4"/>
-                    </StackPanel.Effect>
-                    <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Contests" FontSize="20"/>
-                    <Label x:Name="contestValueLabel" VerticalAlignment="Center" HorizontalAlignment="Center" Content="" FontWeight="Bold" FontSize="30"/>
-                </StackPanel>
-                <StackPanel Background="#FFE1C8F3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="15" Width="200">
-                    <StackPanel.Effect>
-                        <DropShadowEffect ShadowDepth="4"/>
-                    </StackPanel.Effect>
-                    <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="Max Ratings" FontSize="20"/>
-                    <Label x:Name="maxratingValueLabel" VerticalAlignment="Center" HorizontalAlignment="Center" Content="" FontWeight="Bold" FontSize="30"/>
-                </StackPanel>
-            </UniformGrid>
-            <Button Content="Enter" Grid.Column="1" HorizontalAlignment="Left" Height="36.5" Margin="501.334,454.964,0,0" Grid.Row="1" VerticalAlignment="Top" Width="240.292" Click="Button_Click" FontSize="24"/>
-            <Label x:Name="label" HorizontalAlignment="Left" Height="86" Margin="464,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="755" FontSize="24" Grid.Column="1"/>
-            <TextBox TextAlignment="Center" HorizontalAlignment="Left" Height="53" TextWrapping="Wrap" x:Name="txtBox" VerticalAlignment="Top" Width="407" Margin="405,332,0,0" Grid.Row="1" Grid.Column="1" FontSize="36"/>
-
-        </Grid>
-    </Border>
+                       Margin="0,0,42,12" Foreground="Black"/>
+        <Frame Grid.Row="1" Grid.Column="1" x:Name="Main"/>
+    </Grid>
 </Window>
