@@ -116,6 +116,22 @@ namespace UserInterface
             }
         }
 
+        public static string Handle
+        {
+            get
+            {
+                return apiControl.userInfo.result[0].handle;
+            }
+        }
+
+        public static string ProfilePicture
+        {
+            get
+            {
+                return apiControl.userInfo.result[0].titlePhoto;
+            }
+        }
+
 
         private static string SetCount(SetSelector setSelector)
         {

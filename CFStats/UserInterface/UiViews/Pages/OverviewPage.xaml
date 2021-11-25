@@ -12,7 +12,7 @@
         <UiViewModels:OverviewPageViewModel/>
     </Page.DataContext>
     <Grid>
-        <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="img" Margin="56,41,450,257" />
+        <Image Source="{Binding overviewPageModel.Photo}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="img" Margin="56,41,450,257" />
         <StackPanel Margin="400,51,50,-41" Width="400">
             <local:LongBrick TextLabel="Name" ValueLabel="{Binding Path=overviewPageModel.Name.ValueLabel}"/>
             <local:LongBrick TextLabel="Rating" ValueLabel="{Binding Path=overviewPageModel.Rating.ValueLabel}"/>

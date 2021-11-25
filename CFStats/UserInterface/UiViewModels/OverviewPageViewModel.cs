@@ -23,7 +23,7 @@ namespace UserInterface
 
         public OverviewPageViewModel()
         {
-            overviewPageModel = new OverviewPageModel();
+            overviewPageModel = new OverviewPageModel(ApiHandler.ProfilePicture);
 
             //setting value of usercontrols on overview pages
             SetBricks(overviewPageModel);

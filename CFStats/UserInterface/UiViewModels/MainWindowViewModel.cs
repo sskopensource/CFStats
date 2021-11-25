@@ -15,8 +15,8 @@ namespace UserInterface
         public MainWindowViewModel()
         {
             mainwindowmodel = new MainWindowModel();
-            mainwindowmodel.loginModel.imageurl = "https://userpic.codeforces.org/422/avatar/2b5dbe87f0d859a2.jpg";
-            mainwindowmodel.loginModel.handle = "tourist";
+            mainwindowmodel.loginModel.imageurl = ApiHandler.ProfilePicture;
+            mainwindowmodel.loginModel.handle = ApiHandler.Handle;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using CFControls;
 
 namespace UserInterface
@@ -22,6 +23,21 @@ namespace UserInterface
         private LongBrickModel _rank = new LongBrickModel();
         private LongBrickModel _organization = new LongBrickModel();
         private LongBrickModel _country = new LongBrickModel();
+
+        private BitmapImage _photo;
+
+        public OverviewPageModel(string imageLink)
+        {
+            _photo = new BitmapImage(new Uri(imageLink));
+        }
+
+        public BitmapImage Photo
+        {
+            get
+            {
+                return _photo;
+            }
+        }
 
         public BrickModel MaxRating
         {
