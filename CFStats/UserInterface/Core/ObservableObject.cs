@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UserInterface.Core
+namespace UserInterface
 {
     public class ObservableObject : INotifyPropertyChanged
     {

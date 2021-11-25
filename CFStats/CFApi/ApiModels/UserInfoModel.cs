@@ -19,7 +19,7 @@ namespace Api
             public string lastName { get; set; }
             public string titlePhoto { get; set; }
             public string avatar { get; set; }
-            public string organisation { get; set; }
+            public string organization { get; set; }
             public string handle { get; set; }
             public string country { get; set; }
             public string rank { get; set; }

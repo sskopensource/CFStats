@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UserInterface.Core;
+using UserInterface;
 
-namespace UserInterface.CFControls.Models
+namespace CFControls
 {
     public class BrickModel
     {

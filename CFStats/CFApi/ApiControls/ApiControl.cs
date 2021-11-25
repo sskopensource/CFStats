@@ -9,11 +9,14 @@ namespace Api
     public class ApiControl
     {
         public UserInfoModel userInfo { get; set; }
-        public string maxRating { get; set; }
+        public UserStatusModel userStatus { get; set; }
+        public UserBlogEntryModel userBlog { get; set; }
         public ApiControl()
         {
             userInfo = UserInfoControl.LoadUserInfo();
-            maxRating = userInfo.result[0].maxRating;
+            userStatus = UserStatusControl.LoadUserStatus();
+            userBlog = UserBlogEntryControl.LoadUserBlogStatus();
+            
         }
     }
 }

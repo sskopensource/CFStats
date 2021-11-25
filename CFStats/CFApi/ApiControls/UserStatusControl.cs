@@ -8,15 +8,16 @@ using System.Threading.Tasks;
 
 namespace Api
 {
-    public class UserInfoControl
+    public class UserStatusControl
     {
-        public static UserInfoModel LoadUserInfo()
+        public static UserStatusModel LoadUserStatus()
         {
-            string url = "https://codeforces.com/api/user.info?handles=suveen";
+            string url = "https://codeforces.com/api/user.status?handle=tourist";
+
             using (var httpClient = new HttpClient())
             {
                 var json = httpClient.GetStringAsync(url);
-                UserInfoModel info = JsonConvert.DeserializeObject<UserInfoModel>(json.Result);
+                UserStatusModel info = JsonConvert.DeserializeObject<UserStatusModel>(json.Result);
                 return info;
             }
         }

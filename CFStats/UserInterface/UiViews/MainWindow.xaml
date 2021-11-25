@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:UserInterface.CFControls"
-        xmlns:VM="clr-namespace:UserInterface.UiViewModels"
+        xmlns:VM="clr-namespace:UserInterface"
         mc:Ignorable="d"
         Height="650" Width="1100"
         WindowStyle="SingleBorderWindow"

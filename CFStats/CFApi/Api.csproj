@@ -17,18 +17,23 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Output\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Data\Debug\Api.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\Output\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Output\Data\Release\Api.xml</DocumentationFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -47,12 +52,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiHelper.cs" />
-    <Compile Include="Controls\ApiControl.cs" />
-    <Compile Include="Controls\UserInfoControl.cs" />
-    <Compile Include="Controls\UserStatusControl.cs" />
-    <Compile Include="Models\UserInfoModel.cs" />
-    <Compile Include="Models\UserStatusModel.cs" />
+    <Compile Include="ApiControls\UserBlogEntryControl.cs" />
+    <Compile Include="ApiControls\ApiControl.cs" />
+    <Compile Include="ApiControls\UserInfoControl.cs" />
+    <Compile Include="ApiControls\UserStatusControl.cs" />
+    <Compile Include="ApiModels\UserBlogEntryModel.cs" />
+    <Compile Include="ApiModels\UserInfoModel.cs" />
+    <Compile Include="ApiModels\UserStatusModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

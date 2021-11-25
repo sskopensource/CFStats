@@ -39,6 +39,6 @@ namespace UserInterface.CFControls
             set { SetValue(ValLabelProperty, value); }
         }
 
-        public static readonly DependencyProperty ValLabelProperty = DependencyProperty.Register("ValLabel", typeof(string), typeof(Brick), new PropertyMetadata(""));
+        public static readonly DependencyProperty ValLabelProperty = DependencyProperty.Register("ValLabel", typeof(string), typeof(Brick), new PropertyMetadata(null));
     }
 }

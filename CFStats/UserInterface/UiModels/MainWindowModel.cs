@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UserInterface.CFControls.Models;
-using UserInterface.Core;
+using CFControls;
 
-namespace UserInterface.UiModels
+namespace UserInterface
 {
     public class MainWindowModel
     {
         public LoginModel _loginModel= new LoginModel();
-        public BrickModel _maxRating = new BrickModel();
 
         public LoginModel loginModel
         {
@@ -23,20 +21,6 @@ namespace UserInterface.UiModels
             {
                 _loginModel = value;
                 //OnPropertyChanged("loginModel");
-            }
-        }
-
-        public BrickModel MaxRating
-
-        {
-            get
-            {
-                return _maxRating;
-            }
-            set
-            {
-                _maxRating = value;
-              //  OnPropertyChanged("MaxRating");
             }
         }
     }
