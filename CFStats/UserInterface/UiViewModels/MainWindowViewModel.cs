@@ -1,5 +1,4 @@
-﻿using Api;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +10,43 @@ namespace UserInterface
 {
     public class MainWindowViewModel
     {
-        public MainWindowModel mainwindowmodel { get; set; }    
-        
+
+        private MainWindowModel _mainWindowWodel;
+        public MainWindowModel mainWindowModel
+        {
+            get
+            {
+                return _mainWindowWodel;
+            }
+            set
+            {
+                _mainWindowWodel = value;
+            }
+        }
+
         public MainWindowViewModel()
         {
-            mainwindowmodel = new MainWindowModel();
-            mainwindowmodel.loginModel.imageurl = ApiHandler.ProfilePicture;
-            mainwindowmodel.loginModel.handle = ApiHandler.Handle;
-            mainwindowmodel.OverviewPage = new OverviewPage();
+            ApiHandler.LoadApiControl("suveen");
+            mainWindowModel = new MainWindowModel();
+            mainWindowModel.loginModel.imageurl = ApiHandler.Avatar;
+            mainWindowModel.loginModel.handle = ApiHandler.Handle;
+            mainWindowModel.OverviewPage = new OverviewPage();
+        }
+
+        public string ImageURL
+        {
+            get
+            {
+                return mainWindowModel.loginModel.imageurl;
+            }
+        }
+
+        public string Handle
+        {
+            get
+            {
+                return mainWindowModel.loginModel.handle;
+            }
         }
     }
 }

@@ -15,24 +15,20 @@ namespace UserInterface
     
     public static class ApiHandler
     {
-        private static ApiControl _apiControl = new ApiControl();
         private static HashSet<string> contestSet = new HashSet<string>();
         private static HashSet<string> problemSet = new HashSet<string>();
         private static HashSet<string> blogSet = new HashSet<string>();
-
-        public static ApiControl apiControl
+       
+        public static void LoadApiControl(string handle)
         {
-            get
-            {
-                return _apiControl;
-            }
+            ApiControl.LoadApi(handle);
         }
 
         public static string maxRating
         {
             get
             {
-                return apiControl.userInfo.result[0].maxRating;
+                return ApiControl.UserInfo.result[0].maxRating;
             }
         }
 
@@ -48,7 +44,7 @@ namespace UserInterface
         {
             get
             {
-                return apiControl.userInfo.result[0].contribution;
+                return ApiControl.UserInfo.result[0].contribution;
             }
         }
 
@@ -64,7 +60,7 @@ namespace UserInterface
         {
             get
             {
-                return apiControl.userInfo.result[0].friendOfCount;
+                return ApiControl.UserInfo.result[0].friendOfCount;
             }
         }
 
@@ -88,7 +84,7 @@ namespace UserInterface
         {
             get
             {
-                return apiControl.userInfo.result[0].rating;
+                return ApiControl.UserInfo.result[0].rating;
             }
         }
 
@@ -96,7 +92,7 @@ namespace UserInterface
         {
             get
             {
-                return apiControl.userInfo.result[0].rank;
+                return ApiControl.UserInfo.result[0].rank;
             }
         }
 
@@ -104,7 +100,7 @@ namespace UserInterface
         {
             get
             {
-                return apiControl.userInfo.result[0].organization;
+                return ApiControl.UserInfo.result[0].organization;
             }
         }
 
@@ -112,7 +108,7 @@ namespace UserInterface
         {
             get
             {
-                return apiControl.userInfo.result[0].country;
+                return ApiControl.UserInfo.result[0].country;
             }
         }
 
@@ -120,7 +116,7 @@ namespace UserInterface
         {
             get
             {
-                return apiControl.userInfo.result[0].handle;
+                return ApiControl.UserInfo.result[0].handle;
             }
         }
 
@@ -128,7 +124,15 @@ namespace UserInterface
         {
             get
             {
-                return apiControl.userInfo.result[0].titlePhoto;
+                return ApiControl.UserInfo.result[0].titlePhoto;
+            }
+        }
+
+        public static string Avatar
+        {
+            get
+            {
+                return ApiControl.UserInfo.result[0].avatar;
             }
         }
 
@@ -155,12 +159,10 @@ namespace UserInterface
             return res;
         }
 
+        //Fill ProblemSet and ContestSet
         private static void FillSets()
         {
-            Console.WriteLine("FillSetCalled");
-
-            //Fill ProblemSet and ContestSet
-            foreach (var problems in apiControl.userStatus.result)
+            foreach (var problems in ApiControl.UserStatus.result)
             {
                 var currentProblem = problems.problem.name.ToString();
                 var currentContest = problems.contestId.ToString();
@@ -178,7 +180,7 @@ namespace UserInterface
             }
 
             //Fill BlogSet
-            foreach (var blogs in apiControl.userBlog.result)
+            foreach (var blogs in ApiControl.UserBlog.result)
             {
                 var currentBlog = blogs.title.ToString();
                 blogSet.Add(currentBlog);
@@ -187,7 +189,7 @@ namespace UserInterface
 
         private static string GetFullName()
         {
-            string fullName= apiControl.userInfo.result[0].firstName + " " + apiControl.userInfo.result[0].lastName;
+            string fullName= ApiControl.UserInfo.result[0].firstName + " " + ApiControl.UserInfo.result[0].lastName;
             return fullName;
         }
 

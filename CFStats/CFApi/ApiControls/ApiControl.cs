@@ -6,17 +6,53 @@ using System.Threading.Tasks;
 
 namespace Api
 {
-    public class ApiControl
+    public static class ApiControl
     {
-        public UserInfoModel userInfo { get; set; }
-        public UserStatusModel userStatus { get; set; }
-        public UserBlogEntryModel userBlog { get; set; }
-        public ApiControl()
+        private static UserInfoModel _userInfo;
+        private static UserBlogEntryModel _userBlog;
+        private static UserStatusModel _userStatus;
+
+        public static void LoadApi(string handle)
         {
-            userInfo = UserInfoControl.LoadUserInfo();
-            userStatus = UserStatusControl.LoadUserStatus();
-            userBlog = UserBlogEntryControl.LoadUserBlogStatus();
-            
+            UserInfo = UserInfoControl.LoadUserInfo(handle);
+            UserStatus = UserStatusControl.LoadUserStatus(handle);
+            UserBlog = UserBlogEntryControl.LoadUserBlogStatus(handle);
         }
+
+        public static UserInfoModel UserInfo
+        {
+            get
+            {
+                return _userInfo;
+            }
+            set
+            {
+                _userInfo = value;
+            }
+        }
+        public static UserStatusModel UserStatus
+        {
+            get
+            {
+                return _userStatus;
+            }
+            set
+            {
+                _userStatus = value;
+            }
+        }
+
+        public static UserBlogEntryModel UserBlog
+        {
+            get
+            {
+                return _userBlog;
+            }
+            set
+            {
+                _userBlog = value;
+            }
+        }
+        
     }
 }
