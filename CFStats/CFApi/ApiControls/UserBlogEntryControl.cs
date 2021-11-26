@@ -11,9 +11,9 @@ namespace Api
 {
     public class UserBlogEntryControl
     {
-        public static UserBlogEntryModel LoadUserBlogStatus()
+        public static UserBlogEntryModel LoadUserBlogStatus(string handle)
         {
-            string url = "https://codeforces.com/api/user.blogEntries?handle=tourist";
+            string url = "https://codeforces.com/api/user.blogEntries?handle="+handle;
 
             using (var httpClient = new HttpClient())
             {

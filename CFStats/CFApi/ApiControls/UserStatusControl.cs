@@ -10,9 +10,9 @@ namespace Api
 {
     public class UserStatusControl
     {
-        public static UserStatusModel LoadUserStatus()
+        public static UserStatusModel LoadUserStatus(string handle)
         {
-            string url = "https://codeforces.com/api/user.status?handle=tourist";
+            string url = "https://codeforces.com/api/user.status?handle="+handle;
 
             using (var httpClient = new HttpClient())
             {

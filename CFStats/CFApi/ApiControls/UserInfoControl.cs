@@ -10,9 +10,10 @@ namespace Api
 {
     public class UserInfoControl
     {
-        public static UserInfoModel LoadUserInfo()
+        public static UserInfoModel LoadUserInfo(string handle)
         {
-            string url = "https://codeforces.com/api/user.info?handles=tourist";
+            string url = "https://codeforces.com/api/user.info?handles="+handle;
+
             using (var httpClient = new HttpClient())
             {
                 var json = httpClient.GetStringAsync(url);

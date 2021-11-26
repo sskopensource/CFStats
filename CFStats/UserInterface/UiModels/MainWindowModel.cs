@@ -13,6 +13,11 @@ namespace UserInterface
         private LoginModel _loginModel= new LoginModel();
         private OverviewPage _overviewPage;
 
+        public MainWindowModel()
+        {
+            Console.WriteLine("Called: MainWindowModel");
+        }
+
         public LoginModel loginModel
         {
             get 

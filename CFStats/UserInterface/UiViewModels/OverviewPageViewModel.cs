@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace UserInterface
 {
@@ -23,6 +24,7 @@ namespace UserInterface
 
         public OverviewPageViewModel()
         {
+            Console.WriteLine("Called: OverviewPageViewModel");
             overviewPageModel = new OverviewPageModel(ApiHandler.ProfilePicture);
 
             //setting value of usercontrols on overview pages
@@ -47,6 +49,94 @@ namespace UserInterface
             overviewPageModel.Rank.ValueLabel = ApiHandler.Rank;
             overviewPageModel.Organization.ValueLabel = ApiHandler.Organization;
             overviewPageModel.Country.ValueLabel = ApiHandler.Country;
+        }
+
+        public string MaxRating
+        {
+            get
+            {
+                return overviewPageModel.MaxRating.ValueLabel;
+            }
+        }
+
+        public string Contests
+        {
+            get
+            {
+                return overviewPageModel.Contests.ValueLabel;
+            }
+        }
+
+        public string Contributions
+        {
+            get
+            {
+                return overviewPageModel.Contributions.ValueLabel;
+            }
+        }
+
+        public string ProblemsSolved
+        {
+            get
+            {
+                return overviewPageModel.ProblemsSolved.ValueLabel;
+            }
+        }
+
+        public string FriendsOf
+        {
+            get
+            {
+                return overviewPageModel.FriendsOf.ValueLabel;
+            }
+        }
+
+        public string Blogs
+        {
+            get
+            {
+                return overviewPageModel.Blogs.ValueLabel;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return overviewPageModel.Name.ValueLabel;
+            }
+        }
+
+        public string Rating
+        {
+            get
+            {
+                return overviewPageModel.Rating.ValueLabel;
+            }
+        }
+
+        public string Rank
+        {
+            get
+            {
+                return overviewPageModel.Rank.ValueLabel;
+            }
+        }
+
+        public string Organization
+        {
+            get
+            {
+                return overviewPageModel.Organization.ValueLabel;
+            }
+        }
+
+        public string Country
+        {
+            get
+            {
+                return overviewPageModel.Country.ValueLabel;
+            }
         }
     }
 }

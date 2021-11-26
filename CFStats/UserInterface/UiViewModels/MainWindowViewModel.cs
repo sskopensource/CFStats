@@ -1,5 +1,4 @@
-﻿using Api;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,10 +14,13 @@ namespace UserInterface
         
         public MainWindowViewModel()
         {
+            ApiHandler.LoadApiControl("KAN");
+            Console.WriteLine("Called: MainWindowViewModel");
             mainwindowmodel = new MainWindowModel();
             mainwindowmodel.loginModel.imageurl = ApiHandler.ProfilePicture;
             mainwindowmodel.loginModel.handle = ApiHandler.Handle;
             mainwindowmodel.OverviewPage = new OverviewPage();
+
         }
     }
 }

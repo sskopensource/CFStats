@@ -10,25 +10,38 @@ namespace UserInterface
 {
     public class OverviewPageModel
     {
-        private BrickModel _maxRating=new BrickModel();
-        private BrickModel _contests = new BrickModel();
-        private BrickModel _contributions = new BrickModel();
-        private BrickModel _problemsSolved = new BrickModel();
-        private BrickModel _friendsOf = new BrickModel();
-        private BrickModel _blogs = new BrickModel();
+        private BrickModel _maxRating;
+        private BrickModel _contests;
+        private BrickModel _contributions;
+        private BrickModel _problemsSolved;
+        private BrickModel _friendsOf;
+        private BrickModel _blogs;
 
-
-        private LongBrickModel _name = new LongBrickModel();
-        private LongBrickModel _rating = new LongBrickModel();
-        private LongBrickModel _rank = new LongBrickModel();
-        private LongBrickModel _organization = new LongBrickModel();
-        private LongBrickModel _country = new LongBrickModel();
+        private LongBrickModel _name;
+        private LongBrickModel _rating;
+        private LongBrickModel _rank;
+        private LongBrickModel _organization;
+        private LongBrickModel _country;
 
         private BitmapImage _photo;
 
         public OverviewPageModel(string imageLink)
         {
-            _photo = new BitmapImage(new Uri(imageLink));
+            Console.WriteLine("Called: OverviewPageWindowModel");
+            MaxRating = new BrickModel();
+            Contests = new BrickModel();
+            Contributions = new BrickModel();
+            ProblemsSolved = new BrickModel();
+            FriendsOf = new BrickModel();
+            Blogs = new BrickModel();
+
+            Name = new LongBrickModel();
+            Rating = new LongBrickModel();
+            Rank = new LongBrickModel();
+            Organization = new LongBrickModel();
+            Country = new LongBrickModel();
+
+            Photo = new BitmapImage(new Uri(imageLink));
         }
 
         public BitmapImage Photo
@@ -36,6 +49,10 @@ namespace UserInterface
             get
             {
                 return _photo;
+            }
+            set
+            {
+                _photo = value;
             }
         }
 
