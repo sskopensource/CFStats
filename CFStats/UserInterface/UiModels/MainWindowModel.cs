@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CFControls;
+using UserInterface.Pages;
 
 namespace UserInterface
 {
     public class MainWindowModel
     {
-        public LoginModel _loginModel= new LoginModel();
+        private LoginModel _loginModel= new LoginModel();
+        private OverviewPage _overviewPage;
 
         public LoginModel loginModel
         {
@@ -20,6 +22,19 @@ namespace UserInterface
             set
             {
                 _loginModel = value;
+                //OnPropertyChanged("loginModel");
+            }
+        }
+
+        public OverviewPage OverviewPage
+        {
+            get
+            {
+                return _overviewPage;
+            }
+            set
+            {
+                _overviewPage = value;
                 //OnPropertyChanged("loginModel");
             }
         }

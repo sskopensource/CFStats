@@ -8,7 +8,7 @@ namespace UserInterface
 {
     public class OverviewPageViewModel
     {
-        public OverviewPageModel _overviewPageModel;
+        private OverviewPageModel _overviewPageModel;
         public OverviewPageModel overviewPageModel
         {
             get

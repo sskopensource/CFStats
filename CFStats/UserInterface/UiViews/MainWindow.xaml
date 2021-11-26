@@ -34,6 +34,6 @@
                        VerticalAlignment="Bottom"
                        HorizontalAlignment="Right"
                        Margin="0,0,42,12" Foreground="Black"/>
-        <Frame Grid.Row="1" Grid.Column="1" x:Name="Main"/>
+        <Frame Content="{Binding Path=mainwindowmodel.OverviewPage}" Grid.Row="1" Grid.Column="1" x:Name="Main"/>
     </Grid>
 </Window>
