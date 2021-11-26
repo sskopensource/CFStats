@@ -1,0 +1,20 @@
+//URL- https://codeforces.com/api/user.blogEntries?handle=Fefer_Ivan
+{
+    "status": "OK",
+    "result": [
+        {
+            "originalLocale": "ru",
+            "allowViewHistory": false,
+            "creationTimeSeconds": 1415106466,
+            "rating": 782,
+            "authorHandle": "Fefer_Ivan",
+            "modificationTimeSeconds": 1415119106,
+            "id": 14580,
+            "title": "\u003cp\u003eAndrew Stankevich Contests — 46 contests later\u003c/p\u003e",
+            "locale": "en",
+            "tags": [
+                "asc",
+                "codeforces"
+            ]
+        }
+}

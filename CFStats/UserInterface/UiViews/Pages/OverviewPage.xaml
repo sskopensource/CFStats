@@ -1,0 +1,42 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UserInterface.CFControls"
+      xmlns:UiViewModels="clr-namespace:UserInterface" x:Class="UserInterface.Pages.OverviewPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="850"
+      Title="OverviewPage">
+    <Page.DataContext>
+        <UiViewModels:OverviewPageViewModel/>
+    </Page.DataContext>
+    <Grid>
+        <Image Source="{Binding overviewPageModel.Photo}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="img" Margin="56,41,450,257" />
+        <StackPanel Margin="400,51,50,-41" Width="400">
+            <local:LongBrick TextLabel="Name" ValueLabel="{Binding Path=overviewPageModel.Name.ValueLabel}"/>
+            <local:LongBrick TextLabel="Rating" ValueLabel="{Binding Path=overviewPageModel.Rating.ValueLabel}"/>
+            <local:LongBrick TextLabel="Rank" ValueLabel="{Binding Path=overviewPageModel.Rank.ValueLabel}"/>
+            <local:LongBrick TextLabel="Organisation" ValueLabel="{Binding Path=overviewPageModel.Organization.ValueLabel}"/>
+            <local:LongBrick TextLabel="Country" ValueLabel="{Binding Path=overviewPageModel.Country.ValueLabel}"/>
+        </StackPanel>
+
+        <Grid Margin="147,286,147,15"  Width="550" Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <local:Brick TxtLabel="Max Rating" ValLabel="{Binding Path=overviewPageModel.MaxRating.ValueLabel}"  Grid.Row="0" Grid.Column="0"/>
+            <local:Brick TxtLabel="Contests" ValLabel="{Binding Path=overviewPageModel.Contests.ValueLabel}" Grid.Row="0" Grid.Column="1"/>
+            <local:Brick TxtLabel="Contributions" ValLabel="{Binding Path=overviewPageModel.Contributions.ValueLabel}" Grid.Row="0" Grid.Column="2"/>
+            <local:Brick TxtLabel="Problems Solved" ValLabel="{Binding Path=overviewPageModel.ProblemsSolved.ValueLabel}" Grid.Row="1" Grid.Column="0"/>
+            <local:Brick TxtLabel="Friends Of" ValLabel="{Binding Path=overviewPageModel.FriendsOf.ValueLabel}" Grid.Row="1" Grid.Column="1"/>
+            <local:Brick TxtLabel="Blog Entries" ValLabel="{Binding Path=overviewPageModel.Blogs.ValueLabel}" Grid.Row="1" Grid.Column="2"/>
+        </Grid>
+    </Grid>
+</Page>

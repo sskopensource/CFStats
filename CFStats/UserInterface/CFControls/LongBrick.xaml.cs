@@ -24,5 +24,21 @@ namespace UserInterface.CFControls
         {
             InitializeComponent();
         }
+
+        public string TextLabel
+        {
+            get { return (string)GetValue(TextLabelProperty); }
+            set { SetValue(TextLabelProperty, value); }
+        }
+
+        public static readonly DependencyProperty TextLabelProperty = DependencyProperty.Register("TextLabel", typeof(string), typeof(LongBrick), new PropertyMetadata(""));
+
+        public string ValueLabel
+        {
+            get { return (string)GetValue(ValueLabelProperty); }
+            set { SetValue(ValueLabelProperty, value); }
+        }
+
+        public static readonly DependencyProperty ValueLabelProperty = DependencyProperty.Register("ValueLabel", typeof(string), typeof(LongBrick), new PropertyMetadata(null));
     }
 }
