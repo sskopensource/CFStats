@@ -6,17 +6,14 @@
              xmlns:local="clr-namespace:UserInterface.CFControls" xmlns:VM="clr-namespace:UserInterface"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <VM:MainWindowViewModel/>
-    </UserControl.DataContext>
     <Grid>
         <StackPanel Orientation="Horizontal" Margin="5,5,0,0" Height="100" Width="180" >
             <Ellipse Margin="20,0,0,0" Width="40" Height="40" Grid.Column="1">
                 <Ellipse.Fill>
-                    <ImageBrush ImageSource="{Binding Path=mainwindowmodel.loginModel.imageurl}" />
+                    <ImageBrush ImageSource="{Binding ImgURL ,RelativeSource={RelativeSource AncestorType=UserControl}}" />
                 </Ellipse.Fill>
             </Ellipse>
-            <Label Content="{Binding Path=mainwindowmodel.loginModel.handle, Mode=TwoWay}" Margin="20,28,0,28" x:Name="loginLabel" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+            <Label Content="{Binding UserName ,RelativeSource={RelativeSource AncestorType=UserControl}}" Margin="20,28,0,28" x:Name="loginLabel" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
         </StackPanel>
     </Grid>
 </UserControl>

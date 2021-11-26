@@ -8,8 +8,8 @@ namespace CFControls
 {
     public class LongBrickModel
     {
-        public string _textLabel;
-        public string _valueLabel;
+        private string _textLabel;
+        private string _valueLabel;
         public string TextLabel
         {
             get

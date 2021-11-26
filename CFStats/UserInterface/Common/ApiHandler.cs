@@ -21,7 +21,6 @@ namespace UserInterface
        
         public static void LoadApiControl(string handle)
         {
-            Console.WriteLine("Called: ApiHandler");
             ApiControl.LoadApi(handle);
         }
 
@@ -129,6 +128,14 @@ namespace UserInterface
             }
         }
 
+        public static string Avatar
+        {
+            get
+            {
+                return ApiControl.UserInfo.result[0].avatar;
+            }
+        }
+
 
         private static string SetCount(SetSelector setSelector)
         {
@@ -152,11 +159,9 @@ namespace UserInterface
             return res;
         }
 
+        //Fill ProblemSet and ContestSet
         private static void FillSets()
         {
-            Console.WriteLine("FillSetCalled");
-
-            //Fill ProblemSet and ContestSet
             foreach (var problems in ApiControl.UserStatus.result)
             {
                 var currentProblem = problems.problem.name.ToString();

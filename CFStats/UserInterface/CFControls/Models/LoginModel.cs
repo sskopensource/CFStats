@@ -9,8 +9,8 @@ namespace CFControls
 {
     public class LoginModel
     {
-        public string _imageurl;
-        public string _handle;
+        private string _imageurl;
+        private string _handle;
 
         public string imageurl
         {

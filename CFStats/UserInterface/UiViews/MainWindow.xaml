@@ -28,7 +28,7 @@
         </Border>
         <Border Grid.Column="1" Grid.RowSpan="2" Background="#FFF8EFFF">
         </Border>
-       <uc:Login Margin="592,0,2,0" Grid.Column="1" />
+       <uc:Login ImgURL="{Binding Path=ImageURL}" UserName="{Binding Path=Handle}" Margin="592,0,2,0" Grid.Column="1" />
         <TextBlock Text="CFStats"
                        FontSize="50"
                        VerticalAlignment="Bottom"

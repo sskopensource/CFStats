@@ -14,7 +14,6 @@ namespace Api
 
         public static void LoadApi(string handle)
         {
-            Console.WriteLine("Called: ApiControl");
             UserInfo = UserInfoControl.LoadUserInfo(handle);
             UserStatus = UserStatusControl.LoadUserStatus(handle);
             UserBlog = UserBlogEntryControl.LoadUserBlogStatus(handle);

@@ -24,7 +24,6 @@ namespace UserInterface
 
         public OverviewPageViewModel()
         {
-            Console.WriteLine("Called: OverviewPageViewModel");
             overviewPageModel = new OverviewPageModel(ApiHandler.ProfilePicture);
 
             //setting value of usercontrols on overview pages

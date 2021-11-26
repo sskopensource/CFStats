@@ -27,7 +27,6 @@ namespace UserInterface
 
         public OverviewPageModel(string imageLink)
         {
-            Console.WriteLine("Called: OverviewPageWindowModel");
             MaxRating = new BrickModel();
             Contests = new BrickModel();
             Contributions = new BrickModel();
