@@ -26,7 +26,6 @@ namespace UserInterface
 
         public MainWindowViewModel()
         {
-            ApiHandler.LoadApiControl("suveen");
             mainWindowModel = new MainWindowModel();
             mainWindowModel.loginModel.imageurl = ApiHandler.Avatar;
             mainWindowModel.loginModel.handle = ApiHandler.Handle;
