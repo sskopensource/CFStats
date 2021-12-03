@@ -13,7 +13,7 @@ namespace UserInterface
     public class LoginWindowViewModel:BindableBase
     {
         private string _handle;
-        private Visibility _loadingVisible=Visibility.Hidden;
+        private Visibility _loadingVisible = Visibility.Hidden;
         private Visibility _loginVisible = Visibility.Visible;
         public Visibility LoadingVisible
         {
