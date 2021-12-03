@@ -9,7 +9,7 @@
         Height="650" Width="1100"
         WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
-        Background="Transparent"
+        Background="Transparent" WindowStartupLocation="CenterScreen"
         >
     <Window.DataContext>
         <VM:MainWindowViewModel/>
@@ -23,17 +23,18 @@
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
         <Border Grid.Column="0" Grid.RowSpan="2" Background="White">
         </Border>
         <Border Grid.Column="1" Grid.RowSpan="2" Background="#FFF8EFFF">
         </Border>
-       <uc:Login ImgURL="{Binding Path=ImageURL}" UserName="{Binding Path=Handle}" Margin="592,0,2,0" Grid.Column="1" />
+        <Canvas Grid.Column="1" Width="Auto">
+            <uc:Login Canvas.Top="35" Canvas.Right="10" MinWidth="200" x:Name="login" Grid.Column="1" ImgURL="{Binding Path=ImageURL}" UserName="{Binding Path=Handle}" VerticalAlignment="Center"/>
+        </Canvas>
         <TextBlock Text="CFStats"
                        FontSize="50"
                        VerticalAlignment="Bottom"
                        HorizontalAlignment="Right"
                        Margin="0,0,42,12" Foreground="Black"/>
-        <Frame Content="{Binding Path=mainwindowmodel.OverviewPage}" Grid.Row="1" Grid.Column="1" x:Name="Main"/>
+        <Frame Content="{Binding Path=mainWindowModel.OverviewPage}" Grid.Row="1" Grid.Column="1" x:Name="Main"/>
     </Grid>
 </Window>
