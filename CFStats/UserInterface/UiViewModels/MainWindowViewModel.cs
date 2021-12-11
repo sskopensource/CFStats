@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using CFControls;
+using Prism.Commands;
 using UserInterface.Commands;
 using UserInterface.Common;
+using UserInterface.UiViews;
 
 namespace UserInterface
 {
@@ -14,11 +17,16 @@ namespace UserInterface
     {
         private MainWindowModel _mainWindowWodel;
         private NavBarViewModel _navBarViewModel;
+        public ICommand LogoutCommand { get; }
+
+        public string ImageURL => mainWindowModel.loginModel.imageurl;
+        public string Handle => mainWindowModel.loginModel.handle;
 
         public MainWindowViewModel()
         {
             NavBarViewModel = new NavBarViewModel();
             mainWindowModel = new MainWindowModel();
+            LogoutCommand = new DelegateCommand<Window>(Logout);
             mainWindowModel.loginModel.imageurl = ApiHandler.Avatar;
             mainWindowModel.loginModel.handle = ApiHandler.Handle;
         }
@@ -47,7 +55,11 @@ namespace UserInterface
             }
         }
 
-        public string ImageURL => mainWindowModel.loginModel.imageurl;
-        public string Handle => mainWindowModel.loginModel.handle;
+        private void Logout(Window currWindow)
+        {
+            LoginWindow newWindow = new LoginWindow();
+            newWindow.Show();
+            currWindow.Close();
+        }
     }
 }

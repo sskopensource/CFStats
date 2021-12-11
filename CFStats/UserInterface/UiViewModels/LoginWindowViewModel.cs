@@ -57,6 +57,7 @@ namespace UserInterface
         {
             LoginCommand = new DelegateCommand<Window>(Login);
         }
+
         private async void Login(Window currWindow)
         {
             ShowLoading();
