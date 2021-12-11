@@ -4,12 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UserInterface.CFControls"
-      xmlns:UiViewModels="clr-namespace:UserInterface" x:Class="UserInterface.Pages.OverviewPage"
+      xmlns:Ui="clr-namespace:UserInterface" xmlns:sys1="clr-namespace:UserInterface.Common" x:Class="UserInterface.OverviewPage"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="850"
       Title="OverviewPage">
     <Page.DataContext>
-        <UiViewModels:OverviewPageViewModel/>
+        <Ui:OverviewPageViewModel/>
     </Page.DataContext>
     <Grid>
         <Image Source="{Binding overviewPageModel.Photo}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="img" Margin="56,41,450,257" />
