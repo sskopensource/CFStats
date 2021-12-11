@@ -23,10 +23,5 @@ namespace UserInterface.UiViews
         {
             InitializeComponent();
         }
-
-        public static implicit operator LoginWindow(MainWindow v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
