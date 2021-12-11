@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace UserInterface
 {
-    public class LoginWindowViewModel:BindableBase
+    public class LoginWindowViewModel:ViewModelBase
     {
         private string _handle;
         private Visibility _loadingVisible = Visibility.Hidden;
@@ -23,7 +23,8 @@ namespace UserInterface
             }
             set
             {
-                SetProperty(ref _loadingVisible, value);
+                _loadingVisible = value;
+                OnPropertyChanged("LoadingVisible");
             }
         }
 
@@ -35,7 +36,8 @@ namespace UserInterface
             }
             set
             {
-                SetProperty(ref _loginVisible, value);
+                _loginVisible = value;
+                OnPropertyChanged("LoginVisible");
             }
         }
 
@@ -55,6 +57,7 @@ namespace UserInterface
         {
             LoginCommand = new DelegateCommand<Window>(Login);
         }
+
         private async void Login(Window currWindow)
         {
             ShowLoading();

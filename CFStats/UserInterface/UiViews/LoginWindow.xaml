@@ -16,8 +16,39 @@
     </Window.DataContext>
     <Grid Background="#FFF8EFFF">
 
-        <Button Background="#FF8000FF" Visibility="{Binding LoginVisible ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=LogWin}" Content="Login" Width="100" HorizontalAlignment="Center" BorderBrush="{x:Null}" Foreground="White" Margin="0,239,0,143"/>
-        <TextBox FontSize="25" TextAlignment="Center" Visibility="{Binding LoginVisible ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Text="{Binding Handle}" HorizontalAlignment="Center" Height="35" Margin="0,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Background="White" SelectionBrush="#FF3F6685" BorderBrush="White"/>
+        <Button Visibility="{Binding LoginVisible ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontFamily="Consolas" FontSize="20" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=LogWin}" Content="Login" Width="100" BorderBrush="{x:Null}" Foreground="White" Margin="0,239,0,143">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF8000FF"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="DarkBlue"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10,10,10,10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBox FontSize="25" TextAlignment="Center" Visibility="{Binding LoginVisible ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Text="{Binding Handle}" HorizontalAlignment="Center" Height="35" Margin="0,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Background="White" SelectionBrush="#FF3F6685" BorderBrush="White">
+            <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10,10,10,10"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Image Visibility="{Binding LoadingVisible ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" x:Name="Loading" gif:ImageBehavior.AnimatedSource="LoadingAnimation.gif" Height="128" Margin="0,148,0,0" VerticalAlignment="Top" Width="183"/>
         <TextBlock Text="CFStats"
             FontSize="40"

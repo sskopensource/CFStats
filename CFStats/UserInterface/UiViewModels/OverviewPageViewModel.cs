@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using UserInterface.Commands;
+using UserInterface.Common;
 
 namespace UserInterface
 {
-    public class OverviewPageViewModel
+    public class OverviewPageViewModel:ViewModelBase
     {
         private OverviewPageModel _overviewPageModel;
         public OverviewPageModel overviewPageModel

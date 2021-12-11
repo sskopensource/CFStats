@@ -4,16 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:UserInterface.CFControls"
-        xmlns:VM="clr-namespace:UserInterface"
+        xmlns:Ui="clr-namespace:UserInterface"
         mc:Ignorable="d"
         Height="650" Width="1100"
         WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         Background="Transparent" WindowStartupLocation="CenterScreen"
+        x:Name="MainWin"
         >
     <Window.DataContext>
-        <VM:MainWindowViewModel/>
+        <Ui:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <Ui:NavBarViewModel x:Key="NavBarVM"/>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -35,6 +39,127 @@
                        VerticalAlignment="Bottom"
                        HorizontalAlignment="Right"
                        Margin="0,0,42,12" Foreground="Black"/>
-        <Frame Content="{Binding Path=mainWindowModel.OverviewPage}" Grid.Row="1" Grid.Column="1" x:Name="Main"/>
+        <Frame DataContext="{StaticResource NavBarVM}" Content="{Binding CurrentViewModel}" Grid.Row="1" Grid.Column="1"  NavigationUIVisibility="Hidden" x:Name="Main">
+            <Frame.Resources>
+                <DataTemplate DataType="{x:Type Ui:OverviewPageViewModel}">
+                    <Ui:OverviewPage/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type Ui:ProblemPageViewModel}">
+                    <Ui:ProblemPage/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type Ui:ContestPageViewModel}">
+                    <Ui:ContestPage/>
+                </DataTemplate>
+            </Frame.Resources>
+        </Frame>
+        <StackPanel DataContext="{StaticResource NavBarVM}" Height="Auto" Margin="0,50,0,0" VerticalAlignment="Top" Grid.Row="1">
+            <Button FontFamily="Consolas" FontSize="20" Margin="10,0,10,5 " Command="{Binding NavigateOverviewPageCommand}" Content="OverView" Height="40" BorderBrush="{x:Null}">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="{Binding BackgroundColorOverviewTab}"/>
+                        <Setter Property="Foreground" Value="{Binding FontColorOverviewTab}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{Binding HoverColorOverviewTab}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="0,40,40,0"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button FontFamily="Consolas" FontSize="20" Height="40" Margin="10,0,10,5" Command="{Binding NavigateProblemPageCommand}" Content="Problem"  BorderBrush="{x:Null}">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="{Binding BackgroundColorProblemTab}"/>
+                        <Setter Property="Foreground" Value="{Binding FontColorProblemTab}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{Binding HoverColorProblemTab}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="0,40,40,0"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button FontFamily="Consolas" FontSize="20" Height="40" Margin="10,0,10,5" Command="{Binding NavigateContestPageCommand}" Content="Contest" BorderBrush="{x:Null}">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="{Binding BackgroundColorContestTab}"/>
+                        <Setter Property="Foreground" Value="{Binding FontColorContestTab}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{Binding HoverColorContestTab}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="0,40,40,0"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+        <Button Grid.Row="1" FontFamily="Consolas" FontSize="20" Height="40" Command="{Binding LogoutCommand}" CommandParameter="{Binding ElementName=MainWin}" Content="Logout" Width="150" BorderBrush="{x:Null}" VerticalAlignment="Bottom" Margin="0,0,0,50" Foreground="White">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF8000FF"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="DarkBlue"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20,20,20,20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

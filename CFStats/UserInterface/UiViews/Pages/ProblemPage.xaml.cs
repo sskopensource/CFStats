@@ -12,15 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UserInterface.CFControls;
+
 namespace UserInterface
 {
     /// <summary>
-    /// Interaction logic for OverviewPage.xaml
+    /// Interaction logic for ProblemPage.xaml
     /// </summary>
-    public partial class OverviewPage : Page
+    public partial class ProblemPage : Page
     {
-        public OverviewPage()
+        public ProblemPage()
         {
             InitializeComponent();
         }
