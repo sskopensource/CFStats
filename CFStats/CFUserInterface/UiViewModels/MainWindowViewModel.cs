@@ -15,20 +15,32 @@ namespace UserInterface
 {
     public class MainWindowViewModel:ViewModelBase
     {
-        private MainWindowModel _mainWindowWodel;
+        private LoginModel _loginModel = new LoginModel();
         private NavBarViewModel _navBarViewModel;
         public ICommand LogoutCommand { get; }
 
-        public string ImageURL => mainWindowModel.loginModel.imageurl;
-        public string Handle => mainWindowModel.loginModel.handle;
+        public string ImageURL => loginModel.imageurl;
+        public string Handle => loginModel.handle;
 
         public MainWindowViewModel()
         {
             NavBarViewModel = new NavBarViewModel();
-            mainWindowModel = new MainWindowModel();
             LogoutCommand = new DelegateCommand<Window>(Logout);
-            mainWindowModel.loginModel.imageurl = ApiHandler.Avatar;
-            mainWindowModel.loginModel.handle = ApiHandler.Handle;
+            loginModel.imageurl = ApiHandler.Avatar;
+            loginModel.handle = ApiHandler.Handle;
+        }
+
+        public LoginModel loginModel
+        {
+            get
+            {
+                return _loginModel;
+            }
+            set
+            {
+                _loginModel = value;
+                //OnPropertyChanged("loginModel");
+            }
         }
 
         public NavBarViewModel NavBarViewModel
@@ -40,18 +52,6 @@ namespace UserInterface
             set
             {
                 _navBarViewModel = value;
-            }
-        }
-
-        public MainWindowModel mainWindowModel
-        {
-            get
-            {
-                return _mainWindowWodel;
-            }
-            set
-            {
-                _mainWindowWodel = value;
             }
         }
 

@@ -22,6 +22,7 @@ namespace UserInterface
             set
             {
                 _overviewPageModel = value;
+                OnPropertyChanged(nameof(overviewPageModel));
             }
         }
 

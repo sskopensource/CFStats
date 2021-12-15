@@ -3,11 +3,16 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:UserInterface"
+      xmlns:Ui="clr-namespace:UserInterface"
+      xmlns:uc="clr-namespace:UserInterface.CFControls"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="850"
       Title="ProblemPage">
+    <Page.DataContext>
+        <Ui:ProblemPageViewModel/>
+    </Page.DataContext>
     <Grid>
-        <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center" Text="Problem Page" FontSize="50"/>
+        <uc:BarGraph BarValues="{Binding Path=BarValues}" XValues="{Binding Path=XValues}" YValues="{Binding Path=YValues}" Margin="27,161,10,24"/>
     </Grid>
 </Page>

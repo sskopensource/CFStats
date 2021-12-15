@@ -18,6 +18,7 @@ namespace UserInterface
         private static HashSet<string> contestSet = new HashSet<string>();
         private static HashSet<string> problemSet = new HashSet<string>();
         private static HashSet<string> blogSet = new HashSet<string>();
+        private static SortedDictionary<int,int> probemsRatingMap = new SortedDictionary<int,int>();
        
         public static void LoadApiControl(string handle)
         {
@@ -136,6 +137,7 @@ namespace UserInterface
             }
         }
 
+        public static SortedDictionary<int, int> ProblemsRatingMap => probemsRatingMap; 
 
         private static string SetCount(SetSelector setSelector)
         {
@@ -159,7 +161,7 @@ namespace UserInterface
             return res;
         }
 
-        //Fill ProblemSet and ContestSet
+        //Fill ProblemSet ,ContestSet and ProblemratingMap
         private static void FillSets()
         {
             foreach (var problems in ApiControl.UserStatus.result)
@@ -167,16 +169,25 @@ namespace UserInterface
                 var currentProblem = problems.problem.name.ToString();
                 var currentContest = problems.contestId.ToString();
                 var curVerdict = problems.verdict.ToString();
+                
+                var curProblemRating= problems.problem.rating;
                 var curParticipantType = problems.author.participantType.ToString();
                 if (curVerdict == "OK")
                 {
                     problemSet.Add(currentProblem);
+                    if (curProblemRating !=0)
+                    {
+                        if (!probemsRatingMap.ContainsKey(curProblemRating))
+                        {
+                            probemsRatingMap.Add(curProblemRating, 0);
+                        }
+                        probemsRatingMap[curProblemRating]++;
+                    }
                 }
                 if (curParticipantType == "CONTESTANT")
                 {
                     contestSet.Add(currentContest);
                 }
-
             }
 
             //Fill BlogSet
