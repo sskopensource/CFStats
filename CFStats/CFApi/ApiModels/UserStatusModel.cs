@@ -21,6 +21,7 @@ namespace Api
     public class ProblemModel
     {
         public string name { get; set; }
+        public int rating { get; set; }
     }
     public class AuthorModel
     {
