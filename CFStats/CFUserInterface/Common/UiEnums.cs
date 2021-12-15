@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace UserInterface
 {
+    enum SetSelector
+    {
+        PROBLEMSET,
+        CONTESTSET,
+        BLOGSET
+    }
     public enum NAVTAB
     {
         OVERVIEW,
