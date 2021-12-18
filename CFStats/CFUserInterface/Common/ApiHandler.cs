@@ -5,14 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace UserInterface
-{
-    enum SetSelector{
-        PROBLEMSET,
-        CONTESTSET,
-        BLOGSET
-    }
-    
+{    
     public static class ApiHandler
     {
         private static HashSet<string> contestSet = new HashSet<string>();
@@ -49,10 +44,14 @@ namespace UserInterface
 
         private static string SetCount(SetSelector setSelector)
         {
-            if (problemSet.Count == 0)
-            {
-                FillSets();
-            }
+
+            problemSet.Clear();
+            contestSet.Clear();
+            blogSet.Clear();
+            probemsRatingMap.Clear();
+
+            FillSets();
+            
             string res="";
             if (setSelector == SetSelector.PROBLEMSET)
             {
