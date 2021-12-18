@@ -13,6 +13,28 @@
         <Ui:ProblemPageViewModel/>
     </Page.DataContext>
     <Grid>
-        <uc:BarGraph BarValues="{Binding Path=BarValues}" XValues="{Binding Path=XValues}" YValues="{Binding Path=YValues}" Margin="27,161,10,24"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="10,0,10,10" Width="400">
+            <Label HorizontalAlignment="Center" Content="GENERAL"/>
+            <uc:LongBrick TextLabel="Name" ValueLabel="{Binding Path=Name}"/>
+            <uc:LongBrick TextLabel="Rating" ValueLabel="{Binding Path=Rating}"/>
+            <uc:LongBrick TextLabel="Rank" ValueLabel="{Binding Path=Rank}"/>
+            <uc:LongBrick TextLabel="Organisation" ValueLabel="{Binding Path=Organization}"/>
+            <uc:LongBrick TextLabel="Country" ValueLabel="{Binding Path=Country}"/>
+            <uc:LongBrick TextLabel="Country" ValueLabel="{Binding Path=Country}"/>
+        </StackPanel>
+        <StackPanel Margin="10,0,20,10" Grid.Column="1">
+            <Label HorizontalAlignment="Center" Content="VERDICT"/>
+            <uc:PieChart PieValues="{Binding Path=PieValues}" Height="212" />
+        </StackPanel>
+       
+        <uc:BarGraph Grid.Row="1" Grid.ColumnSpan="2" BarValues="{Binding Path=BarValues}" XValues="{Binding Path=XValues}" YValues="{Binding Path=YValues}"/>
     </Grid>
 </Page>

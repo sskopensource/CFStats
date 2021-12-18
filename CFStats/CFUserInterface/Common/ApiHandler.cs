@@ -19,125 +19,33 @@ namespace UserInterface
         private static HashSet<string> problemSet = new HashSet<string>();
         private static HashSet<string> blogSet = new HashSet<string>();
         private static SortedDictionary<int,int> probemsRatingMap = new SortedDictionary<int,int>();
-       
+        private static SortedDictionary<string, int> tagsMap = new SortedDictionary<string, int>();
+        private static SortedDictionary<string, int> verdictMap = new SortedDictionary<string, int>();
+
         public static void LoadApiControl(string handle)
         {
             ApiControl.LoadApi(handle);
         }
 
-        public static string maxRating
-        {
-            get
-            {
-                return ApiControl.UserInfo.result[0].maxRating;
-            }
-        }
-
-        public static string Contests
-        {
-            get
-            {
-                return SetCount(SetSelector.CONTESTSET);
-            }
-        }
-
-        public static string Contributions
-        {
-            get
-            {
-                return ApiControl.UserInfo.result[0].contribution;
-            }
-        }
-
-        public static string ProblemsSolved
-        {
-            get
-            {
-                return SetCount(SetSelector.PROBLEMSET);
-            }
-        }
-
-        public static string FriendsOf
-        {
-            get
-            {
-                return ApiControl.UserInfo.result[0].friendOfCount;
-            }
-        }
-
-        public static string Blogs
-        {
-            get
-            {
-                return SetCount(SetSelector.BLOGSET);
-            }
-        }
-
-        public static string Name
-        {
-            get
-            {
-                return GetFullName();  
-            }
-        }
-
-        public static string Rating
-        {
-            get
-            {
-                return ApiControl.UserInfo.result[0].rating;
-            }
-        }
-
-        public static string Rank
-        {
-            get
-            {
-                return ApiControl.UserInfo.result[0].rank;
-            }
-        }
-
-        public static string Organization
-        {
-            get
-            {
-                return ApiControl.UserInfo.result[0].organization;
-            }
-        }
-
-        public static string Country
-        {
-            get
-            {
-                return ApiControl.UserInfo.result[0].country;
-            }
-        }
-
-        public static string Handle
-        {
-            get
-            {
-                return ApiControl.UserInfo.result[0].handle;
-            }
-        }
-
-        public static string ProfilePicture
-        {
-            get
-            {
-                return ApiControl.UserInfo.result[0].titlePhoto;
-            }
-        }
-
-        public static string Avatar
-        {
-            get
-            {
-                return ApiControl.UserInfo.result[0].avatar;
-            }
-        }
-
-        public static SortedDictionary<int, int> ProblemsRatingMap => probemsRatingMap; 
+        //----------------------------Getters----------------------------------//
+   
+        public static string maxRating => ApiControl.UserInfo.result[0].maxRating;
+        public static string Contests => SetCount(SetSelector.CONTESTSET);
+        public static string Contributions => ApiControl.UserInfo.result[0].contribution;
+        public static string ProblemsSolved => SetCount(SetSelector.PROBLEMSET);
+        public static string FriendsOf => ApiControl.UserInfo.result[0].friendOfCount;
+        public static string Blogs => SetCount(SetSelector.BLOGSET);
+        public static string Name => GetFullName();
+        public static string Rating => ApiControl.UserInfo.result[0].rating;
+        public static string Rank => ApiControl.UserInfo.result[0].rank;
+        public static string Organization=> ApiControl.UserInfo.result[0].organization;
+        public static string Country => ApiControl.UserInfo.result[0].country;
+        public static string Handle => ApiControl.UserInfo.result[0].handle;
+        public static string ProfilePicture=> ApiControl.UserInfo.result[0].titlePhoto;
+        public static string Avatar => ApiControl.UserInfo.result[0].avatar;
+        public static SortedDictionary<int, int> ProblemsRatingMap => probemsRatingMap;
+        public static SortedDictionary<string, int> TagsMap => tagsMap;
+        public static SortedDictionary<string, int> VerdictMap => verdictMap;
 
         private static string SetCount(SetSelector setSelector)
         {
@@ -171,10 +79,19 @@ namespace UserInterface
                 var curVerdict = problems.verdict.ToString();
                 
                 var curProblemRating= problems.problem.rating;
+                var curTags = problems.problem.tags;
                 var curParticipantType = problems.author.participantType.ToString();
+
+                if (!verdictMap.ContainsKey(curVerdict))
+                {
+                    verdictMap.Add(curVerdict, 0);
+                }
+                verdictMap[curVerdict]++;
+
                 if (curVerdict == "OK")
                 {
                     problemSet.Add(currentProblem);
+
                     if (curProblemRating !=0)
                     {
                         if (!probemsRatingMap.ContainsKey(curProblemRating))
@@ -183,7 +100,20 @@ namespace UserInterface
                         }
                         probemsRatingMap[curProblemRating]++;
                     }
+
+                    foreach (var tag in curTags)
+                    {
+                        if (tag != null)
+                        {
+                            if (!tagsMap.ContainsKey(tag))
+                            {
+                                tagsMap.Add(tag, 0);
+                            }
+                            tagsMap[tag]++;
+                        }   
+                    }
                 }
+
                 if (curParticipantType == "CONTESTANT")
                 {
                     contestSet.Add(currentContest);
