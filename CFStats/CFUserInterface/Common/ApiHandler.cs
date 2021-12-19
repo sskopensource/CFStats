@@ -28,13 +28,13 @@ namespace UserInterface
 
         //----------------------------Getters----------------------------------//
    
-        public static string maxRating => ApiControl.userInfo.result[0].maxRating;
-        public static string Contests => SetCount(SetSelector.CONTESTSET);
-        public static string ProblemTried => SetCount(SetSelector.PROBLEMSTRIED);
-        public static string Contributions => ApiControl.userInfo.result[0].contribution;
-        public static string ProblemsSolved => SetCount(SetSelector.SOLVEDPROBLEMSET);
-        public static string FriendsOf => ApiControl.userInfo.result[0].friendOfCount;
-        public static string Blogs => SetCount(SetSelector.BLOGSET);
+        public static string maxRating => ApiControl.UserInfo.result[0].maxRating;
+        public static string Contests => contestSet.Count.ToString();
+        public static string ProblemTried => problemSet.Count.ToString();
+        public static string Contributions => ApiControl.UserInfo.result[0].contribution;
+        public static string ProblemsSolved => solvedProblemSet.Count.ToString();
+        public static string FriendsOf => ApiControl.UserInfo.result[0].friendOfCount;
+        public static string Blogs => blogSet.Count.ToString();
         public static string Name => GetFullName();
         public static string Rating => ApiControl.userInfo.result[0].rating;
         public static string Rank => ApiControl.userInfo.result[0].rank;
@@ -47,36 +47,10 @@ namespace UserInterface
         public static string SolvedFirstAttempt => GetProblemMapData(DataSelector.SOLVEDINONEATTEMPT).ToString();
         public static string AverageAttempt => GetProblemMapData(DataSelector.AVERAGEATTEMPT).ToString().Substring(0,4);
         public static string FavouriteTag => TagData(DataSelector.FAVOURITETAG);
-        public static string ProblemsTried => SetCount(SetSelector.PROBLEMSTRIED);
+        public static string ProblemsTried => solvedProblemSet.Count.ToString();
         public static SortedDictionary<int, int> ProblemsRatingMap => problemsRatingMap;
         public static SortedDictionary<string, int> TagsMap => tagsMap;
         public static SortedDictionary<string, int> VerdictMap => verdictMap;
-
-        private static string SetCount(SetSelector setSelector)
-        {            
-            string res="";
-            if (setSelector == SetSelector.PROBLEMSET)
-            {
-                res = solvedProblemSet.Count.ToString();
-            }
-            if (setSelector == SetSelector.CONTESTSET)
-            {
-                res = contestSet.Count.ToString();
-            }
-            if (setSelector == SetSelector.BLOGSET)
-            {
-                res = blogSet.Count.ToString();
-            }
-            if (setSelector == SetSelector.SOLVEDPROBLEMSET)
-            {
-                res = solvedProblemSet.Count.ToString();
-            }
-            if (setSelector == SetSelector.PROBLEMSTRIED)
-            {
-                res = problemSet.Count.ToString();
-            }
-            return res;
-        }
 
         //Fill ProblemSet ,ContestSet and ProblemratingMap
         private static void FillSets()
