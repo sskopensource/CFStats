@@ -5,29 +5,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace UserInterface
 {    
     public static class ApiHandler
     {
         private static HashSet<string> contestSet = new HashSet<string>();
+        private static HashSet<string> solvedProblemSet = new HashSet<string>();
         private static HashSet<string> problemSet = new HashSet<string>();
         private static HashSet<string> blogSet = new HashSet<string>();
-        private static SortedDictionary<int,int> probemsRatingMap = new SortedDictionary<int,int>();
+        private static SortedDictionary<int,int> problemsRatingMap = new SortedDictionary<int,int>();
         private static SortedDictionary<string, int> tagsMap = new SortedDictionary<string, int>();
         private static SortedDictionary<string, int> verdictMap = new SortedDictionary<string, int>();
+        private static SortedDictionary<string, ProblemModel> problemMap = new SortedDictionary<string, ProblemModel>();
+
 
         public static void LoadApiControl(string handle)
         {
             ApiControl.LoadApi(handle);
+            ClearSets();
+            FillSets();
         }
 
         //----------------------------Getters----------------------------------//
    
         public static string maxRating => ApiControl.UserInfo.result[0].maxRating;
         public static string Contests => SetCount(SetSelector.CONTESTSET);
+        public static string ProblemTried => SetCount(SetSelector.PROBLEMSTRIED);
         public static string Contributions => ApiControl.UserInfo.result[0].contribution;
-        public static string ProblemsSolved => SetCount(SetSelector.PROBLEMSET);
+        public static string ProblemsSolved => SetCount(SetSelector.SOLVEDPROBLEMSET);
         public static string FriendsOf => ApiControl.UserInfo.result[0].friendOfCount;
         public static string Blogs => SetCount(SetSelector.BLOGSET);
         public static string Name => GetFullName();
@@ -38,24 +43,21 @@ namespace UserInterface
         public static string Handle => ApiControl.UserInfo.result[0].handle;
         public static string ProfilePicture=> ApiControl.UserInfo.result[0].titlePhoto;
         public static string Avatar => ApiControl.UserInfo.result[0].avatar;
-        public static SortedDictionary<int, int> ProblemsRatingMap => probemsRatingMap;
+        public static string ProblemsUnsolved => GetProblemMapData(DataSelector.UNSOLVED).ToString();
+        public static string SolvedFirstAttempt => GetProblemMapData(DataSelector.SOLVEDINONEATTEMPT).ToString();
+        public static string AverageAttempt => GetProblemMapData(DataSelector.AVERAGEATTEMPT).ToString().Substring(0,4);
+        public static string FavouriteTag => TagData(DataSelector.FAVOURITETAG);
+        public static string ProblemsTried => SetCount(SetSelector.PROBLEMSTRIED);
+        public static SortedDictionary<int, int> ProblemsRatingMap => problemsRatingMap;
         public static SortedDictionary<string, int> TagsMap => tagsMap;
         public static SortedDictionary<string, int> VerdictMap => verdictMap;
 
         private static string SetCount(SetSelector setSelector)
-        {
-
-            problemSet.Clear();
-            contestSet.Clear();
-            blogSet.Clear();
-            probemsRatingMap.Clear();
-
-            FillSets();
-            
+        {            
             string res="";
             if (setSelector == SetSelector.PROBLEMSET)
             {
-                res = problemSet.Count.ToString();
+                res = solvedProblemSet.Count.ToString();
             }
             if (setSelector == SetSelector.CONTESTSET)
             {
@@ -64,6 +66,14 @@ namespace UserInterface
             if (setSelector == SetSelector.BLOGSET)
             {
                 res = blogSet.Count.ToString();
+            }
+            if (setSelector == SetSelector.SOLVEDPROBLEMSET)
+            {
+                res = solvedProblemSet.Count.ToString();
+            }
+            if (setSelector == SetSelector.PROBLEMSTRIED)
+            {
+                res = problemSet.Count.ToString();
             }
             return res;
         }
@@ -86,18 +96,32 @@ namespace UserInterface
                     verdictMap.Add(curVerdict, 0);
                 }
                 verdictMap[curVerdict]++;
+                problemSet.Add(currentProblem);
+
+                if (!problemMap.ContainsKey(currentProblem))
+                {
+                    problemMap.Add(currentProblem, new ProblemModel() { wrongAttempts=0 , correctAttempts=0 });
+                }
+                if (curVerdict=="OK")
+                {
+                    problemMap[currentProblem].correctAttempts++;
+                }
+                else
+                {
+                    problemMap[currentProblem].wrongAttempts++;
+                }
 
                 if (curVerdict == "OK")
                 {
-                    problemSet.Add(currentProblem);
+                    solvedProblemSet.Add(currentProblem);
 
                     if (curProblemRating !=0)
                     {
-                        if (!probemsRatingMap.ContainsKey(curProblemRating))
+                        if (!problemsRatingMap.ContainsKey(curProblemRating))
                         {
-                            probemsRatingMap.Add(curProblemRating, 0);
+                            problemsRatingMap.Add(curProblemRating, 0);
                         }
-                        probemsRatingMap[curProblemRating]++;
+                        problemsRatingMap[curProblemRating]++;
                     }
 
                     foreach (var tag in curTags)
@@ -125,6 +149,42 @@ namespace UserInterface
                 var currentBlog = blogs.title.ToString();
                 blogSet.Add(currentBlog);
             }
+
+            verdictMap.Remove("SKIPPED");
+        }
+
+
+        public static string TagData(DataSelector dataSelector)
+        {
+            string res = "";
+            int maxm = 0;
+            string fav = "";
+            foreach(var i in tagsMap)
+            {
+                if (i.Value > maxm)
+                {
+                    maxm = i.Value;
+                    fav = i.Key;
+                }
+            }
+
+            if(dataSelector== DataSelector.FAVOURITETAG)
+            {
+                res = fav;
+            }
+
+            return res;
+        }
+
+        private static void ClearSets()
+        {
+            solvedProblemSet.Clear();
+            contestSet.Clear();
+            blogSet.Clear();
+            problemsRatingMap.Clear();
+            tagsMap.Clear();
+            verdictMap.Clear();
+
         }
 
         private static string GetFullName()
@@ -133,5 +193,35 @@ namespace UserInterface
             return fullName;
         }
 
+        private static double GetProblemMapData(DataSelector dataSelector)
+        {
+            double averageAttempts=0;
+            int unsolved=0;
+            double solvedInOneAttempt=0;
+            int solved=0;
+            foreach(var i in problemMap)
+            {
+                if (i.Value.correctAttempts != 0)
+                {
+                    if (i.Value.wrongAttempts == 0)
+                    {
+                        solvedInOneAttempt++;
+                    }
+
+                    averageAttempts += (double)(1 / (i.Value.wrongAttempts + i.Value.correctAttempts));
+                    solved++;
+                }
+                else
+                {
+                    unsolved++;
+                }
+            }
+            averageAttempts = (double)solved/ averageAttempts;
+
+            if (dataSelector == DataSelector.SOLVEDINONEATTEMPT) return solvedInOneAttempt;
+            if (dataSelector==DataSelector.UNSOLVED) return unsolved;
+            if (dataSelector==DataSelector.AVERAGEATTEMPT) return averageAttempts;
+            return 0;
+        }
     }
 }
