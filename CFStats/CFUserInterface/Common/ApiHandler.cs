@@ -28,12 +28,12 @@ namespace UserInterface
 
         //----------------------------Getters----------------------------------//
    
-        public static string maxRating => ApiControl.UserInfo.result[0].maxRating;
+        public static string maxRating => ApiControl.userInfo.result[0].maxRating;
         public static string Contests => contestSet.Count.ToString();
         public static string ProblemTried => problemSet.Count.ToString();
-        public static string Contributions => ApiControl.UserInfo.result[0].contribution;
+        public static string Contributions => ApiControl.userInfo.result[0].contribution;
         public static string ProblemsSolved => solvedProblemSet.Count.ToString();
-        public static string FriendsOf => ApiControl.UserInfo.result[0].friendOfCount;
+        public static string FriendsOf => ApiControl.userInfo.result[0].friendOfCount;
         public static string Blogs => blogSet.Count.ToString();
         public static string Name => GetFullName();
         public static string Rating => ApiControl.userInfo.result[0].rating;
