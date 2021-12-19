@@ -8,51 +8,15 @@ namespace Api
 {
     public static class ApiControl
     {
-        private static UserInfoModel _userInfo;
-        private static UserBlogEntryModel _userBlog;
-        private static UserStatusModel _userStatus;
+        public static UserInfoModel userInfo;
+        public static UserBlogEntryModel userBlog;
+        public static UserStatusModel userStatus;
 
         public static void LoadApi(string handle)
         {
-            UserInfo = UserInfoControl.LoadUserInfo(handle);
-            UserStatus = UserStatusControl.LoadUserStatus(handle);
-            UserBlog = UserBlogEntryControl.LoadUserBlogStatus(handle);
+            userInfo = UserInfoControl.LoadUserInfo(handle);
+            userStatus = UserStatusControl.LoadUserStatus(handle);
+            userBlog = UserBlogEntryControl.LoadUserBlogStatus(handle);
         }
-
-        public static UserInfoModel UserInfo
-        {
-            get
-            {
-                return _userInfo;
-            }
-            set
-            {
-                _userInfo = value;
-            }
-        }
-        public static UserStatusModel UserStatus
-        {
-            get
-            {
-                return _userStatus;
-            }
-            set
-            {
-                _userStatus = value;
-            }
-        }
-
-        public static UserBlogEntryModel UserBlog
-        {
-            get
-            {
-                return _userBlog;
-            }
-            set
-            {
-                _userBlog = value;
-            }
-        }
-        
     }
 }

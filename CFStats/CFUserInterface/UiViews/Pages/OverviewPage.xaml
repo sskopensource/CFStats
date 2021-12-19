@@ -12,13 +12,13 @@
         <Ui:OverviewPageViewModel/>
     </Page.DataContext>
     <Grid>
-        <Image Source="{Binding overviewPageModel.Photo}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="img" Margin="56,41,450,257" />
+        <Image Source="{Binding photo}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="img" Margin="56,41,450,257" />
         <StackPanel Margin="400,51,50,-41" Width="400">
-            <local:LongBrick TextLabel="Name" ValueLabel="{Binding Path=Name}"/>
-            <local:LongBrick TextLabel="Rating" ValueLabel="{Binding Path=Rating}"/>
-            <local:LongBrick TextLabel="Rank" ValueLabel="{Binding Path=Rank}"/>
-            <local:LongBrick TextLabel="Organisation" ValueLabel="{Binding Path=Organization}"/>
-            <local:LongBrick TextLabel="Country" ValueLabel="{Binding Path=Country}"/>
+            <local:LongBrick TextLabel="Name" ValueLabel="{Binding Path=name.ValueLabel}"/>
+            <local:LongBrick TextLabel="Rating" ValueLabel="{Binding Path=rating.ValueLabel}"/>
+            <local:LongBrick TextLabel="Rank" ValueLabel="{Binding Path=rank.ValueLabel}"/>
+            <local:LongBrick TextLabel="Organisation" ValueLabel="{Binding Path=organization.ValueLabel}"/>
+            <local:LongBrick TextLabel="Country" ValueLabel="{Binding Path=country.ValueLabel}"/>
         </StackPanel>
 
         <Grid Margin="147,286,147,15"  Width="550" Grid.Row="1" Grid.Column="1">
@@ -31,12 +31,12 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <local:Brick TxtLabel="Max Rating" ValLabel="{Binding Path=MaxRating}"  Grid.Row="0" Grid.Column="0"/>
-            <local:Brick TxtLabel="Contests" ValLabel="{Binding Path=Contests}" Grid.Row="0" Grid.Column="1"/>
-            <local:Brick TxtLabel="Contributions" ValLabel="{Binding Path=Contributions}" Grid.Row="0" Grid.Column="2"/>
-            <local:Brick TxtLabel="Problems Solved" ValLabel="{Binding Path=ProblemsSolved}" Grid.Row="1" Grid.Column="0"/>
-            <local:Brick TxtLabel="Friends Of" ValLabel="{Binding Path=FriendsOf}" Grid.Row="1" Grid.Column="1"/>
-            <local:Brick TxtLabel="Blog Entries" ValLabel="{Binding Path=Blogs}" Grid.Row="1" Grid.Column="2"/>
+            <local:Brick TxtLabel="Max Rating" ValLabel="{Binding Path=maxRating.ValueLabel}"  Grid.Row="0" Grid.Column="0"/>
+            <local:Brick TxtLabel="Contests" ValLabel="{Binding Path=contests.ValueLabel}" Grid.Row="0" Grid.Column="1"/>
+            <local:Brick TxtLabel="Contributions" ValLabel="{Binding Path=contributions.ValueLabel}" Grid.Row="0" Grid.Column="2"/>
+            <local:Brick TxtLabel="Problems Solved" ValLabel="{Binding Path=problemsSolved.ValueLabel}" Grid.Row="1" Grid.Column="0"/>
+            <local:Brick TxtLabel="Friends Of" ValLabel="{Binding Path=friendsOf.ValueLabel}" Grid.Row="1" Grid.Column="1"/>
+            <local:Brick TxtLabel="Blog Entries" ValLabel="{Binding Path=blogs.ValueLabel}" Grid.Row="1" Grid.Column="2"/>
         </Grid>
     </Grid>
 </Page>

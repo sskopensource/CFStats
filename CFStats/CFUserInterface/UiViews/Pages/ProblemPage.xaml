@@ -23,12 +23,12 @@
         </Grid.RowDefinitions>
         <StackPanel Margin="10,0,10,10" Width="400">
             <Label HorizontalAlignment="Center" Content="GENERAL"/>
-            <uc:LongBrick TextLabel="Tried" ValueLabel="{Binding Path=ProblemTried}"/>
-            <uc:LongBrick TextLabel="Solved" ValueLabel="{Binding Path=ProblemSolved}"/>
-            <uc:LongBrick TextLabel="Solved in First Attempt" ValueLabel="{Binding Path=SolvedInOneAttempt}"/>
-            <uc:LongBrick TextLabel="Average Attempt" ValueLabel="{Binding Path=AverageAttempts}"/>
-            <uc:LongBrick TextLabel="Unsolved Problems" ValueLabel="{Binding Path=ProblemUnsolved}"/>
-            <uc:LongBrick TextLabel="Favourite Tag" ValueLabel="{Binding Path=FavouriteTag}"/>
+            <uc:LongBrick TextLabel="Tried" ValueLabel="{Binding Path=problemTried.ValueLabel}"/>
+            <uc:LongBrick TextLabel="Solved" ValueLabel="{Binding Path=problemSolved.ValueLabel}"/>
+            <uc:LongBrick TextLabel="Solved in First Attempt" ValueLabel="{Binding Path=solvedInOneAttempt.ValueLabel}"/>
+            <uc:LongBrick TextLabel="Average Attempt" ValueLabel="{Binding Path=averageAttempts.ValueLabel}"/>
+            <uc:LongBrick TextLabel="Unsolved Problems" ValueLabel="{Binding Path=problemUnsolved.ValueLabel}"/>
+            <uc:LongBrick TextLabel="Favourite Tag" ValueLabel="{Binding Path=favouriteTag.ValueLabel}"/>
         </StackPanel>
         <StackPanel Margin="10,0,20,10" Grid.Column="1">
             <Label HorizontalAlignment="Center" Content="VERDICT"/>

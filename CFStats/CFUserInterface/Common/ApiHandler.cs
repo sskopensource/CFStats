@@ -28,21 +28,21 @@ namespace UserInterface
 
         //----------------------------Getters----------------------------------//
    
-        public static string maxRating => ApiControl.UserInfo.result[0].maxRating;
+        public static string maxRating => ApiControl.userInfo.result[0].maxRating;
         public static string Contests => SetCount(SetSelector.CONTESTSET);
         public static string ProblemTried => SetCount(SetSelector.PROBLEMSTRIED);
-        public static string Contributions => ApiControl.UserInfo.result[0].contribution;
+        public static string Contributions => ApiControl.userInfo.result[0].contribution;
         public static string ProblemsSolved => SetCount(SetSelector.SOLVEDPROBLEMSET);
-        public static string FriendsOf => ApiControl.UserInfo.result[0].friendOfCount;
+        public static string FriendsOf => ApiControl.userInfo.result[0].friendOfCount;
         public static string Blogs => SetCount(SetSelector.BLOGSET);
         public static string Name => GetFullName();
-        public static string Rating => ApiControl.UserInfo.result[0].rating;
-        public static string Rank => ApiControl.UserInfo.result[0].rank;
-        public static string Organization=> ApiControl.UserInfo.result[0].organization;
-        public static string Country => ApiControl.UserInfo.result[0].country;
-        public static string Handle => ApiControl.UserInfo.result[0].handle;
-        public static string ProfilePicture=> ApiControl.UserInfo.result[0].titlePhoto;
-        public static string Avatar => ApiControl.UserInfo.result[0].avatar;
+        public static string Rating => ApiControl.userInfo.result[0].rating;
+        public static string Rank => ApiControl.userInfo.result[0].rank;
+        public static string Organization=> ApiControl.userInfo.result[0].organization;
+        public static string Country => ApiControl.userInfo.result[0].country;
+        public static string Handle => ApiControl.userInfo.result[0].handle;
+        public static string ProfilePicture=> ApiControl.userInfo.result[0].titlePhoto;
+        public static string Avatar => ApiControl.userInfo.result[0].avatar;
         public static string ProblemsUnsolved => GetProblemMapData(DataSelector.UNSOLVED).ToString();
         public static string SolvedFirstAttempt => GetProblemMapData(DataSelector.SOLVEDINONEATTEMPT).ToString();
         public static string AverageAttempt => GetProblemMapData(DataSelector.AVERAGEATTEMPT).ToString().Substring(0,4);
@@ -81,7 +81,7 @@ namespace UserInterface
         //Fill ProblemSet ,ContestSet and ProblemratingMap
         private static void FillSets()
         {
-            foreach (var problems in ApiControl.UserStatus.result)
+            foreach (var problems in ApiControl.userStatus.result)
             {
                 var currentProblem = problems.problem.name.ToString();
                 var currentContest = problems.contestId.ToString();
@@ -144,7 +144,7 @@ namespace UserInterface
             }
 
             //Fill BlogSet
-            foreach (var blogs in ApiControl.UserBlog.result)
+            foreach (var blogs in ApiControl.userBlog.result)
             {
                 var currentBlog = blogs.title.ToString();
                 blogSet.Add(currentBlog);
@@ -189,7 +189,7 @@ namespace UserInterface
 
         private static string GetFullName()
         {
-            string fullName= ApiControl.UserInfo.result[0].firstName + " " + ApiControl.UserInfo.result[0].lastName;
+            string fullName= ApiControl.userInfo.result[0].firstName + " " + ApiControl.userInfo.result[0].lastName;
             return fullName;
         }
 

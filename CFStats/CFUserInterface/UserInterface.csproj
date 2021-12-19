@@ -157,7 +157,6 @@
     <Compile Include="CFControls\Models\BrickModel.cs" />
     <Compile Include="CFControls\Models\LoginModel.cs" />
     <Compile Include="CFControls\Models\LongBrickModel.cs" />
-    <Compile Include="UiModels\OverviewPageModel.cs" />
     <Compile Include="Common\ApiHandler.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="UiViewModels\LoginWindowViewModel.cs" />
