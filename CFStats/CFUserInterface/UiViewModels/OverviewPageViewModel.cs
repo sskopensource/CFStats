@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CFControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,134 +13,45 @@ namespace UserInterface
 {
     public class OverviewPageViewModel:ViewModelBase
     {
-        private OverviewPageModel _overviewPageModel;
-        public OverviewPageModel overviewPageModel
-        {
-            get
-            {
-                return _overviewPageModel;
-            }
-            set
-            {
-                _overviewPageModel = value;
-                OnPropertyChanged(nameof(overviewPageModel));
-            }
-        }
+        public BrickModel maxRating {get; private set;}
+        public BrickModel contests {get; private set;}
+        public BrickModel contributions {get; private set;}
+        public BrickModel problemsSolved {get; private set;}
+        public BrickModel friendsOf {get; private set;}
+        public BrickModel blogs {get; private set;}
+
+        public LongBrickModel name {get; private set;}
+        public LongBrickModel rating {get; private set;}
+        public LongBrickModel rank {get; private set;}
+        public LongBrickModel organization {get; private set;}
+        public LongBrickModel country {get; private set;}
+
+        public BitmapImage photo { get; private set; }
 
         public OverviewPageViewModel()
         {
-            overviewPageModel = new OverviewPageModel(ApiHandler.ProfilePicture);
-
-            //setting value of usercontrols on overview pages
-            SetBricks(overviewPageModel);
-            SetLongBricks(overviewPageModel);
+            photo = new BitmapImage(new Uri(ApiHandler.ProfilePicture));
+            SetBricks();
+            SetLongBricks();
         }
 
-        private void SetBricks(OverviewPageModel overviewPageModel)
+        private void SetBricks()
         {
-            overviewPageModel.MaxRating.ValueLabel = ApiHandler.maxRating;
-            overviewPageModel.Contests.ValueLabel = ApiHandler.Contests;
-            overviewPageModel.Contributions.ValueLabel = ApiHandler.Contributions;
-            overviewPageModel.ProblemsSolved.ValueLabel = ApiHandler.ProblemsSolved;
-            overviewPageModel.FriendsOf.ValueLabel = ApiHandler.FriendsOf;
-            overviewPageModel.Blogs.ValueLabel = ApiHandler.Blogs;
+            maxRating =new BrickModel() { ValueLabel = ApiHandler.maxRating};
+            contests = new BrickModel() { ValueLabel = ApiHandler.Contests};
+            contributions = new BrickModel() { ValueLabel = ApiHandler.Contributions};
+            problemsSolved = new BrickModel() { ValueLabel = ApiHandler.ProblemsSolved};
+            friendsOf = new BrickModel() { ValueLabel = ApiHandler.FriendsOf};
+            blogs = new BrickModel() { ValueLabel = ApiHandler.Blogs};
         }
 
-        private void SetLongBricks(OverviewPageModel overviewPageModel)
+        private void SetLongBricks()
         {
-            overviewPageModel.Name.ValueLabel = ApiHandler.Name;
-            overviewPageModel.Rating.ValueLabel = ApiHandler.Rating;
-            overviewPageModel.Rank.ValueLabel = ApiHandler.Rank;
-            overviewPageModel.Organization.ValueLabel = ApiHandler.Organization;
-            overviewPageModel.Country.ValueLabel = ApiHandler.Country;
-        }
-
-        public string MaxRating
-        {
-            get
-            {
-                return overviewPageModel.MaxRating.ValueLabel;
-            }
-        }
-
-        public string Contests
-        {
-            get
-            {
-                return overviewPageModel.Contests.ValueLabel;
-            }
-        }
-
-        public string Contributions
-        {
-            get
-            {
-                return overviewPageModel.Contributions.ValueLabel;
-            }
-        }
-
-        public string ProblemsSolved
-        {
-            get
-            {
-                return overviewPageModel.ProblemsSolved.ValueLabel;
-            }
-        }
-
-        public string FriendsOf
-        {
-            get
-            {
-                return overviewPageModel.FriendsOf.ValueLabel;
-            }
-        }
-
-        public string Blogs
-        {
-            get
-            {
-                return overviewPageModel.Blogs.ValueLabel;
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return overviewPageModel.Name.ValueLabel;
-            }
-        }
-
-        public string Rating
-        {
-            get
-            {
-                return overviewPageModel.Rating.ValueLabel;
-            }
-        }
-
-        public string Rank
-        {
-            get
-            {
-                return overviewPageModel.Rank.ValueLabel;
-            }
-        }
-
-        public string Organization
-        {
-            get
-            {
-                return overviewPageModel.Organization.ValueLabel;
-            }
-        }
-
-        public string Country
-        {
-            get
-            {
-                return overviewPageModel.Country.ValueLabel;
-            }
+            name = new LongBrickModel() { ValueLabel = ApiHandler.Name};
+            rating = new LongBrickModel() { ValueLabel = ApiHandler.Rating};
+            rank = new LongBrickModel() { ValueLabel = ApiHandler.Rank};
+            organization = new LongBrickModel() { ValueLabel = ApiHandler.Organization};
+            country = new LongBrickModel() { ValueLabel = ApiHandler.Country};
         }
     }
 }

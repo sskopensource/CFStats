@@ -6,16 +6,6 @@ using System.Threading.Tasks;
 
 namespace UserInterface
 {
-    public enum SetSelector
-    {
-        PROBLEMSET,
-        CONTESTSET,
-        BLOGSET,
-        SOLVEDPROBLEMSET,
-        TAGSET,
-        PROBLEMSTRIED
-    }
-
     public enum DataSelector
     {
         SOLVEDINONEATTEMPT,
@@ -23,7 +13,6 @@ namespace UserInterface
         UNSOLVED,
         FAVOURITETAG
     }
-
     public enum NAVTAB
     {
         OVERVIEW,

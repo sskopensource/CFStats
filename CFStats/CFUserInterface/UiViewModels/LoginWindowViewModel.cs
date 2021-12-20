@@ -12,49 +12,14 @@ namespace UserInterface
 {
     public class LoginWindowViewModel:ViewModelBase
     {
-        private string _handle;
-        private Visibility _loadingVisible = Visibility.Hidden;
-        private Visibility _loginVisible = Visibility.Visible;
-        public Visibility LoadingVisible
-        {
-            get
-            {
-                return _loadingVisible;
-            }
-            set
-            {
-                _loadingVisible = value;
-                OnPropertyChanged("LoadingVisible");
-            }
-        }
-
-        public Visibility LoginVisible
-        {
-            get
-            {
-                return _loginVisible;
-            }
-            set
-            {
-                _loginVisible = value;
-                OnPropertyChanged("LoginVisible");
-            }
-        }
-
-        public string Handle
-        {
-            get
-            {
-                return _handle;
-            }
-            set
-            {
-                _handle = value;
-            }
-        }
-        public ICommand LoginCommand { get; private set; }
+        public string handle { get; set; }
+        public Visibility loadingVisible { get; private set; }
+        public Visibility loginVisible{ get; private set; }
+        public ICommand LoginCommand { get;}
         public LoginWindowViewModel()
         {
+            loadingVisible = Visibility.Hidden;
+            loginVisible = Visibility.Visible;
             LoginCommand = new DelegateCommand<Window>(Login);
         }
 
@@ -63,7 +28,7 @@ namespace UserInterface
             ShowLoading();
             await Task.Run(() =>
             {
-                ApiHandler.LoadApiControl(Handle);
+                ApiHandler.LoadApiControl(handle);
             });
             MainWindow objPopupwindow = new MainWindow();
             objPopupwindow.Show();
@@ -72,8 +37,10 @@ namespace UserInterface
 
         private void ShowLoading()
         {
-            LoginVisible = Visibility.Hidden;
-            LoadingVisible = Visibility.Visible;
+            loginVisible = Visibility.Hidden;
+            loadingVisible = Visibility.Visible;
+            OnPropertyChanged("loadingVisible");
+            OnPropertyChanged("loginVisible");
         }
     }
 }

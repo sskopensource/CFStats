@@ -13,8 +13,8 @@
             <StackPanel.Effect>
                 <DropShadowEffect ShadowDepth="2"/>
             </StackPanel.Effect>
-            <Label Content="{Binding TxtLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
-            <Label Content="{Binding ValLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25"/>
+            <Label Content="{Binding TxtLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" Foreground="White" FontFamily="Consolas" Width="200" HorizontalContentAlignment="Center" Background="#FF8000FF" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="15"/>
+            <Label Content="{Binding ValLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" FontFamily="Consolas" Margin="8" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25"/>
         </StackPanel>
     </Grid>
 </UserControl>

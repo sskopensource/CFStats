@@ -38,9 +38,9 @@ namespace UserInterface
             navigationStore.CurrentViewModel = new OverviewPageViewModel();
             navigationStore.CurrentTab = NAVTAB.OVERVIEW;
 
-            NavigateOverviewPageCommand = new NavigationCommand<OverviewPageViewModel>(navigationStore, () => new OverviewPageViewModel(),NAVTAB.OVERVIEW);
-            NavigateProblemPageCommand = new NavigationCommand<ProblemPageViewModel>(navigationStore, () => new ProblemPageViewModel(),NAVTAB.PROBLEM);
-            NavigateContestPageCommand = new NavigationCommand<ContestPageViewModel>(navigationStore, () => new ContestPageViewModel(),NAVTAB.CONTEST);
+            NavigateOverviewPageCommand = new NavigationCommand(navigationStore,NAVTAB.OVERVIEW);
+            NavigateProblemPageCommand = new NavigationCommand(navigationStore,NAVTAB.PROBLEM);
+            NavigateContestPageCommand = new NavigationCommand(navigationStore,NAVTAB.CONTEST);
         }
 
         private void OnCurrentViewModelChanged()

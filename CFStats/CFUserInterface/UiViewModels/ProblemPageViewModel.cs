@@ -13,109 +13,14 @@ namespace UserInterface
 {
     public class ProblemPageViewModel:ViewModelBase
     {
-        private BarGraphModel _barGraph;
-        private PieChartModel _pieChart;
-        private LongBrickModel _solvedInOneAttempt;
-        private LongBrickModel _averageAttempt;
-        private LongBrickModel _problemSolved;
-        private LongBrickModel _problemTried;
-        private LongBrickModel _problemUnsolved;
-        private LongBrickModel _favouriteTag;
-
-
-        public LongBrickModel favouriteTag
-        {
-            get
-            {
-                return _favouriteTag;
-            }
-            set
-            {
-                _favouriteTag = value;
-            }
-        }
-
-        public LongBrickModel problemSolved
-        {
-            get
-            {
-                return _problemSolved;
-            }
-            set
-            {
-                _problemSolved = value;
-            }
-        }
-
-
-        public LongBrickModel problemUnSolved
-        {
-            get
-            {
-                return _problemUnsolved;
-            }
-            set
-            {
-                _problemUnsolved = value;
-            }
-        }
-
-        public LongBrickModel problemTried
-        {
-            get
-            {
-                return _problemTried;
-            }
-            set
-            {
-                _problemTried = value;
-            }
-        }
-
-        public LongBrickModel averageAttempts
-        {
-            get
-            {
-                return _averageAttempt;
-            }
-            set
-            {
-                _averageAttempt = value;
-            }
-        }
-        public LongBrickModel solvedInOneAttempt
-        {
-            get
-            {
-                return _solvedInOneAttempt;
-            }
-            set
-            {
-                _solvedInOneAttempt = value;
-            }
-        }
-        public BarGraphModel barGraphModel
-        {
-            get
-            {
-                return _barGraph;
-            }
-            set
-            {
-                _barGraph = value;
-            }
-        }
-        public PieChartModel pieChartModel
-        {
-            get
-            {
-                return _pieChart;
-            }
-            set
-            {
-                _pieChart = value;
-            }
-        }
+        public BarGraphModel barGraph { get; private set; }
+        public PieChartModel pieChart { get; private set;}
+        public LongBrickModel solvedInOneAttempt { get; private set;}
+        public LongBrickModel averageAttempts { get; private set;}
+        public LongBrickModel problemSolved { get; private set;}
+        public LongBrickModel problemTried { get; private set;}
+        public LongBrickModel problemUnsolved { get; private set;}
+        public LongBrickModel favouriteTag { get; private set;}
         public ProblemPageViewModel()
         {
             InitializeBarGraph();
@@ -129,7 +34,7 @@ namespace UserInterface
             solvedInOneAttempt = new LongBrickModel() { ValueLabel = ApiHandler.SolvedFirstAttempt };
             favouriteTag = new LongBrickModel() { ValueLabel = ApiHandler.FavouriteTag };
             problemSolved = new LongBrickModel() { ValueLabel = ApiHandler.ProblemsSolved };
-            problemUnSolved = new LongBrickModel() { ValueLabel = ApiHandler.ProblemsUnsolved };
+            problemUnsolved = new LongBrickModel() { ValueLabel = ApiHandler.ProblemsUnsolved };
             problemTried = new LongBrickModel() { ValueLabel = ApiHandler.ProblemTried };
         }
 
@@ -146,7 +51,7 @@ namespace UserInterface
                 xValues[indx] = i.Key.ToString();
                 indx++;
             }
-            barGraphModel = new BarGraphModel(xValues,chartValues);
+            barGraph = new BarGraphModel(xValues,chartValues);
         }
 
         private void InitializePieChart()
@@ -167,20 +72,11 @@ namespace UserInterface
                 list.Add(new KeyValuePair<string, int>(curVerdict, i.Value));
             }
             list.Sort((x, y) => (y.Value.CompareTo(x.Value)));
-            pieChartModel = new PieChartModel(list);
+            pieChart = new PieChartModel(list);
         }
-
-        public string[] XValues => barGraphModel.XValues;
-        public Func<int, string> YValues => barGraphModel.YValues;
-        public SeriesCollection BarValues => barGraphModel.BarValues;
-        public SeriesCollection PieValues => pieChartModel.PieValues;
-        public string SolvedInOneAttempt => solvedInOneAttempt.ValueLabel;
-        public string AverageAttempts => averageAttempts.ValueLabel;
-        public string FavouriteTag => favouriteTag.ValueLabel;
-        public string ProblemTried => problemTried.ValueLabel;
-        public string ProblemUnsolved => problemUnSolved.ValueLabel;
-        public string ProblemSolved => problemSolved.ValueLabel;
-
-
+        public string[] XValues => barGraph.XValues;
+        public Func<int, string> YValues => barGraph.YValues;
+        public SeriesCollection BarValues => barGraph.BarValues;
+        public SeriesCollection PieValues => pieChart.PieValues;
     }
 }

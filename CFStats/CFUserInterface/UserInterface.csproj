@@ -103,6 +103,7 @@
     <Compile Include="Commands\NavigationCommand.cs" />
     <Compile Include="Common\NavigationStore.cs" />
     <Compile Include="Common\UiEnums.cs" />
+    <Compile Include="Common\UiUtility.cs" />
     <Compile Include="UiModels\ApiHandlerModels.cs" />
     <Compile Include="UiViewModels\ContestPageViewModel.cs" />
     <Compile Include="UiViewModels\NavBarViewModel.cs" />
@@ -157,7 +158,6 @@
     <Compile Include="CFControls\Models\BrickModel.cs" />
     <Compile Include="CFControls\Models\LoginModel.cs" />
     <Compile Include="CFControls\Models\LongBrickModel.cs" />
-    <Compile Include="UiModels\OverviewPageModel.cs" />
     <Compile Include="Common\ApiHandler.cs" />
     <Compile Include="Core\ObservableObject.cs" />
     <Compile Include="UiViewModels\LoginWindowViewModel.cs" />

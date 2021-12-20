@@ -15,44 +15,15 @@ namespace UserInterface
 {
     public class MainWindowViewModel:ViewModelBase
     {
-        private LoginModel _loginModel = new LoginModel();
-        private NavBarViewModel _navBarViewModel;
+        public LoginModel loginModel { get;} 
+        public NavBarViewModel navBarViewModel { get; }
         public ICommand LogoutCommand { get; }
-
-        public string ImageURL => loginModel.imageurl;
-        public string Handle => loginModel.handle;
 
         public MainWindowViewModel()
         {
-            NavBarViewModel = new NavBarViewModel();
+            loginModel = new LoginModel() {imageurl=ApiHandler.Avatar,handle=ApiHandler.Handle };
+            navBarViewModel = new NavBarViewModel();
             LogoutCommand = new DelegateCommand<Window>(Logout);
-            loginModel.imageurl = ApiHandler.Avatar;
-            loginModel.handle = ApiHandler.Handle;
-        }
-
-        public LoginModel loginModel
-        {
-            get
-            {
-                return _loginModel;
-            }
-            set
-            {
-                _loginModel = value;
-                //OnPropertyChanged("loginModel");
-            }
-        }
-
-        public NavBarViewModel NavBarViewModel
-        {
-            get
-            {
-                return _navBarViewModel;
-            }
-            set
-            {
-                _navBarViewModel = value;
-            }
         }
 
         private void Logout(Window currWindow)

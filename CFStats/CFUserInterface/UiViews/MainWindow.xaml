@@ -32,7 +32,7 @@
         <Border Grid.Column="1" Grid.RowSpan="2" Background="#FFF8EFFF">
         </Border>
         <Canvas Grid.Column="1" Width="Auto">
-            <uc:Login Canvas.Top="35" Canvas.Right="10" MinWidth="200" x:Name="login" Grid.Column="1" ImgURL="{Binding Path=ImageURL}" UserName="{Binding Path=Handle}" VerticalAlignment="Center"/>
+            <uc:Login Canvas.Top="35" Canvas.Right="10" MinWidth="200" x:Name="login" Grid.Column="1" ImgURL="{Binding Path=loginModel.imageurl}" UserName="{Binding Path=loginModel.handle}" VerticalAlignment="Center"/>
         </Canvas>
         <TextBlock Text="CFStats"
                        FontSize="50"

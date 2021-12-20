@@ -9,32 +9,7 @@ namespace CFControls
 {
     public class LoginModel
     {
-        private string _imageurl;
-        private string _handle;
-
-        public string imageurl
-        {
-            get
-            {
-                return _imageurl;
-            }
-            set
-            {
-                _imageurl = value;
-               // OnPropertyChanged("imageurl");
-            }
-        }
-        public string handle
-        {
-            get
-            {
-                return _handle;
-            }
-            set
-            {
-                _handle = value;
-                //OnPropertyChanged("handle");
-            }
-        }
+        public string imageurl { get; set; }
+        public string handle { get; set; }
     }
 }
