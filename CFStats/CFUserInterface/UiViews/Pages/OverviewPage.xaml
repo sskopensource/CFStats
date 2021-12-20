@@ -14,6 +14,7 @@
     <Grid>
         <Image Source="{Binding photo}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="img" Margin="56,41,450,257" />
         <StackPanel Margin="400,51,50,-41" Width="400">
+            <Label FontFamily="Consolas" Background="#FF8000FF" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="User Info" FontSize="15" Width="1000"/>
             <local:LongBrick TextLabel="Name" ValueLabel="{Binding Path=name.ValueLabel}"/>
             <local:LongBrick TextLabel="Rating" ValueLabel="{Binding Path=rating.ValueLabel}"/>
             <local:LongBrick TextLabel="Rank" ValueLabel="{Binding Path=rank.ValueLabel}"/>

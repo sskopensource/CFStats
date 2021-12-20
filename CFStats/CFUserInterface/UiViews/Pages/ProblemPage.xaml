@@ -22,7 +22,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Margin="10,0,10,10" Width="400">
-            <Label Background="#FF8000FF" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="GENERAL" Width="1000"/>
+            <Label FontFamily="Consolas" Background="#FF8000FF" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="General"  FontSize="15" Width="1000"/>
             <uc:LongBrick TextLabel="Tried" ValueLabel="{Binding Path=problemTried.ValueLabel}"/>
             <uc:LongBrick TextLabel="Solved" ValueLabel="{Binding Path=problemSolved.ValueLabel}"/>
             <uc:LongBrick TextLabel="Solved in First Attempt" ValueLabel="{Binding Path=solvedInOneAttempt.ValueLabel}"/>
@@ -31,11 +31,11 @@
             <uc:LongBrick TextLabel="Favourite Tag" ValueLabel="{Binding Path=favouriteTag.ValueLabel}"/>
         </StackPanel>
         <StackPanel Margin="10,0,20,10" Grid.Column="1">
-            <Label FontFamily="Consolas" Background="#FF8000FF" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="VERDICT" Width="1000"/>
+            <Label FontFamily="Consolas" Background="#FF8000FF" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="Verdict" FontSize="15" Width="1000"/>
             <uc:PieChart PieValues="{Binding PieValues}" Height="212" />
         </StackPanel>
         <StackPanel Margin="20,0,10,10" Grid.Row="1" Grid.ColumnSpan="2">
-            <Label FontFamily="Consolas" Background="#FF8000FF" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="Problem Ratings vs Problems Solved" Width="1000"/>
+            <Label FontFamily="Consolas" Background="#FF8000FF" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="Problem Ratings vs Problems Solved" FontSize="15" Width="1000"/>
             <uc:BarGraph Grid.Row="1" Grid.ColumnSpan="2" BarValues="{Binding Path=BarValues}" XValues="{Binding Path=XValues}" YValues="{Binding Path=YValues}" Height="245"/>
 
         </StackPanel>
