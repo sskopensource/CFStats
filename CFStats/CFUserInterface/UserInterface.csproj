@@ -95,10 +95,15 @@
       <DependentUpon>BarGraph.xaml</DependentUpon>
     </Compile>
     <Compile Include="CFControls\Models\BarGraphModel.cs" />
+    <Compile Include="CFControls\Models\PieChartModel.cs" />
+    <Compile Include="CFControls\PieChart.xaml.cs">
+      <DependentUpon>PieChart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\NavigationCommand.cs" />
     <Compile Include="Common\NavigationStore.cs" />
     <Compile Include="Common\UiEnums.cs" />
+    <Compile Include="UiModels\ApiHandlerModels.cs" />
     <Compile Include="UiViewModels\ContestPageViewModel.cs" />
     <Compile Include="UiViewModels\NavBarViewModel.cs" />
     <Compile Include="UiViewModels\ViewModelBase.cs" />
@@ -121,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CFControls\LongBrick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CFControls\PieChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

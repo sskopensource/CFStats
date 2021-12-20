@@ -22,6 +22,7 @@ namespace Api
     {
         public string name { get; set; }
         public int rating { get; set; }
+        public string[] tags { get; set; }
     }
     public class AuthorModel
     {
