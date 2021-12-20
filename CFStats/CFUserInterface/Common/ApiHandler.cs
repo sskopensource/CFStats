@@ -19,6 +19,7 @@ namespace UserInterface
         private static SortedDictionary<string, ProblemModel> problemMap = new SortedDictionary<string, ProblemModel>();
 
 
+
         public static void LoadApiControl(string handle)
         {
             ApiControl.LoadApi(handle);
@@ -158,7 +159,6 @@ namespace UserInterface
             problemsRatingMap.Clear();
             tagsMap.Clear();
             verdictMap.Clear();
-
         }
 
         private static string GetFullName()
@@ -180,6 +180,7 @@ namespace UserInterface
                     if (i.Value.wrongAttempts == 0)
                     {
                         solvedInOneAttempt++;
+
                     }
 
                     averageAttempts += (double)(1 / (i.Value.wrongAttempts + i.Value.correctAttempts));
@@ -197,5 +198,6 @@ namespace UserInterface
             if (dataSelector==DataSelector.AVERAGEATTEMPT) return averageAttempts;
             return 0;
         }
+
     }
 }

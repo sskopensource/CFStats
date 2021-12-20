@@ -39,7 +39,5 @@
             <uc:BarGraph Grid.Row="1" Grid.ColumnSpan="2" BarValues="{Binding Path=BarValues}" XValues="{Binding Path=XValues}" YValues="{Binding Path=YValues}" Height="245"/>
 
         </StackPanel>
-        
-        
     </Grid>
 </Page>

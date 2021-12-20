@@ -13,7 +13,6 @@ namespace UserInterface
         UNSOLVED,
         FAVOURITETAG
     }
-
     public enum NAVTAB
     {
         OVERVIEW,

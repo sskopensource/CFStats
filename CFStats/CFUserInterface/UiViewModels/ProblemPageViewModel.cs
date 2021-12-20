@@ -21,7 +21,6 @@ namespace UserInterface
         public LongBrickModel problemTried { get; private set;}
         public LongBrickModel problemUnsolved { get; private set;}
         public LongBrickModel favouriteTag { get; private set;}
-
         public ProblemPageViewModel()
         {
             InitializeBarGraph();
@@ -75,7 +74,6 @@ namespace UserInterface
             list.Sort((x, y) => (y.Value.CompareTo(x.Value)));
             pieChart = new PieChartModel(list);
         }
-
         public string[] XValues => barGraph.XValues;
         public Func<int, string> YValues => barGraph.YValues;
         public SeriesCollection BarValues => barGraph.BarValues;
