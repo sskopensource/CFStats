@@ -15,20 +15,17 @@ namespace UserInterface
         public ICommand NavigateOverviewPageCommand { get; }
         public ICommand NavigateProblemPageCommand { get; }
         public ICommand NavigateContestPageCommand { get; }
+        public ICommand NavigateProblemPageOneCommand { get; }
+        public ICommand NavigateProblemPageTwoCommand { get; }
+
 
         public ViewModelBase CurrentViewModel => navigationStore.CurrentViewModel;
 
         public string BackgroundColorOverviewTab => navigationStore.GetNavTabBackgroundColor(NAVTAB.OVERVIEW);
         public string BackgroundColorProblemTab => navigationStore.GetNavTabBackgroundColor(NAVTAB.PROBLEM);
         public string BackgroundColorContestTab => navigationStore.GetNavTabBackgroundColor(NAVTAB.CONTEST);
-
-        public string FontColorOverviewTab => navigationStore.GetNavTabFontColor(NAVTAB.OVERVIEW);
-        public string FontColorProblemTab => navigationStore.GetNavTabFontColor(NAVTAB.PROBLEM);
-        public string FontColorContestTab => navigationStore.GetNavTabFontColor(NAVTAB.CONTEST);
-
-        public string HoverColorOverviewTab => navigationStore.GetNavTabHoverColor(NAVTAB.OVERVIEW);
-        public string HoverColorProblemTab => navigationStore.GetNavTabHoverColor(NAVTAB.PROBLEM);
-        public string HoverColorContestTab => navigationStore.GetNavTabHoverColor(NAVTAB.CONTEST);
+        public string BackgroundColorProblemOneTab => navigationStore.GetNavTabBackgroundColor(NAVTAB.PROBLEM_ONE);
+        public string BackgroundColorProblemTwoTab => navigationStore.GetNavTabBackgroundColor(NAVTAB.PROBLEM_TWO);
 
         public NavBarViewModel()
         {
@@ -41,6 +38,9 @@ namespace UserInterface
             NavigateOverviewPageCommand = new NavigationCommand(navigationStore,NAVTAB.OVERVIEW);
             NavigateProblemPageCommand = new NavigationCommand(navigationStore,NAVTAB.PROBLEM);
             NavigateContestPageCommand = new NavigationCommand(navigationStore,NAVTAB.CONTEST);
+            NavigateProblemPageOneCommand = new NavigationCommand(navigationStore, NAVTAB.PROBLEM_ONE);
+            NavigateProblemPageTwoCommand = new NavigationCommand(navigationStore, NAVTAB.PROBLEM_TWO);
+
         }
 
         private void OnCurrentViewModelChanged()
@@ -48,13 +48,9 @@ namespace UserInterface
             OnPropertyChanged(nameof(CurrentViewModel));
             OnPropertyChanged(nameof(BackgroundColorOverviewTab));
             OnPropertyChanged(nameof(BackgroundColorProblemTab));
+            OnPropertyChanged(nameof(BackgroundColorProblemOneTab));
+            OnPropertyChanged(nameof(BackgroundColorProblemTwoTab));
             OnPropertyChanged(nameof(BackgroundColorContestTab));
-            OnPropertyChanged(nameof(FontColorOverviewTab));
-            OnPropertyChanged(nameof(FontColorProblemTab));
-            OnPropertyChanged(nameof(FontColorContestTab));
-            OnPropertyChanged(nameof(HoverColorOverviewTab));
-            OnPropertyChanged(nameof(HoverColorProblemTab));
-            OnPropertyChanged(nameof(HoverColorContestTab));
         }
     }
 }

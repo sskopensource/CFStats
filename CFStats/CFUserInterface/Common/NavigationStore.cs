@@ -46,26 +46,8 @@ namespace UserInterface.Common
 
         public string GetNavTabBackgroundColor(NAVTAB navTab)
         {
-           string AccentColor= "#FF8000FF";
-           string DefaultColor = "White";
-
-            if (navTab == CurrentTab) return AccentColor;
-            return DefaultColor;
-        }
-
-        public string GetNavTabFontColor(NAVTAB navTab)
-        {
-            string AccentColor = "White";
-            string DefaultColor = "Black";
-
-            if (navTab == CurrentTab) return AccentColor;
-            return DefaultColor;
-        }
-
-        public string GetNavTabHoverColor(NAVTAB navTab)
-        {
-            string AccentColor = "#FF8000FF";
-            string DefaultColor = "#EDEDED";
+           string AccentColor= "#8B16FF";
+           string DefaultColor = "{x:Null}";
 
             if (navTab == CurrentTab) return AccentColor;
             return DefaultColor;
