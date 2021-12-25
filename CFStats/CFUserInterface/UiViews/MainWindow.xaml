@@ -80,9 +80,19 @@
                     </TextBlock>
                 </Grid>
                 <Grid>
+                    <Grid.Style>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="Background" Value="{x:Null}"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding BackgroundColorExpander}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
                     <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="20 16" Foreground="White"/>
                     <TextBlock Text="Problem" FontFamily="Consolas" Padding="63 14" FontSize="18" Foreground="White"/>
-                    <Expander x:Name="ExpandeMenu" IsExpanded="False" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
+                    <Expander x:Name="ExpandeMenu" IsExpanded="{Binding problemExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
                         <ItemsControl x:Name="ListVewMenu"  Foreground="White">
                             <TextBlock Text="Page 1" FontFamily="Consolas" Padding="20 15" FontSize="18" Height="48" Width="200">
                                 <TextBlock.Style>

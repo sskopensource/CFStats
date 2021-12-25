@@ -18,6 +18,19 @@ namespace UserInterface
         public ICommand NavigateProblemPageOneCommand { get; }
         public ICommand NavigateProblemPageTwoCommand { get; }
 
+        public bool ProblemExpanded;
+        public bool problemExpanded
+        {
+            get
+            {
+                return ProblemExpanded; 
+            }
+            set
+            {
+                ProblemExpanded = value;
+                OnPropertyChanged(nameof(BackgroundColorExpander));
+            }
+        }
 
         public ViewModelBase CurrentViewModel => navigationStore.CurrentViewModel;
 
@@ -26,6 +39,7 @@ namespace UserInterface
         public string BackgroundColorContestTab => navigationStore.GetNavTabBackgroundColor(NAVTAB.CONTEST);
         public string BackgroundColorProblemOneTab => navigationStore.GetNavTabBackgroundColor(NAVTAB.PROBLEM_ONE);
         public string BackgroundColorProblemTwoTab => navigationStore.GetNavTabBackgroundColor(NAVTAB.PROBLEM_TWO);
+        public string BackgroundColorExpander => navigationStore.GetExpanderColor(problemExpanded);
 
         public NavBarViewModel()
         {

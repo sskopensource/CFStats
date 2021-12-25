@@ -36,7 +36,7 @@ namespace UserInterface.Common
                 OnCurrentViewModelChanged();
             }
         }
-
+        
         public event Action CurrentViewModelChanged;
 
         private void OnCurrentViewModelChanged()
@@ -50,6 +50,15 @@ namespace UserInterface.Common
            string DefaultColor = "{x:Null}";
 
             if (navTab == CurrentTab) return AccentColor;
+            return DefaultColor;
+        }
+
+        public string GetExpanderColor(bool expanded)
+        {
+            string AccentColor = "#9E3EFF";
+            string DefaultColor = "{x:Null}";
+
+            if(!expanded) return AccentColor;
             return DefaultColor;
         }
     }
