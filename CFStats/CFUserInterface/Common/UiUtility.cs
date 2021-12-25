@@ -14,8 +14,11 @@ namespace UserInterface.Common
             {
                 {NAVTAB.OVERVIEW,new OverviewPageViewModel()},
                 {NAVTAB.PROBLEM,new ProblemPageViewModel()},
+                {NAVTAB.PROBLEM_ONE,new ProblemPageOneViewModel()},
+                {NAVTAB.PROBLEM_TWO,new ProblemPageTwoViewModel()},
                 {NAVTAB.CONTEST,new ContestPageViewModel()}
             };
+
             return navTabMap[currTab];
         }
     }

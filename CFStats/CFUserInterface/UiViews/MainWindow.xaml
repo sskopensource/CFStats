@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:UserInterface.CFControls"
-        xmlns:Ui="clr-namespace:UserInterface"
+        xmlns:Ui="clr-namespace:UserInterface" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Height="650" Width="1100"
         WindowStyle="SingleBorderWindow"
@@ -50,116 +51,117 @@
                 <DataTemplate DataType="{x:Type Ui:ContestPageViewModel}">
                     <Ui:ContestPage/>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type Ui:ProblemPageOneViewModel}">
+                    <Ui:ProblemPageOne/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type Ui:ProblemPageTwoViewModel}">
+                    <Ui:ProblemPageTwo/>
+                </DataTemplate>
             </Frame.Resources>
         </Frame>
-        <StackPanel DataContext="{StaticResource NavBarVM}" Height="Auto" Margin="0,50,0,0" VerticalAlignment="Top" Grid.Row="1">
-            <Button FontFamily="Consolas" FontSize="20" Margin="10,0,10,5 " Command="{Binding NavigateOverviewPageCommand}" Content="OverView" Height="40" BorderBrush="{x:Null}">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="{Binding BackgroundColorOverviewTab}"/>
-                        <Setter Property="Foreground" Value="{Binding FontColorOverviewTab}"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{Binding HoverColorOverviewTab}"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="0,40,40,0"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button FontFamily="Consolas" FontSize="20" Height="40" Margin="10,0,10,5" Command="{Binding NavigateProblemPageCommand}" Content="Problem"  BorderBrush="{x:Null}">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="{Binding BackgroundColorProblemTab}"/>
-                        <Setter Property="Foreground" Value="{Binding FontColorProblemTab}"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{Binding HoverColorProblemTab}"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="0,40,40,0"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button FontFamily="Consolas" FontSize="20" Height="40" Margin="10,0,10,5" Command="{Binding NavigateContestPageCommand}" Content="Contest" BorderBrush="{x:Null}">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="{Binding BackgroundColorContestTab}"/>
-                        <Setter Property="Foreground" Value="{Binding FontColorContestTab}"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="{TemplateBinding Background}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{Binding HoverColorContestTab}"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="0,40,40,0"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </StackPanel>
-        <Button Grid.Row="1" FontFamily="Consolas" FontSize="20" Height="40" Command="{Binding LogoutCommand}" CommandParameter="{Binding ElementName=MainWin}" Content="Logout" Width="150" BorderBrush="{x:Null}" VerticalAlignment="Bottom" Margin="0,0,0,50" Foreground="White">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="#FF8000FF"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="DarkBlue"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20,20,20,20"/>
-                </Style>
-            </Button.Resources>
-        </Button>
+        <ScrollViewer DataContext="{StaticResource NavBarVM}" Background="#FF8000FF" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+            <ItemsControl x:Name="Menu">
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="Background" Value="{Binding BackgroundColorOverviewTab}"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#9E3EFF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="20 16" Foreground="White"/>
+                    <TextBlock Text="Overview" FontFamily="Consolas" Padding="63 14" FontSize="18" Foreground="White">
+                        <TextBlock.InputBindings>
+                            <MouseBinding Command="{Binding NavigateOverviewPageCommand}" MouseAction="LeftClick" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
+                </Grid>
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="Background" Value="{x:Null}"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{Binding BackgroundColorExpander}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="20 16" Foreground="White"/>
+                    <TextBlock Text="Problem" FontFamily="Consolas" Padding="63 14" FontSize="18" Foreground="White"/>
+                    <Expander x:Name="ExpandeMenu" IsExpanded="{Binding problemExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
+                        <ItemsControl x:Name="ListVewMenu"  Foreground="White">
+                            <TextBlock Text="Page 1" FontFamily="Consolas" Padding="20 15" FontSize="18" Height="48" Width="200">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Background" Value="{Binding BackgroundColorProblemTab}"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#9E3EFF"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                                <TextBlock.InputBindings>
+                                    <MouseBinding Command="{Binding NavigateProblemPageCommand}" MouseAction="LeftClick" />
+                                </TextBlock.InputBindings>
+                            </TextBlock>
+                            <TextBlock Text="Page 2" FontFamily="Consolas" Padding="20 15" FontSize="18" Height="48" Width="200">
+                             <TextBlock.Style>
+                              <Style TargetType="{x:Type TextBlock}">
+                               <Setter Property="Background" Value="{Binding BackgroundColorProblemOneTab}"/>
+                               <Style.Triggers>
+                                 <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#9E3EFF"/>
+                                 </Trigger>
+                                </Style.Triggers>
+                               </Style>
+                            </TextBlock.Style>
+                                <TextBlock.InputBindings>
+                                    <MouseBinding Command="{Binding NavigateProblemPageOneCommand}" MouseAction="LeftClick" />
+                                </TextBlock.InputBindings>
+                            </TextBlock>
+                            <TextBlock Text="Page 3" FontFamily="Consolas" Padding="20 15" FontSize="18"  Height="48" Width="200">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Background" Value="{Binding BackgroundColorProblemTwoTab}"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#9E3EFF"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                                <TextBlock.InputBindings>
+                                    <MouseBinding Command="{Binding NavigateProblemPageTwoCommand}" MouseAction="LeftClick" />
+                                </TextBlock.InputBindings>
+                            </TextBlock>
+                        </ItemsControl>
+                    </Expander>
+                </Grid>
+                <Grid>
+                    <Grid.Style>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="Background" Value="{Binding BackgroundColorContestTab}"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#9E3EFF"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+                    <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="20 16" Foreground="White"/>
+                    <TextBlock Text="Contest" FontFamily="Consolas" Padding="63 14" FontSize="18" Foreground="White">
+                        <TextBlock.InputBindings>
+                            <MouseBinding Command="{Binding NavigateContestPageCommand}" MouseAction="LeftClick" />
+                        </TextBlock.InputBindings>
+                    </TextBlock>
+                </Grid>
+              
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>

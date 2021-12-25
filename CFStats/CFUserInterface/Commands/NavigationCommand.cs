@@ -24,7 +24,6 @@ namespace UserInterface.Commands
         {
             _navigationStore.CurrentViewModel = _createViewModel;
             _navigationStore.CurrentTab = _navTab;
-            Console.WriteLine(_navigationStore.CurrentViewModel.ToString());
         }
     }
 }
