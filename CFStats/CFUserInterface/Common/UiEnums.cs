@@ -19,6 +19,7 @@ namespace UserInterface
         PROBLEM,
         CONTEST,
         PROBLEM_ONE,
-        PROBLEM_TWO
+        PROBLEM_TWO,
+        EXPANDER
     };
 }

@@ -4,17 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UserInterface.CFControls"
-             xmlns:UiViewModels="clr-namespace:UserInterface" x:Class="UserInterface.CFControls.Brick"
+             xmlns:UiViewModels="clr-namespace:UserInterface" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="UserInterface.CFControls.Brick"
              mc:Ignorable="d" 
-             Name="BrickControl"
-             d:DesignHeight="100" d:DesignWidth="200">
+             Name="BrickControl">
     <Grid>
-        <StackPanel Background="White" Margin="15,10,15,10" Height="80" Width="150" >
-            <StackPanel.Effect>
-                <DropShadowEffect ShadowDepth="2"/>
-            </StackPanel.Effect>
-            <Label Content="{Binding TxtLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" Foreground="White" FontFamily="Consolas" Width="200" HorizontalContentAlignment="Center" Background="#FF8000FF" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="15"/>
-            <Label Content="{Binding ValLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" FontFamily="Consolas" Margin="8" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25"/>
-        </StackPanel>
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="15,10,15,10">
+            <StackPanel Background="White" Height="80" Width="150" >
+                <Label Content="{Binding TxtLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" FontFamily="Consolas" Width="200" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="15"/>
+                <Label Content="{Binding ValLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" FontFamily="Consolas" Margin="8" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25"/>
+            </StackPanel>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

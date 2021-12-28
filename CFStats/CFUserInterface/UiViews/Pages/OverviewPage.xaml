@@ -4,40 +4,45 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UserInterface.CFControls"
-      xmlns:Ui="clr-namespace:UserInterface" xmlns:sys1="clr-namespace:UserInterface.Common" x:Class="UserInterface.OverviewPage"
+      xmlns:Ui="clr-namespace:UserInterface" xmlns:sys1="clr-namespace:UserInterface.Common" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="UserInterface.OverviewPage"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="850"
       Title="OverviewPage">
     <Page.DataContext>
         <Ui:OverviewPageViewModel/>
     </Page.DataContext>
-    <Grid>
-        <Image Source="{Binding photo}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="img" Margin="56,41,450,257" />
-        <StackPanel Margin="400,51,50,-41" Width="400">
-            <Label FontFamily="Consolas" Background="#FF8000FF" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="User Info" FontSize="15" Width="1000"/>
-            <local:LongBrick TextLabel="Name" ValueLabel="{Binding Path=name.ValueLabel}"/>
-            <local:LongBrick TextLabel="Rating" ValueLabel="{Binding Path=rating.ValueLabel}"/>
-            <local:LongBrick TextLabel="Rank" ValueLabel="{Binding Path=rank.ValueLabel}"/>
-            <local:LongBrick TextLabel="Organisation" ValueLabel="{Binding Path=organization.ValueLabel}"/>
-            <local:LongBrick TextLabel="Country" ValueLabel="{Binding Path=country.ValueLabel}"/>
-        </StackPanel>
-
-        <Grid Margin="147,286,147,15"  Width="550" Grid.Row="1" Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <local:Brick TxtLabel="Max Rating" ValLabel="{Binding Path=maxRating.ValueLabel}"  Grid.Row="0" Grid.Column="0"/>
-            <local:Brick TxtLabel="Contests" ValLabel="{Binding Path=contests.ValueLabel}" Grid.Row="0" Grid.Column="1"/>
-            <local:Brick TxtLabel="Contributions" ValLabel="{Binding Path=contributions.ValueLabel}" Grid.Row="0" Grid.Column="2"/>
-            <local:Brick TxtLabel="Problems Solved" ValLabel="{Binding Path=problemsSolved.ValueLabel}" Grid.Row="1" Grid.Column="0"/>
-            <local:Brick TxtLabel="Friends Of" ValLabel="{Binding Path=friendsOf.ValueLabel}" Grid.Row="1" Grid.Column="1"/>
-            <local:Brick TxtLabel="Blog Entries" ValLabel="{Binding Path=blogs.ValueLabel}" Grid.Row="1" Grid.Column="2"/>
+    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight}">
+        <Grid>
+            <materialDesign:Card Margin="110,41,500,257" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                <Image Source="{Binding photo}" Stretch="Fill" x:Name="img"  />
+            </materialDesign:Card>
+            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="400,51,50,264">
+                <StackPanel>
+                    <Label FontFamily="Consolas" Background="#FF8000FF" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="User Info" FontSize="15" Width="1000"/>
+                    <local:LongBrick TextLabel="Name" ValueLabel="{Binding Path=name.ValueLabel}"  ValueColor="Black"/>
+                    <local:LongBrick TextLabel="Rating" ValueLabel="{Binding Path=rating.ValueLabel}" ValueColor="{Binding Path=rating.ValueColor}"/>
+                    <local:LongBrick TextLabel="Rank" ValueLabel="{Binding Path=rank.ValueLabel}" ValueColor="{Binding Path=rank.ValueColor}"/>
+                    <local:LongBrick TextLabel="Organisation" ValueLabel="{Binding Path=organization.ValueLabel}" ValueColor="Black"/>
+                    <local:LongBrick TextLabel="Country" ValueLabel="{Binding Path=country.ValueLabel}" ValueColor="Black"/>
+                </StackPanel>
+            </materialDesign:Card>
+            <Grid Margin="147,286,147,15"  Width="550" Grid.Row="1" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <local:Brick TxtLabel="Max Rating" ValLabel="{Binding Path=maxRating.ValueLabel}"  Grid.Row="0" Grid.Column="0"/>
+                <local:Brick TxtLabel="Contests" ValLabel="{Binding Path=contests.ValueLabel}" Grid.Row="0" Grid.Column="1"/>
+                <local:Brick TxtLabel="Contributions" ValLabel="{Binding Path=contributions.ValueLabel}" Grid.Row="0" Grid.Column="2"/>
+                <local:Brick TxtLabel="Problems Solved" ValLabel="{Binding Path=problemsSolved.ValueLabel}" Grid.Row="1" Grid.Column="0" />
+                <local:Brick TxtLabel="Friends Of" ValLabel="{Binding Path=friendsOf.ValueLabel}" Grid.Row="1" Grid.Column="1"/>
+                <local:Brick TxtLabel="Blog Entries" ValLabel="{Binding Path=blogs.ValueLabel}" Grid.Row="1" Grid.Column="2"/>
+            </Grid>
         </Grid>
-    </Grid>
+    </materialDesign:TransitioningContent>
 </Page>

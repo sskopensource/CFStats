@@ -21,7 +21,14 @@ namespace UserInterface
 
         public MainWindowViewModel()
         {
-            loginModel = new LoginModel() {imageurl=ApiHandler.Avatar,handle=ApiHandler.Handle };
+            loginModel = new LoginModel()
+            {
+                imageurl = ApiHandler.Avatar,
+                handle = ApiHandler.Handle,
+                rank = ApiHandler.Rank,
+                rankColor = UiUtility.ConvertColorFromRank(ApiHandler.Rank)
+            };
+
             navBarViewModel = new NavBarViewModel();
             LogoutCommand = new DelegateCommand<Window>(Logout);
         }

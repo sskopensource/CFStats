@@ -32,9 +32,7 @@
         </Border>
         <Border Grid.Column="1" Grid.RowSpan="2" Background="#FFF8EFFF">
         </Border>
-        <Canvas Grid.Column="1" Width="Auto">
-            <uc:Login Canvas.Top="35" Canvas.Right="10" MinWidth="200" x:Name="login" Grid.Column="1" ImgURL="{Binding Path=loginModel.imageurl}" UserName="{Binding Path=loginModel.handle}" VerticalAlignment="Center"/>
-        </Canvas>
+        <uc:Login UserName="{Binding loginModel.handle}" ColorRank="{Binding loginModel.rankColor}" Rank="{Binding loginModel.rank}" ImgURL="{Binding loginModel.imageurl}" LogoutCommand="{Binding LogoutCommand}" LogoutCommandParameter="{Binding ElementName=MainWin}" Grid.Column="1"/>
         <TextBlock Text="CFStats"
                        FontSize="50"
                        VerticalAlignment="Bottom"
@@ -59,108 +57,153 @@
                 </DataTemplate>
             </Frame.Resources>
         </Frame>
-        <ScrollViewer DataContext="{StaticResource NavBarVM}" Background="#FF8000FF" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+        <ScrollViewer DataContext="{StaticResource NavBarVM}" Background="#232E3D" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
             <ItemsControl x:Name="Menu">
+                <Border BorderBrush="{Binding ColorBorderOverview}" BorderThickness="4,0,0,0">
                 <Grid>
                     <Grid.Style>
                         <Style TargetType="{x:Type Grid}">
                             <Setter Property="Background" Value="{Binding BackgroundColorOverviewTab}"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#9E3EFF"/>
+                                    <Setter Property="Background" Value="{Binding HoverBackgroundColorOverviewTab}"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
                     </Grid.Style>
-                    <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="20 16" Foreground="White"/>
-                    <TextBlock Text="Overview" FontFamily="Consolas" Padding="63 14" FontSize="18" Foreground="White">
+                    <materialDesign:PackIcon Kind="ViewDashboardEdit" Width="20" Height="20" Margin="20 16" Foreground="{Binding ElementName=overviewTab, Path=Foreground}"/>
+                        <TextBlock x:Name="overviewTab" Text="Overview" FontWeight="DemiBold" FontFamily="Segoe UI" Padding="63 14" FontSize="18">
                         <TextBlock.InputBindings>
                             <MouseBinding Command="{Binding NavigateOverviewPageCommand}" MouseAction="LeftClick" />
                         </TextBlock.InputBindings>
-                    </TextBlock>
-                </Grid>
-                <Grid>
-                    <Grid.Style>
-                        <Style TargetType="{x:Type Grid}">
-                            <Setter Property="Background" Value="{x:Null}"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="{Binding BackgroundColorExpander}"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Grid.Style>
-                    <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="20 16" Foreground="White"/>
-                    <TextBlock Text="Problem" FontFamily="Consolas" Padding="63 14" FontSize="18" Foreground="White"/>
-                    <Expander x:Name="ExpandeMenu" IsExpanded="{Binding problemExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="210" HorizontalAlignment="Right" Background="{x:Null}" Foreground="White">
-                        <ItemsControl x:Name="ListVewMenu"  Foreground="White">
-                            <TextBlock Text="Page 1" FontFamily="Consolas" Padding="20 15" FontSize="18" Height="48" Width="200">
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="Background" Value="{Binding BackgroundColorProblemTab}"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#9E3EFF"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                                <TextBlock.InputBindings>
-                                    <MouseBinding Command="{Binding NavigateProblemPageCommand}" MouseAction="LeftClick" />
-                                </TextBlock.InputBindings>
-                            </TextBlock>
-                            <TextBlock Text="Page 2" FontFamily="Consolas" Padding="20 15" FontSize="18" Height="48" Width="200">
-                             <TextBlock.Style>
-                              <Style TargetType="{x:Type TextBlock}">
-                               <Setter Property="Background" Value="{Binding BackgroundColorProblemOneTab}"/>
-                               <Style.Triggers>
-                                 <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#9E3EFF"/>
-                                 </Trigger>
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Foreground" Value="{Binding FontColorOverviewTab}"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="{Binding HoverFontColorOverviewTab}"/>
+                                    </Trigger>
                                 </Style.Triggers>
-                               </Style>
-                            </TextBlock.Style>
-                                <TextBlock.InputBindings>
-                                    <MouseBinding Command="{Binding NavigateProblemPageOneCommand}" MouseAction="LeftClick" />
-                                </TextBlock.InputBindings>
-                            </TextBlock>
-                            <TextBlock Text="Page 3" FontFamily="Consolas" Padding="20 15" FontSize="18"  Height="48" Width="200">
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="Background" Value="{Binding BackgroundColorProblemTwoTab}"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#9E3EFF"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                                <TextBlock.InputBindings>
-                                    <MouseBinding Command="{Binding NavigateProblemPageTwoCommand}" MouseAction="LeftClick" />
-                                </TextBlock.InputBindings>
-                            </TextBlock>
-                        </ItemsControl>
-                    </Expander>
-                </Grid>
-                <Grid>
-                    <Grid.Style>
-                        <Style TargetType="{x:Type Grid}">
-                            <Setter Property="Background" Value="{Binding BackgroundColorContestTab}"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#9E3EFF"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Grid.Style>
-                    <materialDesign:PackIcon Kind="{Binding Path=Icon}" Width="15" Height="15" Margin="20 16" Foreground="White"/>
-                    <TextBlock Text="Contest" FontFamily="Consolas" Padding="63 14" FontSize="18" Foreground="White">
-                        <TextBlock.InputBindings>
-                            <MouseBinding Command="{Binding NavigateContestPageCommand}" MouseAction="LeftClick" />
-                        </TextBlock.InputBindings>
+                            </Style>
+                        </TextBlock.Style>
                     </TextBlock>
                 </Grid>
-              
+                </Border>
+                <Border BorderBrush="{Binding ColorBorderExpander}" BorderThickness="4,0,0,0">
+                    <Grid>
+                        <Grid.Style>
+                            <Style TargetType="{x:Type Grid}">
+                                <Setter Property="Background" Value="{Binding BackgroundColorExpander}"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{Binding HoverBackgroundColorExpander}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <materialDesign:PackIcon Kind="Poll" Width="20" Height="20" Margin="20 16" Foreground="{Binding ElementName=problemTab, Path=Foreground}"/>
+                        <TextBlock x:Name="problemTab" Text="Problem" FontWeight="DemiBold" FontFamily="Segoe UI" Padding="63 14" FontSize="18">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Foreground" Value="{Binding FontColorExpander}"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="{Binding HoverFontColorExpander}"/>
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding ElementName=ExpanderMenu, Path=IsMouseOver}" Value="True">
+                                            <Setter Property="Foreground" Value="{Binding HoverFontColorExpander}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <Expander x:Name="ExpanderMenu"  IsExpanded="{Binding problemExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="210" HorizontalAlignment="Right" Foreground="{Binding FontColorExpander}" Background="{Binding BackgroundColorExpander}">
+                            <ItemsControl x:Name="ListVewMenu">
+                                <TextBlock Text="Page 1" FontWeight="DemiBold" FontFamily="Segoe UI" Padding="20 15" FontSize="18" Height="48" Width="200">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Foreground" Value="{Binding FontColorProblemTab}"/>
+                                            <Setter Property="Background" Value="{Binding BackgroundColorProblemTab}"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Foreground" Value="{Binding HoverFontColorProblemTab}"/>
+                                                    <Setter Property="Background" Value="{Binding HoverBackgroundColorProblemTab}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                    <TextBlock.InputBindings>
+                                        <MouseBinding Command="{Binding NavigateProblemPageCommand}" MouseAction="LeftClick" />
+                                    </TextBlock.InputBindings>
+                                </TextBlock>
+                                <TextBlock Text="Page 2" FontWeight="DemiBold" FontFamily="Segoe UI" Padding="20 15" FontSize="18" Height="48" Width="200">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Foreground" Value="{Binding FontColorProblemOneTab}"/>
+                                            <Setter Property="Background" Value="{Binding BackgroundColorProblemOneTab}"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Foreground" Value="{Binding HoverFontColorProblemOneTab}"/>
+                                                    <Setter Property="Background" Value="{Binding HoverBackgroundColorProblemOneTab}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                    <TextBlock.InputBindings>
+                                        <MouseBinding Command="{Binding NavigateProblemPageOneCommand}" MouseAction="LeftClick" />
+                                    </TextBlock.InputBindings>
+                                </TextBlock>
+                                <TextBlock Text="Page 3" FontWeight="DemiBold" FontFamily="Segoe UI" Padding="20 15" FontSize="18"  Height="48" Width="200">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Foreground" Value="{Binding FontColorProblemTwoTab}"/>
+                                            <Setter Property="Background" Value="{Binding BackgroundColorProblemTwoTab}"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Foreground" Value="{Binding HoverFontColorProblemTwoTab}"/>
+                                                    <Setter Property="Background" Value="{Binding HoverBackgroundColorProblemTwoTab}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                    <TextBlock.InputBindings>
+                                        <MouseBinding Command="{Binding NavigateProblemPageTwoCommand}" MouseAction="LeftClick" />
+                                    </TextBlock.InputBindings>
+                                </TextBlock>
+                            </ItemsControl>
+                        </Expander>
+                    </Grid>
+                </Border>
+                <Border BorderBrush="{Binding ColorBorderContest}" BorderThickness="4,0,0,0">
+                    <Grid>
+                        <Grid.Style>
+                            <Style TargetType="{x:Type Grid}">
+                                <Setter Property="Background" Value="{Binding BackgroundColorContestTab}"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{Binding HoverBackgroundColorContestTab}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <materialDesign:PackIcon Kind="ChartAreasplineVariant" Width="20" Height="20" Margin="20 16" Foreground="{Binding ElementName=contestTab, Path=Foreground}"/>
+                        <TextBlock x:Name="contestTab" Text="Contest" FontWeight="DemiBold" FontFamily="Segoe UI" Padding="63 14" FontSize="18">
+                            <TextBlock.InputBindings>
+                                <MouseBinding Command="{Binding NavigateContestPageCommand}" MouseAction="LeftClick" />
+                            </TextBlock.InputBindings>
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Foreground" Value="{Binding FontColorContestTab}"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="{Binding HoverFontColorContestTab}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+                </Border>
             </ItemsControl>
         </ScrollViewer>
     </Grid>

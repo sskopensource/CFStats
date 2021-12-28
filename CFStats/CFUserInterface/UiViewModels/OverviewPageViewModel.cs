@@ -48,8 +48,8 @@ namespace UserInterface
         private void SetLongBricks()
         {
             name = new LongBrickModel() { ValueLabel = ApiHandler.Name};
-            rating = new LongBrickModel() { ValueLabel = ApiHandler.Rating};
-            rank = new LongBrickModel() { ValueLabel = ApiHandler.Rank};
+            rating = new LongBrickModel() { ValueLabel = ApiHandler.Rating, ValueColor = UiUtility.ConvertColorFromRank(ApiHandler.Rank) };
+            rank = new LongBrickModel() { ValueLabel = ApiHandler.Rank, ValueColor=UiUtility.ConvertColorFromRank(ApiHandler.Rank)};
             organization = new LongBrickModel() { ValueLabel = ApiHandler.Organization};
             country = new LongBrickModel() { ValueLabel = ApiHandler.Country};
         }

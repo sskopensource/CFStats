@@ -40,5 +40,37 @@ namespace UserInterface.CFControls
         }
 
         public static readonly DependencyProperty UserNameProperty = DependencyProperty.Register("UserName", typeof(string), typeof(Login), new PropertyMetadata(null));
+
+        public string ColorRank
+        {
+            get { return (string)GetValue(ColorRankProperty); }
+            set { SetValue(ColorRankProperty, value); }
+        }
+
+        public static readonly DependencyProperty ColorRankProperty = DependencyProperty.Register("ColorRank", typeof(string), typeof(Login), new PropertyMetadata(null));
+
+        public string Rank
+        {
+            get { return (string)GetValue(RankProperty); }
+            set { SetValue(RankProperty, value); }
+        }
+
+        public static readonly DependencyProperty RankProperty = DependencyProperty.Register("Rank", typeof(string), typeof(Login), new PropertyMetadata(null));
+
+        public ICommand LogoutCommand
+        {
+            get { return (ICommand)GetValue(LogoutCommandProperty); }
+            set { SetValue(LogoutCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty LogoutCommandProperty = DependencyProperty.Register("LogoutCommand", typeof(ICommand), typeof(Login));
+
+        public object LogoutCommandParameter
+        {
+            get { return (object)GetValue(LogoutCommandParameterProperty); }
+            set { SetValue(LogoutCommandParameterProperty, value); }
+        }
+
+        public static readonly DependencyProperty LogoutCommandParameterProperty = DependencyProperty.Register("LogoutCommandParameter", typeof(object), typeof(Login));
     }
 }

@@ -21,5 +21,24 @@ namespace UserInterface.Common
 
             return navTabMap[currTab];
         }
+
+        public static string ConvertColorFromRank(string rank)
+        {
+            Dictionary<string, string> map = new Dictionary<string, string>()
+            {
+                {"newbie","Grey"},
+                {"pupil","Green"},
+                {"specialist","Cyan"},
+                {"expert","Blue"},
+                {"candidate master","Purple"},
+                {"master","Orange"},
+                {"international master","Orange"},
+                {"grandmaster","Red"},
+                {"international grandmaster","Red"},
+                {"legendary grandmaster","Red"}
+            };
+            if(map.ContainsKey(rank))return map[rank];
+            return "Black";
+        }
     }
 }
