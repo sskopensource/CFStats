@@ -36,7 +36,7 @@ namespace UserInterface.Common
                 OnCurrentViewModelChanged();
             }
         }
-
+        
         public event Action CurrentViewModelChanged;
 
         private void OnCurrentViewModelChanged()
@@ -46,28 +46,19 @@ namespace UserInterface.Common
 
         public string GetNavTabBackgroundColor(NAVTAB navTab)
         {
-           string AccentColor= "#FF8000FF";
-           string DefaultColor = "White";
+           string AccentColor= "#8B16FF";
+           string DefaultColor = "{x:Null}";
 
             if (navTab == CurrentTab) return AccentColor;
             return DefaultColor;
         }
 
-        public string GetNavTabFontColor(NAVTAB navTab)
+        public string GetExpanderColor(bool expanded)
         {
-            string AccentColor = "White";
-            string DefaultColor = "Black";
+            string AccentColor = "#9E3EFF";
+            string DefaultColor = "{x:Null}";
 
-            if (navTab == CurrentTab) return AccentColor;
-            return DefaultColor;
-        }
-
-        public string GetNavTabHoverColor(NAVTAB navTab)
-        {
-            string AccentColor = "#FF8000FF";
-            string DefaultColor = "#EDEDED";
-
-            if (navTab == CurrentTab) return AccentColor;
+            if(!expanded) return AccentColor;
             return DefaultColor;
         }
     }

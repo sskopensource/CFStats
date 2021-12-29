@@ -17,7 +17,9 @@ namespace UserInterface
     {
         OVERVIEW,
         PROBLEM,
-        CONTEST
+        CONTEST,
+        PROBLEM_ONE,
+        PROBLEM_TWO
     };
     public enum ContestDataSelector
     {
