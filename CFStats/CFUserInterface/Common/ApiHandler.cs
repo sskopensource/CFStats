@@ -19,7 +19,6 @@ namespace UserInterface
         private static SortedDictionary<string, ProblemModel> problemMap = new SortedDictionary<string, ProblemModel>();
 
 
-
         public static void LoadApiControl(string handle)
         {
             ApiControl.LoadApi(handle);
@@ -52,6 +51,12 @@ namespace UserInterface
         public static SortedDictionary<int, int> ProblemsRatingMap => problemsRatingMap;
         public static SortedDictionary<string, int> TagsMap => tagsMap;
         public static SortedDictionary<string, int> VerdictMap => verdictMap;
+
+        //contestData
+        public static string BestRank => GetContestData(ContestDataSelector.BESTRANK).ToString();
+        public static string WorstRank => GetContestData(ContestDataSelector.WORSTRANK).ToString();
+        public static string MaxUp => GetContestData(ContestDataSelector.MAXUP).ToString();
+        public static string MaxDown => GetContestData(ContestDataSelector.MAXDOWN).ToString();
 
         //Fill ProblemSet ,ContestSet and ProblemratingMap
         private static void FillSets()
@@ -169,20 +174,18 @@ namespace UserInterface
 
         private static double GetProblemMapData(DataSelector dataSelector)
         {
-            double averageAttempts=0;
-            int unsolved=0;
-            double solvedInOneAttempt=0;
-            int solved=0;
-            foreach(var i in problemMap)
+            double averageAttempts = 0;
+            int unsolved = 0;
+            double solvedInOneAttempt = 0;
+            int solved = 0;
+            foreach (var i in problemMap)
             {
                 if (i.Value.correctAttempts != 0)
                 {
                     if (i.Value.wrongAttempts == 0)
                     {
                         solvedInOneAttempt++;
-
                     }
-
                     averageAttempts += (double)(1 / (i.Value.wrongAttempts + i.Value.correctAttempts));
                     solved++;
                 }
@@ -191,13 +194,51 @@ namespace UserInterface
                     unsolved++;
                 }
             }
-            averageAttempts = (double)solved/ averageAttempts;
+            averageAttempts = (double)solved / averageAttempts;
 
             if (dataSelector == DataSelector.SOLVEDINONEATTEMPT) return solvedInOneAttempt;
-            if (dataSelector==DataSelector.UNSOLVED) return unsolved;
-            if (dataSelector==DataSelector.AVERAGEATTEMPT) return averageAttempts;
+            if (dataSelector == DataSelector.UNSOLVED) return unsolved;
+            if (dataSelector == DataSelector.AVERAGEATTEMPT) return averageAttempts;
             return 0;
         }
+    
+        private  static int GetContestData(ContestDataSelector contestdata)
+        {
+            var minRank = int.MaxValue;
+            var maxRank = int.MinValue;
+            var maxUp = int.MinValue;
+            var maxDown = int.MinValue;
+            foreach (var contest in ApiControl.userContests.result)
+            {
+                int currank = Convert.ToInt32(contest.rank);
+                
+                int ratingchange = Convert.ToInt32(contest.newRating)- Convert.ToInt32(contest.oldRating);
+                Console.WriteLine(ratingchange);
 
+                if (currank < minRank)
+                {
+                    minRank = currank;
+                }
+                if (currank > maxRank)
+                {
+                    maxRank = currank;
+                }
+                if (ratingchange > 0 && maxUp < ratingchange)
+                    maxUp = ratingchange;
+                if (ratingchange < 0 && -maxDown < -ratingchange)
+                    maxDown = ratingchange;
+
+            }
+            if (contestdata == ContestDataSelector.BESTRANK)
+                return minRank;
+            else if (contestdata == ContestDataSelector.WORSTRANK)
+                return maxRank;
+            else if (contestdata == ContestDataSelector.MAXUP)
+                return maxUp;
+            else if (contestdata == ContestDataSelector.MAXDOWN)
+                return maxDown;
+            else
+            return 0;
+        }
     }
 }
