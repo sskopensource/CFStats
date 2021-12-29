@@ -52,10 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControls\UserContestsControl.cs" />
     <Compile Include="ApiControls\UserBlogEntryControl.cs" />
     <Compile Include="ApiControls\ApiControl.cs" />
     <Compile Include="ApiControls\UserInfoControl.cs" />
     <Compile Include="ApiControls\UserStatusControl.cs" />
+    <Compile Include="ApiModels\UserContestsModel.cs" />
     <Compile Include="ApiModels\UserBlogEntryModel.cs" />
     <Compile Include="ApiModels\UserInfoModel.cs" />
     <Compile Include="ApiModels\UserStatusModel.cs" />

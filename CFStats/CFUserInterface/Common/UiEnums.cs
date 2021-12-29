@@ -19,4 +19,11 @@ namespace UserInterface
         PROBLEM,
         CONTEST
     };
+    public enum ContestDataSelector
+    {
+        BESTRANK,
+        WORSTRANK,
+        MAXUP,
+        MAXDOWN
+    };
 }

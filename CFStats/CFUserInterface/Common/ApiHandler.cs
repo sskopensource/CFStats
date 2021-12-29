@@ -53,6 +53,14 @@ namespace UserInterface
         public static SortedDictionary<string, int> TagsMap => tagsMap;
         public static SortedDictionary<string, int> VerdictMap => verdictMap;
 
+        //contestData
+        public static string BestRank => GetContestData(ContestDataSelector.BESTRANK).ToString();
+        public static string WorstRank => GetContestData(ContestDataSelector.WORSTRANK).ToString();
+        public static string MaxUp => GetContestData(ContestDataSelector.MAXUP).ToString();
+        public static string MaxDown => GetContestData(ContestDataSelector.MAXDOWN).ToString();
+
+
+
         //Fill ProblemSet ,ContestSet and ProblemratingMap
         private static void FillSets()
         {
@@ -199,5 +207,44 @@ namespace UserInterface
             return 0;
         }
 
+        private  static int GetContestData(ContestDataSelector contestdata)
+        {
+            var minRank = int.MaxValue;
+            var maxRank = int.MinValue;
+            var maxUp = int.MinValue;
+            var maxDown = int.MinValue;
+            foreach (var contest in ApiControl.userContests.result)
+            {
+               
+                int currank = Convert.ToInt32(contest.rank);
+                
+                int ratingchange = Convert.ToInt32(contest.newRating)- Convert.ToInt32(contest.oldRating);
+                Console.WriteLine(ratingchange);
+
+                if (currank < minRank)
+                {
+                    minRank = currank;
+                }
+                if (currank > maxRank)
+                {
+                    maxRank = currank;
+                }
+                if (ratingchange > 0 && maxUp < ratingchange)
+                    maxUp = ratingchange;
+                if (ratingchange < 0 && -maxDown < -ratingchange)
+                    maxDown = ratingchange;
+
+            }
+            if (contestdata == ContestDataSelector.BESTRANK)
+                return minRank;
+            else if (contestdata == ContestDataSelector.WORSTRANK)
+                return maxRank;
+            else if (contestdata == ContestDataSelector.MAXUP)
+                return maxUp;
+            else if (contestdata == ContestDataSelector.MAXDOWN)
+                return maxDown;
+            else
+            return 0;
+        }
     }
 }
