@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:UserInterface.UiViews"
         xmlns:UserInterface="clr-namespace:UserInterface" x:Class="UserInterface.UiViews.LoginWindow"
         mc:Ignorable="d"
@@ -14,47 +15,38 @@
     <Window.DataContext>
         <UserInterface:LoginWindowViewModel/>
     </Window.DataContext>
-    <Grid Background="#FFF8EFFF">
-
-        <Button IsDefault="True" Visibility="{Binding loginVisible}" FontFamily="Consolas" FontSize="20" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=LogWin}" Content="Login" Width="100" BorderBrush="{x:Null}" Foreground="White" Margin="0,239,0,143">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="#FF8000FF"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="DarkBlue"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10,10,10,10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <TextBox FontSize="25" TextAlignment="Center" Visibility="{Binding loginVisible}" Text="{Binding handle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Height="35" Margin="0,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Background="White" SelectionBrush="#FF3F6685" BorderBrush="White">
-            <TextBox.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10,10,10,10"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <Image Visibility="{Binding loadingVisible}" x:Name="Loading" gif:ImageBehavior.AnimatedSource="LoadingAnimation.gif" Height="128" Margin="0,148,0,0" VerticalAlignment="Top" Width="183"/>
-        <TextBlock Text="CFStats"
-            FontSize="40"
+    <Grid Background="#122136">
+        <Image Visibility="{Binding loadingVisible}" x:Name="Loading" gif:ImageBehavior.AnimatedSource="loading1.gif" Height="128" Margin="0,148,0,0"   VerticalAlignment="Top" Width="183"/>
+        <Border Visibility="{Binding loginVisible}" BorderBrush="#9eb3c7" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="2" CornerRadius="10">
+            <TextBox
+                Visibility="{Binding loginVisible}" 
+                Text="{Binding handle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Enter your Codeforces Handle"
+                materialDesign:HintAssist.Foreground="#9eb3c7"
+                Foreground="#9eb3c7"
+                HorizontalContentAlignment="Center"
+                FontSize="15"
+                
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center" 
+                Width="220"
+                Height="50"/>
+        </Border>
+        <Image Source="CFstatLogo.png"
             VerticalAlignment="Bottom"
+               Height="120"
             HorizontalAlignment="Center"
-            TextAlignment="Center"
-            Margin="128,0,127,320" Foreground="Black" Width="137"/>
+            Stretch="Fill" Margin="97,0,97,288"/>
+        <Button
+            Visibility="{Binding loginVisible}"
+            Command="{Binding LoginCommand}" 
+            CommandParameter="{Binding ElementName=LogWin}"
+            Style="{StaticResource MaterialDesignRaisedLightButton}"
+            Foreground="White"
+            BorderThickness="0"
+            IsDefault="True"
+            Background="#22b66e"
+            ContentStringFormat="ENTER {0}"
+            Content="" Margin="122,273,122,102" Height="Auto"/>
     </Grid>
 </Window>

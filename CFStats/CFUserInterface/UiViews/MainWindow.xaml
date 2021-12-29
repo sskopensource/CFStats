@@ -8,7 +8,7 @@
         xmlns:Ui="clr-namespace:UserInterface" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Height="650" Width="1100"
-        WindowStyle="SingleBorderWindow"
+        WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent" WindowStartupLocation="CenterScreen"
         x:Name="MainWin"
@@ -18,26 +18,111 @@
     </Window.DataContext>
     <Window.Resources>
         <Ui:NavBarViewModel x:Key="NavBarVM"/>
+
+        <ResourceDictionary x:Key="ex">
+
+            <!--Base style for title bar buttons-->
+            <Style x:Key="CaptionButtonStyle" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid x:Name="LayoutRoot" Background="{x:Null}" Width="44" Height="30">
+                                <TextBlock x:Name="txt" Text="{TemplateBinding Content}" FontWeight="Bold" FontFamily="Segoe MDL2 Assets" FontSize="10" 
+                                   Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   RenderOptions.ClearTypeHint="Auto" TextOptions.TextRenderingMode="Aliased"  TextOptions.TextFormattingMode="Display"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#53A6FA"/>
+                                    <Setter TargetName="txt" Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--Minimize-->
+            <Style x:Key="MinimizeButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
+                <Setter Property="Content" Value="&#xE949;"/>
+            </Style>
+
+            <!--Maximize--><!--
+            <Style x:Key="MaximizeButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
+                <Setter Property="Content" Value="&#xE739;"/>
+            </Style>-->
+
+            <!--Restore-->
+            <Style x:Key="RestoreButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
+                <Setter Property="Content" Value="&#xE923;"/>
+            </Style>
+
+            <!--Close-->
+            <Style x:Key="CloseButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
+                <Setter Property="Content" Value="&#xE106;"/>
+            </Style>
+        </ResourceDictionary>
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Close" />
+        <!--<CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Maximize" />-->
+        <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Minimize" />
+        <CommandBinding Command="{x:Static SystemCommands.RestoreWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Restore" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="90"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Grid.Column="0" Grid.RowSpan="2" Background="White">
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Background="#192f4d">
         </Border>
-        <Border Grid.Column="1" Grid.RowSpan="2" Background="#FFF8EFFF">
+        <Border Grid.Row="1" Grid.Column="1" Background="#132339">
         </Border>
-        <uc:Login UserName="{Binding loginModel.handle}" ColorRank="{Binding loginModel.rankColor}" Rank="{Binding loginModel.rank}" ImgURL="{Binding loginModel.imageurl}" LogoutCommand="{Binding LogoutCommand}" LogoutCommandParameter="{Binding ElementName=MainWin}" Grid.Column="1"/>
-        <TextBlock Text="CFStats"
-                       FontSize="50"
-                       VerticalAlignment="Bottom"
-                       HorizontalAlignment="Right"
-                       Margin="0,0,42,12" Foreground="Black"/>
+        <!--Window chrome-->
+        <Border Grid.Row="0" Grid.ColumnSpan="2" x:Name="MainWindowBorder" Height="30" VerticalAlignment="Top" BorderBrush="LightCoral" BorderThickness="0" >
+            <Grid x:Name="parentContainer" Background="LightBlue">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height ="Auto"/>
+                    <RowDefinition Height ="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Window chrome-->
+                <Grid Grid.Row="0" Height="30" Background="#0b1a2e">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <!--App icon-->
+                        <!--<Image  Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />-->
+                        <TextBlock Text="CFStats" Foreground="#9eb3c7" FontFamily="Arial" Margin="4 3 0 0" />
+                    </StackPanel>
+
+                    <!--Caption buttons-->
+                    <StackPanel Resources="{StaticResource ex}" Orientation="Horizontal" HorizontalAlignment="Right" >
+                        <Button Style="{StaticResource MinimizeButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Minimize"
+                            Command="{x:Static SystemCommands.MinimizeWindowCommand}"/>
+                        <Button x:Name="RestoreButton" Visibility="Collapsed" Style="{StaticResource RestoreButtonStyle}" 
+                            Command="{x:Static SystemCommands.RestoreWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Restore"/>
+                        <!--<Button x:Name="MaximizeButton" Visibility="Visible" Style="{StaticResource MaximizeButtonStyle}" 
+                            Command="{x:Static SystemCommands.MaximizeWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Maximize" />-->
+                        <Button Style="{StaticResource CloseButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Close"
+                            Command="{x:Static SystemCommands.CloseWindowCommand}"/>
+                    </StackPanel>
+                </Grid>
+
+                <!--App content-->
+
+
+            </Grid>
+        </Border>
+        <uc:Login Margin="0,30,0,0" UserName="{Binding loginModel.handle}" ColorRank="{Binding loginModel.rankColor}" Rank="{Binding loginModel.rank}" ImgURL="{Binding loginModel.imageurl}" LogoutCommand="{Binding LogoutCommand}" LogoutCommandParameter="{Binding ElementName=MainWin}" Grid.Column="1"/>
+        <Image Source="CFstatLogo.png"
+            VerticalAlignment="Center"
+            Margin="20,30,94,10"
+            HorizontalAlignment="Center"
+            Stretch="Fill" Height="50" Width="136" />
         <Frame DataContext="{StaticResource NavBarVM}" Content="{Binding CurrentViewModel}" Grid.Row="1" Grid.Column="1"  NavigationUIVisibility="Hidden" x:Name="Main">
             <Frame.Resources>
                 <DataTemplate DataType="{x:Type Ui:OverviewPageViewModel}">
@@ -57,37 +142,37 @@
                 </DataTemplate>
             </Frame.Resources>
         </Frame>
-        <ScrollViewer DataContext="{StaticResource NavBarVM}" Background="#232E3D" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+        <ScrollViewer DataContext="{StaticResource NavBarVM}" Background="#0b1a2e" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
             <ItemsControl x:Name="Menu">
                 <Border BorderBrush="{Binding ColorBorderOverview}" BorderThickness="4,0,0,0">
-                <Grid>
-                    <Grid.Style>
-                        <Style TargetType="{x:Type Grid}">
-                            <Setter Property="Background" Value="{Binding BackgroundColorOverviewTab}"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="{Binding HoverBackgroundColorOverviewTab}"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Grid.Style>
-                    <materialDesign:PackIcon Kind="ViewDashboardEdit" Width="20" Height="20" Margin="20 16" Foreground="{Binding ElementName=overviewTab, Path=Foreground}"/>
-                        <TextBlock x:Name="overviewTab" Text="Overview" FontWeight="DemiBold" FontFamily="Segoe UI" Padding="63 14" FontSize="18">
-                        <TextBlock.InputBindings>
-                            <MouseBinding Command="{Binding NavigateOverviewPageCommand}" MouseAction="LeftClick" />
-                        </TextBlock.InputBindings>
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="Foreground" Value="{Binding FontColorOverviewTab}"/>
+                    <Grid>
+                        <Grid.Style>
+                            <Style TargetType="{x:Type Grid}">
+                                <Setter Property="Background" Value="{Binding BackgroundColorOverviewTab}"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Foreground" Value="{Binding HoverFontColorOverviewTab}"/>
+                                        <Setter Property="Background" Value="{Binding HoverBackgroundColorOverviewTab}"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                </Grid>
+                        </Grid.Style>
+                        <materialDesign:PackIcon Kind="ViewDashboardEdit" Width="20" Height="20" Margin="20 16" Foreground="{Binding ElementName=overviewTab, Path=Foreground}"/>
+                        <TextBlock x:Name="overviewTab" Text="Overview" FontWeight="DemiBold" FontFamily="Segoe UI" Padding="63 14" FontSize="18">
+                            <TextBlock.InputBindings>
+                                <MouseBinding Command="{Binding NavigateOverviewPageCommand}" MouseAction="LeftClick" />
+                            </TextBlock.InputBindings>
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Foreground" Value="{Binding FontColorOverviewTab}"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="{Binding HoverFontColorOverviewTab}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
                 </Border>
                 <Border BorderBrush="{Binding ColorBorderExpander}" BorderThickness="4,0,0,0">
                     <Grid>

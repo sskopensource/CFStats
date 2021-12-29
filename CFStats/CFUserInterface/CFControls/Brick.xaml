@@ -8,10 +8,10 @@
              mc:Ignorable="d" 
              Name="BrickControl">
     <Grid>
-        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="15,10,15,10">
-            <StackPanel Background="White" Height="80" Width="150" >
-                <Label Content="{Binding TxtLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" FontFamily="Consolas" Width="200" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="15"/>
-                <Label Content="{Binding ValLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" FontFamily="Consolas" Margin="8" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25"/>
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" Background="#192f4d" Margin="15,10,15,10">
+            <StackPanel Background="{x:Null}" Height="80" Width="150" >
+                <Label Content="{Binding TxtLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" FontFamily="Consolas" Width="200" Foreground="#9eb3c7" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="15"/>
+                <Label Content="{Binding ValLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" FontFamily="Consolas" Margin="8" Foreground="#53A6FA" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25"/>
             </StackPanel>
         </materialDesign:Card>
     </Grid>

@@ -13,17 +13,17 @@
     </Page.DataContext>
     <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight}">
         <Grid>
-            <materialDesign:Card Margin="110,41,500,257" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <materialDesign:Card Background="#192f4d" Margin="110,41,500,280" materialDesign:ShadowAssist.ShadowDepth="Depth3">
                 <Image Source="{Binding photo}" Stretch="Fill" x:Name="img"  />
             </materialDesign:Card>
-            <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="400,51,50,264">
+            <materialDesign:Card Background="#192f4d" materialDesign:ShadowAssist.ShadowDepth="Depth3"  Margin="400,51,50,295">
                 <StackPanel>
-                    <Label FontFamily="Consolas" Background="#FF8000FF" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="User Info" FontSize="15" Width="1000"/>
-                    <local:LongBrick TextLabel="Name" ValueLabel="{Binding Path=name.ValueLabel}"  ValueColor="Black"/>
+                    <Label FontFamily="Consolas" FontWeight="Bold" Foreground="#9eb3c7" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="Info"  FontSize="15" Width="1000"/>
+                    <local:LongBrick TextLabel="Name" ValueLabel="{Binding Path=name.ValueLabel}"  ValueColor="#53A6FA"/>
                     <local:LongBrick TextLabel="Rating" ValueLabel="{Binding Path=rating.ValueLabel}" ValueColor="{Binding Path=rating.ValueColor}"/>
                     <local:LongBrick TextLabel="Rank" ValueLabel="{Binding Path=rank.ValueLabel}" ValueColor="{Binding Path=rank.ValueColor}"/>
-                    <local:LongBrick TextLabel="Organisation" ValueLabel="{Binding Path=organization.ValueLabel}" ValueColor="Black"/>
-                    <local:LongBrick TextLabel="Country" ValueLabel="{Binding Path=country.ValueLabel}" ValueColor="Black"/>
+                    <local:LongBrick TextLabel="Organisation" ValueLabel="{Binding Path=organization.ValueLabel}" ValueColor="#53A6FA"/>
+                    <local:LongBrick TextLabel="Country" ValueLabel="{Binding Path=country.ValueLabel}" ValueColor="#53A6FA"/>
                 </StackPanel>
             </materialDesign:Card>
             <Grid Margin="147,286,147,15"  Width="550" Grid.Row="1" Grid.Column="1">
