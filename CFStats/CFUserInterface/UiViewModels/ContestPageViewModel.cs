@@ -22,8 +22,6 @@ namespace UserInterface
             maxUp = new LongBrickModel() { ValueLabel = ApiHandler.MaxUp, TextLabel = "Max Up" };
             maxDown = new LongBrickModel() { ValueLabel = ApiHandler.MaxDown, TextLabel = "Max Down" };
             
-            
-            
         }
     }
 }
