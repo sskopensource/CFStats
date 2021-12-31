@@ -13,12 +13,34 @@ namespace Api
         public static UserInfoModel LoadUserInfo(string handle)
         {
             string url = "https://codeforces.com/api/user.info?handles="+handle;
-
+            
             using (var httpClient = new HttpClient())
             {
+
                 var json = httpClient.GetStringAsync(url);
-                UserInfoModel info = JsonConvert.DeserializeObject<UserInfoModel>(json.Result);
+
+                UserInfoModel info = Deserialize(json);
+
+                if (json.Status==TaskStatus.Faulted &&  json.Exception.InnerException.Message == "An error occurred while sending the request.")
+                {
+                    return null;
+                }
+
                 return info;
+            }
+        }
+
+
+        public static UserInfoModel Deserialize(Task<string> json)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<UserInfoModel>(json.Result);
+
+            }
+            catch
+            {
+                return new UserInfoModel() { status = "Failed" };
             }
         }
     }

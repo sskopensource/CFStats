@@ -15,12 +15,20 @@ namespace Api
         {
             string url = "https://codeforces.com/api/user.blogEntries?handle="+handle;
 
-            using (var httpClient = new HttpClient())
+            try
             {
-                var json = httpClient.GetStringAsync(url);
-                UserBlogEntryModel info = JsonConvert.DeserializeObject<UserBlogEntryModel>(json.Result);
-                return info;
+                using (var httpClient = new HttpClient())
+                {
+                    var json = httpClient.GetStringAsync(url);
+                    UserBlogEntryModel info = JsonConvert.DeserializeObject<UserBlogEntryModel>(json.Result);
+                    return info;
+                }
             }
+            catch
+            {
+                return null;
+            }
+           
         }
     }
 }

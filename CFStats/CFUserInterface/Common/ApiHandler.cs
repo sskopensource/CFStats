@@ -20,11 +20,24 @@ namespace UserInterface
 
 
 
-        public static void LoadApiControl(string handle)
+        public static ApiStatus LoadApiControl(string handle)
         {
             ApiControl.LoadApi(handle);
+
+            if (ApiControl.userInfo == null)
+            {
+                return ApiStatus.NOINTERNET;
+            }
+
+            if (ApiControl.userInfo.status == "Failed")
+            {
+                return ApiStatus.FAILED;
+            }
+
             ClearSets();
             FillSets();
+
+            return ApiStatus.OK;
         }
 
         //----------------------------Getters----------------------------------//

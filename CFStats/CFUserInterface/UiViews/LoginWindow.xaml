@@ -48,5 +48,43 @@
             Background="#22b66e"
             ContentStringFormat="ENTER {0}"
             Content="" Margin="122,273,122,102" Height="Auto"/>
+        <materialDesign:DialogHost IsOpen="{Binding NoInternetVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Background="#0b1a2e">
+                    <materialDesign:PackIcon Kind="Web" Height="50" Width="50" HorizontalAlignment="Center" Margin="0,20,0,0" Foreground="#9eb3c7" />
+                    <TextBlock Width="200" Margin="20" Text="Check your internet connection and try again" TextWrapping="WrapWithOverflow" Foreground="#9eb3c7" TextAlignment="Center" FontWeight="DemiBold" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Button
+                        Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        Content="Close"
+                        Width="100"
+                        Background="#22b66e"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,0,20"
+                        Command="{Binding CloseErrorDialog}"/>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+            <!-- put the content over which the dialog is shown here (e.g. your main window grid)-->
+        </materialDesign:DialogHost>
+
+        <materialDesign:DialogHost IsOpen="{Binding WrongHandleVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Background="#0b1a2e">
+                    <materialDesign:PackIcon Kind="Alert" Height="50" Width="50" HorizontalAlignment="Center" Margin="0,20,0,0" Foreground="#9eb3c7" />
+                    <TextBlock Width="200" Margin="20" Text="Please Enter Correct Handle" TextWrapping="WrapWithOverflow" Foreground="#9eb3c7" TextAlignment="Center" FontWeight="DemiBold" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Button
+                        Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        Content="Close"
+                        Width="100"
+                        Background="#22b66e"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,0,20"
+                        Command="{Binding CloseErrorDialog}"/>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+            <!-- put the content over which the dialog is shown here (e.g. your main window grid)-->
+        </materialDesign:DialogHost>
+        
     </Grid>
 </Window>

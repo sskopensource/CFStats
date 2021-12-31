@@ -22,4 +22,19 @@ namespace UserInterface
         PROBLEM_TWO,
         EXPANDER
     };
+
+    public enum ApiStatus
+    {
+        NOINTERNET,
+        FAILED,
+        OK
+    };
+
+    public enum Dialog
+    {
+        NOINTERNET,
+        WRONGHANDLE
+ 
+    };
+
 }
