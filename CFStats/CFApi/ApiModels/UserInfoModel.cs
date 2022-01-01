@@ -13,8 +13,8 @@ namespace Api
         }
         public class UserInfoListModel
         {
-            public string rating { get; set; }
-            public string maxRating { get; set; }
+            public string rating { get; set; } = "0";
+            public string maxRating { get; set; } ="0";
             public string firstName { get; set; }
             public string lastName { get; set; }
             public string titlePhoto { get; set; }
@@ -22,8 +22,8 @@ namespace Api
             public string organization { get; set; }
             public string handle { get; set; }
             public string country { get; set; }
-            public string rank { get; set; }
-            public string friendOfCount { get; set; }
-            public string contribution { get; set; }
+            public string rank { get; set; } = "Unrated";
+            public string friendOfCount { get; set; } = "0";
+            public string contribution { get; set; } = "0";
     }
 }

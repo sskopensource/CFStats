@@ -26,7 +26,7 @@ namespace Api
             }
             catch
             {
-                return null;
+                return new UserBlogEntryModel() { status="Failed"};
             }
            
         }

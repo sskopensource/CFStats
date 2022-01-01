@@ -26,7 +26,7 @@ namespace UserInterface.Common
         {
             Dictionary<string, string> map = new Dictionary<string, string>()
             {
-                {"newbie","Grey"},
+                {"newbie","Gray"},
                 {"pupil","Green"},
                 {"specialist","Cyan"},
                 {"expert","Blue"},

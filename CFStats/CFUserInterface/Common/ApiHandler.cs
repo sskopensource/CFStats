@@ -33,8 +33,6 @@ namespace UserInterface
             {
                 return ApiStatus.FAILED;
             }
-
-            ClearSets();
             FillSets();
 
             return ApiStatus.OK;
@@ -57,9 +55,9 @@ namespace UserInterface
         public static string Handle => ApiControl.userInfo.result[0].handle;
         public static string ProfilePicture=> ApiControl.userInfo.result[0].titlePhoto;
         public static string Avatar => ApiControl.userInfo.result[0].avatar;
-        public static string ProblemsUnsolved => GetProblemMapData(DataSelector.UNSOLVED).ToString();
-        public static string SolvedFirstAttempt => GetProblemMapData(DataSelector.SOLVEDINONEATTEMPT).ToString();
-        public static string AverageAttempt => GetProblemMapData(DataSelector.AVERAGEATTEMPT).ToString().Substring(0,4);
+        public static string ProblemsUnsolved => GetProblemMapData(DataSelector.UNSOLVED);
+        public static string SolvedFirstAttempt => GetProblemMapData(DataSelector.SOLVEDINONEATTEMPT);
+        public static string AverageAttempt => GetProblemMapData(DataSelector.AVERAGEATTEMPT);
         public static string FavouriteTag => TagData(DataSelector.FAVOURITETAG);
         public static string ProblemsTried => solvedProblemSet.Count.ToString();
         public static SortedDictionary<int, int> ProblemsRatingMap => problemsRatingMap;
@@ -69,13 +67,25 @@ namespace UserInterface
         //Fill ProblemSet ,ContestSet and ProblemratingMap
         private static void FillSets()
         {
+            ClearSets();
+            FillBlogSet();
+            FillProblemSet();
+        }
+
+        private static void FillProblemSet()
+        {
+            if (ApiControl.userStatus.result.Length == 0)
+            {
+                return;
+            }
+
             foreach (var problems in ApiControl.userStatus.result)
             {
                 var currentProblem = problems.problem.name.ToString();
                 var currentContest = problems.contestId.ToString();
                 var curVerdict = problems.verdict.ToString();
-                
-                var curProblemRating= problems.problem.rating;
+
+                var curProblemRating = problems.problem.rating;
                 var curTags = problems.problem.tags;
                 var curParticipantType = problems.author.participantType.ToString();
 
@@ -88,9 +98,9 @@ namespace UserInterface
 
                 if (!problemMap.ContainsKey(currentProblem))
                 {
-                    problemMap.Add(currentProblem, new ProblemModel() { wrongAttempts=0 , correctAttempts=0 });
+                    problemMap.Add(currentProblem, new ProblemModel() { wrongAttempts = 0, correctAttempts = 0 });
                 }
-                if (curVerdict=="OK")
+                if (curVerdict == "OK")
                 {
                     problemMap[currentProblem].correctAttempts++;
                 }
@@ -103,7 +113,7 @@ namespace UserInterface
                 {
                     solvedProblemSet.Add(currentProblem);
 
-                    if (curProblemRating !=0)
+                    if (curProblemRating != 0)
                     {
                         if (!problemsRatingMap.ContainsKey(curProblemRating))
                         {
@@ -121,7 +131,7 @@ namespace UserInterface
                                 tagsMap.Add(tag, 0);
                             }
                             tagsMap[tag]++;
-                        }   
+                        }
                     }
                 }
 
@@ -132,15 +142,23 @@ namespace UserInterface
             }
 
             //Fill BlogSet
+
+            verdictMap.Remove("SKIPPED");
+        }
+
+        private static void FillBlogSet()
+        {
+            if (ApiControl.userBlog.status == "Failed")
+            {
+                return;
+            }
+
             foreach (var blogs in ApiControl.userBlog.result)
             {
                 var currentBlog = blogs.title.ToString();
                 blogSet.Add(currentBlog);
             }
-
-            verdictMap.Remove("SKIPPED");
         }
-
 
         public static string TagData(DataSelector dataSelector)
         {
@@ -180,12 +198,17 @@ namespace UserInterface
             return fullName;
         }
 
-        private static double GetProblemMapData(DataSelector dataSelector)
+        private static string GetProblemMapData(DataSelector dataSelector)
         {
             double averageAttempts=0;
             int unsolved=0;
             double solvedInOneAttempt=0;
             int solved=0;
+            if (problemMap.Count == 0)
+            {
+                if (dataSelector == DataSelector.AVERAGEATTEMPT) return "NA";
+                else return "0";
+            }
             foreach(var i in problemMap)
             {
                 if (i.Value.correctAttempts != 0)
@@ -206,10 +229,10 @@ namespace UserInterface
             }
             averageAttempts = (double)solved/ averageAttempts;
 
-            if (dataSelector == DataSelector.SOLVEDINONEATTEMPT) return solvedInOneAttempt;
-            if (dataSelector==DataSelector.UNSOLVED) return unsolved;
-            if (dataSelector==DataSelector.AVERAGEATTEMPT) return averageAttempts;
-            return 0;
+            if (dataSelector == DataSelector.SOLVEDINONEATTEMPT) return solvedInOneAttempt.ToString();
+            if (dataSelector==DataSelector.UNSOLVED) return unsolved.ToString();
+            if (dataSelector==DataSelector.AVERAGEATTEMPT) return averageAttempts.ToString().Substring(0,4);
+            return "0";
         }
 
     }
