@@ -101,20 +101,16 @@
 
                     <!--Caption buttons-->
                     <StackPanel Resources="{StaticResource ex}" Orientation="Horizontal" HorizontalAlignment="Right" >
-                        <Button Style="{StaticResource MinimizeButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Minimize"
+                        <Button Style="{StaticResource MinimizeButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True"
                             Command="{x:Static SystemCommands.MinimizeWindowCommand}"/>
                         <Button x:Name="RestoreButton" Visibility="Collapsed" Style="{StaticResource RestoreButtonStyle}" 
-                            Command="{x:Static SystemCommands.RestoreWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Restore"/>
+                            Command="{x:Static SystemCommands.RestoreWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True"/>
                         <!--<Button x:Name="MaximizeButton" Visibility="Visible" Style="{StaticResource MaximizeButtonStyle}" 
-                            Command="{x:Static SystemCommands.MaximizeWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Maximize" />-->
-                        <Button Style="{StaticResource CloseButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Close"
+                            Command="{x:Static SystemCommands.MaximizeWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True" />-->
+                        <Button Style="{StaticResource CloseButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True"
                             Command="{x:Static SystemCommands.CloseWindowCommand}"/>
                     </StackPanel>
                 </Grid>
-
-                <!--App content-->
-
-
             </Grid>
         </Border>
         <uc:Login Margin="0,30,0,0" UserName="{Binding loginModel.handle}" ColorRank="{Binding loginModel.rankColor}" Rank="{Binding loginModel.rank}" ImgURL="{Binding loginModel.imageurl}" LogoutCommand="{Binding LogoutCommand}" LogoutCommandParameter="{Binding ElementName=MainWin}" Grid.Column="1"/>
