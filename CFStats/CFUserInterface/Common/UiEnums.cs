@@ -22,4 +22,11 @@ namespace UserInterface
         PROBLEM_TWO,
         EXPANDER
     };
+    public enum ContestDataSelector
+    {
+        BESTRANK,
+        WORSTRANK,
+        MAXUP,
+        MAXDOWN
+    };
 }
