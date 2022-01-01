@@ -36,5 +36,11 @@ namespace UserInterface
         WRONGHANDLE
  
     };
-
+    public enum ContestDataSelector
+    {
+        BESTRANK,
+        WORSTRANK,
+        MAXUP,
+        MAXDOWN
+    };
 }
