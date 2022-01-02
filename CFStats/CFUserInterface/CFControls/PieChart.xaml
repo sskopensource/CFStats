@@ -6,14 +6,14 @@
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:local="clr-namespace:UserInterface.CFControls"
              mc:Ignorable="d">
-    <Grid Background="White">
-        <lvc:PieChart Width="Auto" Name="Chart" Series="{Binding PieValues}" 
+    <Grid>
+        <lvc:PieChart Width="Auto" Name="Chart" Foreground="#53A6FA" Series="{Binding PieValues}" 
                       LegendLocation="Right">
             <lvc:PieChart.ChartLegend>
                 <lvc:DefaultLegend FontSize="12" BulletSize="12"></lvc:DefaultLegend>
             </lvc:PieChart.ChartLegend>
             <lvc:PieChart.DataTooltip>
-                <lvc:DefaultTooltip BulletSize="15"></lvc:DefaultTooltip>
+                <lvc:DefaultTooltip Foreground="Black" BulletSize="15"></lvc:DefaultTooltip>
             </lvc:PieChart.DataTooltip>
         </lvc:PieChart>
     </Grid>

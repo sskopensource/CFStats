@@ -10,5 +10,6 @@ namespace CFControls
     {
         public string TextLabel { get; set; }
         public string ValueLabel { get; set; }
+        public string ValueColor { get; set; }
     }
 }

@@ -11,5 +11,7 @@ namespace CFControls
     {
         public string imageurl { get; set; }
         public string handle { get; set; }
+        public string rank { get; set; }
+        public string rankColor { get; set; }
     }
 }

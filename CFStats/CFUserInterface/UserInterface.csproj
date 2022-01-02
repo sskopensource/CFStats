@@ -102,9 +102,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CFControls\AngularGuage.xaml.cs">
+      <DependentUpon>AngularGuage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CFControls\BarGraph.xaml.cs">
       <DependentUpon>BarGraph.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CFControls\Models\AngularGaugeModel.cs" />
     <Compile Include="CFControls\Models\BarGraphModel.cs" />
     <Compile Include="CFControls\Models\PieChartModel.cs" />
     <Compile Include="CFControls\PieChart.xaml.cs">
@@ -133,6 +137,10 @@
     <Compile Include="UiViews\Pages\ProblemPageTwo.xaml.cs">
       <DependentUpon>ProblemPageTwo.xaml</DependentUpon>
     </Compile>
+    <Page Include="CFControls\AngularGuage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CFControls\BarGraph.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -267,6 +275,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="UiViews\LoadingAnimation.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CFAssets\loading1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UiViews\loading1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CFAssets\CFstatLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UiViews\CFstatLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets')" />

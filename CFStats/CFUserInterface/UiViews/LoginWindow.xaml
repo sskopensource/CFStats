@@ -4,57 +4,130 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:UserInterface.UiViews"
         xmlns:UserInterface="clr-namespace:UserInterface" x:Class="UserInterface.UiViews.LoginWindow"
         mc:Ignorable="d"
         x:Name="LogWin"
-        WindowStyle="SingleBorderWindow"
+        WindowStyle="None"
         ResizeMode="NoResize"
         Title="CFStats" Height="450" Width="400" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <UserInterface:LoginWindowViewModel/>
     </Window.DataContext>
-    <Grid Background="#FFF8EFFF">
+    <Window.Resources>
+        <ResourceDictionary>
+            <!--Base style for title bar buttons-->
+            <Style x:Key="CaptionButtonStyle" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid x:Name="LayoutRoot" Background="{x:Null}" Width="44" Height="30">
+                                <TextBlock x:Name="txt" Text="{TemplateBinding Content}" FontWeight="Bold" FontFamily="Segoe MDL2 Assets" FontSize="10" 
+                                   Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   RenderOptions.ClearTypeHint="Auto" TextOptions.TextRenderingMode="Aliased"  TextOptions.TextFormattingMode="Display"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="LayoutRoot" Property="Background" Value="#53A6FA"/>
+                                    <Setter TargetName="txt" Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
-        <Button IsDefault="True" Visibility="{Binding loginVisible}" FontFamily="Consolas" FontSize="20" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=LogWin}" Content="Login" Width="100" BorderBrush="{x:Null}" Foreground="White" Margin="0,239,0,143">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="#FF8000FF"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="DarkBlue"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10,10,10,10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <TextBox FontSize="25" TextAlignment="Center" Visibility="{Binding loginVisible}" Text="{Binding handle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Height="35" Margin="0,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" Background="White" SelectionBrush="#FF3F6685" BorderBrush="White">
-            <TextBox.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10,10,10,10"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <Image Visibility="{Binding loadingVisible}" x:Name="Loading" gif:ImageBehavior.AnimatedSource="LoadingAnimation.gif" Height="128" Margin="0,148,0,0" VerticalAlignment="Top" Width="183"/>
-        <TextBlock Text="CFStats"
-            FontSize="40"
+            <!--Minimize-->
+            <Style x:Key="MinimizeButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
+                <Setter Property="Content" Value="&#xE949;"/>
+            </Style>
+
+            <!--Maximize-->
+            <!--
+            <Style x:Key="MaximizeButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
+                <Setter Property="Content" Value="&#xE739;"/>
+            </Style>-->
+
+            <!--Restore-->
+            <Style x:Key="RestoreButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
+                <Setter Property="Content" Value="&#xE923;"/>
+            </Style>
+
+            <!--Close-->
+            <Style x:Key="CloseButtonStyle" TargetType="Button" BasedOn="{StaticResource CaptionButtonStyle}">
+                <Setter Property="Content" Value="&#xE106;"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Close" />
+        <!--<CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Maximize" />-->
+        <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Minimize" />
+        <CommandBinding Command="{x:Static SystemCommands.RestoreWindowCommand}" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_Restore" />
+    </Window.CommandBindings>
+    <Grid Background="#122136">
+        <Border Grid.Row="0" Grid.ColumnSpan="2" x:Name="MainWindowBorder" Height="30" VerticalAlignment="Top" BorderBrush="LightCoral" BorderThickness="0" >
+            <Grid x:Name="parentContainer" Background="LightBlue">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height ="Auto"/>
+                    <RowDefinition Height ="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Window chrome-->
+                <Grid Grid.Row="0" Height="30" Background="#0b1a2e">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <!--App icon-->
+                        <!--<Image  Width="18" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" />-->
+                        <TextBlock Text="CFStats" Foreground="#9eb3c7" FontFamily="Arial" Margin="4 3 0 0" />
+                    </StackPanel>
+
+                    <!--Caption buttons-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                        <Button Style="{StaticResource MinimizeButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True"
+                            Command="{x:Static SystemCommands.MinimizeWindowCommand}"/>
+                        <Button x:Name="RestoreButton" Visibility="Collapsed" Style="{StaticResource RestoreButtonStyle}" 
+                            Command="{x:Static SystemCommands.RestoreWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True"/>
+                        <!--<Button x:Name="MaximizeButton" Visibility="Visible" Style="{StaticResource MaximizeButtonStyle}" 
+                            Command="{x:Static SystemCommands.MaximizeWindowCommand}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Maximize" />-->
+                        <Button Style="{StaticResource CloseButtonStyle}" WindowChrome.IsHitTestVisibleInChrome="True"
+                            Command="{x:Static SystemCommands.CloseWindowCommand}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+        <Image Visibility="{Binding loadingVisible}" x:Name="Loading" gif:ImageBehavior.AnimatedSource="loading1.gif" Height="128" Margin="108,196,108,0"   VerticalAlignment="Top" Width="183"/>
+        <Border Visibility="{Binding loginVisible}" BorderBrush="#9eb3c7" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="2" CornerRadius="10">
+            <TextBox
+                Visibility="{Binding loginVisible}" 
+                Text="{Binding handle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                materialDesign:HintAssist.Hint="Enter your Codeforces Handle"
+                materialDesign:HintAssist.Foreground="#9eb3c7"
+                Foreground="#9eb3c7"
+                HorizontalContentAlignment="Center"
+                FontSize="15"
+                
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                VerticalAlignment="Center" 
+                Width="220"
+                Height="50"/>
+        </Border>
+        <Image Source="CFstatLogo.png"
             VerticalAlignment="Bottom"
+               Height="120"
             HorizontalAlignment="Center"
-            TextAlignment="Center"
-            Margin="128,0,127,320" Foreground="Black" Width="137"/>
+            Stretch="Fill" Margin="97,0,97,288"/>
+        <Button
+            Visibility="{Binding loginVisible}"
+            Command="{Binding LoginCommand}" 
+            CommandParameter="{Binding ElementName=LogWin}"
+            Style="{StaticResource MaterialDesignRaisedLightButton}"
+            Foreground="White"
+            BorderThickness="0"
+            IsDefault="True"
+            Background="#22b66e"
+            ContentStringFormat="ENTER {0}"
+            Content="" Margin="122,309,122,102" Height="Auto"/>
     </Grid>
 </Window>

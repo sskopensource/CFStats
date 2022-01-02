@@ -24,6 +24,10 @@ namespace UserInterface.Commands
         {
             _navigationStore.CurrentViewModel = _createViewModel;
             _navigationStore.CurrentTab = _navTab;
+            if (_navTab == NAVTAB.OVERVIEW || _navTab == NAVTAB.CONTEST)
+            {
+                _navigationStore.ProblemExpanded = false;
+            }
         }
     }
 }

@@ -40,5 +40,13 @@ namespace UserInterface.CFControls
         }
 
         public static readonly DependencyProperty ValueLabelProperty = DependencyProperty.Register("ValueLabel", typeof(string), typeof(LongBrick), new PropertyMetadata(null));
+
+        public string ValueColor
+        {
+            get { return (string)GetValue(ValueColorProperty); }
+            set { SetValue(ValueColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty ValueColorProperty = DependencyProperty.Register("ValueColor", typeof(string), typeof(LongBrick), new PropertyMetadata(null));
     }
 }

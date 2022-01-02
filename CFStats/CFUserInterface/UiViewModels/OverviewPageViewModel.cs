@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using UserInterface.CFControls.Models;
 using UserInterface.Commands;
 using UserInterface.Common;
 
@@ -26,11 +27,17 @@ namespace UserInterface
         public LongBrickModel organization {get; private set;}
         public LongBrickModel country {get; private set;}
 
+        public AngularGaugeModel angularGauge { get; set; }
+
         public BitmapImage photo { get; private set; }
 
         public OverviewPageViewModel()
         {
             photo = new BitmapImage(new Uri(ApiHandler.ProfilePicture));
+
+            int curRating= Int32.Parse(ApiHandler.Rating);
+            angularGauge = new AngularGaugeModel() { Value = curRating };
+
             SetBricks();
             SetLongBricks();
         }
@@ -48,8 +55,8 @@ namespace UserInterface
         private void SetLongBricks()
         {
             name = new LongBrickModel() { ValueLabel = ApiHandler.Name};
-            rating = new LongBrickModel() { ValueLabel = ApiHandler.Rating};
-            rank = new LongBrickModel() { ValueLabel = ApiHandler.Rank};
+            rating = new LongBrickModel() { ValueLabel = ApiHandler.Rating, ValueColor = UiUtility.ConvertColorFromRank(ApiHandler.Rank) };
+            rank = new LongBrickModel() { ValueLabel = ApiHandler.Rank, ValueColor=UiUtility.ConvertColorFromRank(ApiHandler.Rank)};
             organization = new LongBrickModel() { ValueLabel = ApiHandler.Organization};
             country = new LongBrickModel() { ValueLabel = ApiHandler.Country};
         }
