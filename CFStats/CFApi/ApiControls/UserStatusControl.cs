@@ -14,12 +14,21 @@ namespace Api
         {
             string url = "https://codeforces.com/api/user.status?handle="+handle;
 
-            using (var httpClient = new HttpClient())
+            try
             {
-                var json = httpClient.GetStringAsync(url);
-                UserStatusModel info = JsonConvert.DeserializeObject<UserStatusModel>(json.Result);
-                return info;
+
+                using (var httpClient = new HttpClient())
+                {
+                    var json = httpClient.GetStringAsync(url);
+                    UserStatusModel info = JsonConvert.DeserializeObject<UserStatusModel>(json.Result);
+                    return info;
+                }
             }
+            catch
+            {
+                return new UserStatusModel() { status="Failed"};
+            }
+           
         }
     }
 }
