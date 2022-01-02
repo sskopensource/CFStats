@@ -4,23 +4,31 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UserInterface"
-      xmlns:uc="clr-namespace:UserInterface.CFControls"
+      xmlns:uc="clr-namespace:UserInterface.CFControls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ContestPage">
-    <Grid>
-       
-            
-           
-        
-        <StackPanel Margin="10,0,10,10" Width="400" >
-            <Label FontFamily="Consolas" Background="#FF8000FF" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="Details"  FontSize="15" Width="400"/>
+    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-            <uc:LongBrick TextLabel="Contests" ValueLabel="{Binding contests.ValueLabel}"/>
-            <uc:LongBrick TextLabel="Best Rank" ValueLabel="{Binding bestRank.ValueLabel}"/>
-            <uc:LongBrick TextLabel="Worst Rank" ValueLabel="{Binding worstRank.ValueLabel}"/>
-            <uc:LongBrick TextLabel="Max Up" ValueLabel="{Binding maxUp.ValueLabel}"/>
-            <uc:LongBrick TextLabel="Max Down" ValueLabel="{Binding maxDown.ValueLabel}"/>
-        </StackPanel>
-    </Grid>
+            <materialDesign:Card Background="#192f4d" Grid.Row="0" Grid.Column="0" materialDesign:ShadowAssist.ShadowDepth="Depth3"  Margin="20,20,10,10">
+                <StackPanel>
+                    <Label FontFamily="Consolas" FontWeight="Bold" Foreground="#9eb3c7" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="General"  FontSize="15" Width="1000"/>
+                    <uc:LongBrick TextLabel="Contests" ValueLabel="{Binding contests.ValueLabel}" ValueColor="#53A6FA"/>
+                    <uc:LongBrick TextLabel="Best Rank" ValueLabel="{Binding bestRank.ValueLabel}"  ValueColor="#53A6FA"/>
+                    <uc:LongBrick TextLabel="Worst Rank" ValueLabel="{Binding worstRank.ValueLabel}"  ValueColor="#53A6FA"/>
+                    <uc:LongBrick TextLabel="Max Up" ValueLabel="{Binding maxUp.ValueLabel}" ValueColor="#53A6FA"/>
+                    <uc:LongBrick TextLabel="Max Down" ValueLabel="{Binding maxDown.ValueLabel}"  ValueColor="#53A6FA"/>
+                </StackPanel>
+            </materialDesign:Card>
+        </Grid>
+    </materialDesign:TransitioningContent>
 </Page>

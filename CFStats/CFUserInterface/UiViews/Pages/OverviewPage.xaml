@@ -13,10 +13,19 @@
     </Page.DataContext>
     <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight}">
         <Grid>
-            <materialDesign:Card Background="#192f4d" Margin="110,41,500,280" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="240"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Background="#192f4d" Margin="20,20,10,10" materialDesign:ShadowAssist.ShadowDepth="Depth3">
                 <Image Source="{Binding photo}" Stretch="Fill" x:Name="img"  />
             </materialDesign:Card>
-            <materialDesign:Card Background="#192f4d" materialDesign:ShadowAssist.ShadowDepth="Depth3"  Margin="400,51,50,295">
+            <materialDesign:Card Background="#192f4d" Margin="10,20,20,10" Grid.Column="1" Grid.ColumnSpan="2" materialDesign:ShadowAssist.ShadowDepth="Depth3">
                 <StackPanel>
                     <Label FontFamily="Consolas" FontWeight="Bold" Foreground="#9eb3c7" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="Info"  FontSize="15" Width="1000"/>
                     <local:LongBrick TextLabel="Name" ValueLabel="{Binding Path=name.ValueLabel}"  ValueColor="#53A6FA"/>
@@ -26,22 +35,25 @@
                     <local:LongBrick TextLabel="Country" ValueLabel="{Binding Path=country.ValueLabel}" ValueColor="#53A6FA"/>
                 </StackPanel>
             </materialDesign:Card>
-            <Grid Margin="147,286,147,15"  Width="550" Grid.Row="1" Grid.Column="1">
+            <materialDesign:Card Background="#192f4d" Margin="20,10,120,20" Padding="20"  Grid.Row="1" Grid.ColumnSpan="2"  materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                <local:AngularGuage Value="{Binding Path=angularGauge.Value}"/>
+            </materialDesign:Card>
+            <Grid  Margin="200,5,15,20" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <local:Brick TxtLabel="Max Rating" ValLabel="{Binding Path=maxRating.ValueLabel}"  Grid.Row="0" Grid.Column="0"/>
                 <local:Brick TxtLabel="Contests" ValLabel="{Binding Path=contests.ValueLabel}" Grid.Row="0" Grid.Column="1"/>
-                <local:Brick TxtLabel="Contributions" ValLabel="{Binding Path=contributions.ValueLabel}" Grid.Row="0" Grid.Column="2"/>
+                <local:Brick TxtLabel="Contributions" ValLabel="{Binding Path=contributions.ValueLabel}" Grid.Row="2" Grid.Column="0"/>
                 <local:Brick TxtLabel="Problems Solved" ValLabel="{Binding Path=problemsSolved.ValueLabel}" Grid.Row="1" Grid.Column="0" />
                 <local:Brick TxtLabel="Friends Of" ValLabel="{Binding Path=friendsOf.ValueLabel}" Grid.Row="1" Grid.Column="1"/>
-                <local:Brick TxtLabel="Blog Entries" ValLabel="{Binding Path=blogs.ValueLabel}" Grid.Row="1" Grid.Column="2"/>
+                <local:Brick TxtLabel="Blog Entries" ValLabel="{Binding Path=blogs.ValueLabel}" Grid.Row="2" Grid.Column="1"/>
             </Grid>
         </Grid>
     </materialDesign:TransitioningContent>

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using UserInterface.CFControls.Models;
 using UserInterface.Commands;
 using UserInterface.Common;
 
@@ -26,11 +27,17 @@ namespace UserInterface
         public LongBrickModel organization {get; private set;}
         public LongBrickModel country {get; private set;}
 
+        public AngularGaugeModel angularGauge { get; set; }
+
         public BitmapImage photo { get; private set; }
 
         public OverviewPageViewModel()
         {
             photo = new BitmapImage(new Uri(ApiHandler.ProfilePicture));
+
+            int curRating= Int32.Parse(ApiHandler.Rating);
+            angularGauge = new AngularGaugeModel() { Value = curRating };
+
             SetBricks();
             SetLongBricks();
         }

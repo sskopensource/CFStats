@@ -8,8 +8,8 @@
              mc:Ignorable="d" 
              Name="BrickControl">
     <Grid>
-        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" Background="#192f4d" Margin="15,10,15,10">
-            <StackPanel Background="{x:Null}" Height="80" Width="150" >
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" Background="#192f4d" Margin="5,5,5,5">
+            <StackPanel Background="{x:Null}" Height="80" Width="120" >
                 <Label Content="{Binding TxtLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" FontFamily="Consolas" Width="200" Foreground="#9eb3c7" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="15"/>
                 <Label Content="{Binding ValLabel ,RelativeSource={RelativeSource AncestorType=UserControl}}" FontFamily="Consolas" Margin="8" Foreground="#53A6FA" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="25"/>
             </StackPanel>
