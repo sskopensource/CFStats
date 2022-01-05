@@ -14,12 +14,20 @@ namespace Api
         {
             string url = "https://codeforces.com/api/user.rating?handle=" + handle;
 
-            using (var httpClient = new HttpClient())
+            try
             {
-                var json = httpClient.GetStringAsync(url);
-                UserContestsModel info = JsonConvert.DeserializeObject<UserContestsModel>(json.Result);
-                return info;
+                using (var httpClient = new HttpClient())
+                {
+                    var json = httpClient.GetStringAsync(url);
+                    UserContestsModel info = JsonConvert.DeserializeObject<UserContestsModel>(json.Result);
+                    return info;
+                }
             }
+            catch
+            {
+                return new UserContestsModel() { status = "Failed" };
+            }
+          
         }
     }
 }

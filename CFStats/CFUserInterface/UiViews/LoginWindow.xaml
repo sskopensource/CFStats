@@ -128,7 +128,7 @@
             IsDefault="True"
             Background="#22b66e"
             ContentStringFormat="ENTER {0}"
-            Content="" Margin="122,273,122,102" Height="Auto"/>
+            Content="" Margin="122,301,122,102" Height="Auto"/>
         <materialDesign:DialogHost IsOpen="{Binding NoInternetVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel Background="#0b1a2e">

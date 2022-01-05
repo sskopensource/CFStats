@@ -266,6 +266,11 @@ namespace UserInterface
                     maxDown = ratingchange;
 
             }
+            if (ApiControl.userContests.result.Length == 0)
+            {
+                return 0;
+            }
+
             if (contestdata == ContestDataSelector.BESTRANK)
                 return minRank;
             else if (contestdata == ContestDataSelector.WORSTRANK)

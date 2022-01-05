@@ -17,6 +17,10 @@ namespace Api
         public static void LoadApi(string handle)
         {
             userInfo = UserInfoControl.LoadUserInfo(handle);
+            if (userInfo == null)
+            {
+                return;
+            }
             userStatus = UserStatusControl.LoadUserStatus(handle);
             userBlog = UserBlogEntryControl.LoadUserBlogStatus(handle);
             userContests = UserContestsControl.LoadUserContests(handle);
