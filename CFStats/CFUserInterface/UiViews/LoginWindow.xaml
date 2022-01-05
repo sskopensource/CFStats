@@ -126,9 +126,10 @@
             Foreground="White"
             BorderThickness="0"
             IsDefault="True"
+            VerticalContentAlignment="Center"
             Background="#22b66e"
             ContentStringFormat="ENTER {0}"
-            Content="" Margin="122,273,122,102" Height="Auto"/>
+            Content="" Margin="122,301,122,112" Height="Auto"/>
         <materialDesign:DialogHost IsOpen="{Binding NoInternetVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <materialDesign:DialogHost.DialogContent>
                 <StackPanel Background="#0b1a2e">
