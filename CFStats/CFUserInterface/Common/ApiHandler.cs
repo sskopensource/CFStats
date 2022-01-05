@@ -194,8 +194,10 @@ namespace UserInterface
             contestSet.Clear();
             blogSet.Clear();
             problemsRatingMap.Clear();
+            problemSet.Clear();
             tagsMap.Clear();
             verdictMap.Clear();
+            problemMap.Clear();
         }
 
         private static string GetFullName()
@@ -234,8 +236,18 @@ namespace UserInterface
             averageAttempts = (double)solved / averageAttempts;
 
             if (dataSelector == DataSelector.SOLVEDINONEATTEMPT) return solvedInOneAttempt.ToString();
+
             if (dataSelector==DataSelector.UNSOLVED) return unsolved.ToString();
-            if (dataSelector==DataSelector.AVERAGEATTEMPT) return averageAttempts.ToString().Substring(0,4);
+
+            if (dataSelector == DataSelector.AVERAGEATTEMPT)
+            {
+                var res = averageAttempts.ToString();
+                if (res.Length > 4)
+                {
+                    res=res.Substring(0, 4);
+                }
+                return res;
+            }
             return "0";
         }
     
