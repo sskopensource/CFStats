@@ -214,6 +214,7 @@ namespace UserInterface
             tagsMap.Clear();
             verdictMap.Clear();
             problemMap.Clear();
+            contestMap.Clear();
         }
 
         private static string GetFullName()
