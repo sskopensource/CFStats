@@ -1,9 +1,12 @@
 ﻿using CFControls;
+using LiveCharts;
+using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserInterface.CFControls.Models;
 
 namespace UserInterface
 {
@@ -14,6 +17,8 @@ namespace UserInterface
         public LongBrickModel worstRank { get; set; }
         public LongBrickModel maxUp { get; set; }
         public LongBrickModel maxDown { get; set; }
+        public LineGraphModel lineGraph { get; private set; }
+
         public ContestPageViewModel()
         {
             contests = new LongBrickModel() { ValueLabel = ApiHandler.Contests };
@@ -21,7 +26,29 @@ namespace UserInterface
             worstRank = new LongBrickModel() { ValueLabel = ApiHandler.WorstRank, TextLabel = "Worst Rank" };
             maxUp = new LongBrickModel() { ValueLabel = ApiHandler.MaxUp, TextLabel = "Max Up" };
             maxDown = new LongBrickModel() { ValueLabel = ApiHandler.MaxDown, TextLabel = "Max Down" };
-            
+
+            InitializeLineGraph();
         }
+
+        private void InitializeLineGraph()
+        {
+            var map = ApiHandler.ContestMap;
+            string[] XAxisTime = new string[map.Count];
+            ChartValues<int> chartValues = new ChartValues<int>();
+
+            int indx = 0;
+            foreach (var i in map)
+            {
+                chartValues.Add(Convert.ToInt32(i.Value));
+                XAxisTime[indx] = i.Key;
+                indx++;
+            }
+            lineGraph = new LineGraphModel(XAxisTime, chartValues);
+        }
+
+        public string[] XLValues => lineGraph.XLValues;
+        public Func<double, string> YLValues => lineGraph.YLValues;
+        public SeriesCollection LineValues => lineGraph.LineValues;
+
     }
 }
