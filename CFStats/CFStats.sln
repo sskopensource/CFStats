@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CFApi", "CFApi", "{EB2F0084-47E6-4432-9FD9-514338E450FC}"
 	ProjectSection(SolutionItems) = preProject
 		UserBlogEntries.json = UserBlogEntries.json
+		..\..\..\..\Downloads\UserContests.json = ..\..\..\..\Downloads\UserContests.json
 		CFThirdParty\CFApi\UserInfo.json = CFThirdParty\CFApi\UserInfo.json
 		CFThirdParty\CFApi\UserStatus.json = CFThirdParty\CFApi\UserStatus.json
 	EndProjectSection

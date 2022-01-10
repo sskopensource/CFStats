@@ -21,7 +21,7 @@ namespace UserInterface
     public partial class ContestPage : Page
     {
         public ContestPage()
-        {
+        {  
             InitializeComponent();
         }
     }

@@ -17,7 +17,8 @@ namespace UserInterface
         private static SortedDictionary<string, int> tagsMap = new SortedDictionary<string, int>();
         private static SortedDictionary<string, int> verdictMap = new SortedDictionary<string, int>();
         private static SortedDictionary<string, ProblemModel> problemMap = new SortedDictionary<string, ProblemModel>();
-
+        
+        private static SortedDictionary<string, string> contestMap = new SortedDictionary<string, string>();
 
 
         public static ApiStatus LoadApiControl(string handle)
@@ -69,6 +70,7 @@ namespace UserInterface
         public static string WorstRank => GetContestData(ContestDataSelector.WORSTRANK).ToString();
         public static string MaxUp => GetContestData(ContestDataSelector.MAXUP).ToString();
         public static string MaxDown => GetContestData(ContestDataSelector.MAXDOWN).ToString();
+        public static SortedDictionary<string, string> ContestMap => contestMap;
 
         //Fill ProblemSet ,ContestSet and ProblemratingMap
         private static void FillSets()
@@ -76,6 +78,20 @@ namespace UserInterface
             ClearSets();
             FillBlogSet();
             FillProblemSet();
+            FillContestSet();
+        }
+
+        private static void FillContestSet()
+        {
+            if (ApiControl.userStatus.result.Length == 0)
+            {
+                return;
+            }
+
+            foreach (var contest in ApiControl.userContests.result)
+            {
+                contestMap[contest.ratingUpdateTimeSeconds.ToString()] = contest.newRating.ToString();
+            }                  
         }
 
         private static void FillProblemSet()
@@ -198,6 +214,7 @@ namespace UserInterface
             tagsMap.Clear();
             verdictMap.Clear();
             problemMap.Clear();
+            contestMap.Clear();
         }
 
         private static string GetFullName()
@@ -257,6 +274,7 @@ namespace UserInterface
             var maxRank = int.MinValue;
             var maxUp = int.MinValue;
             var maxDown = int.MinValue;
+            
             foreach (var contest in ApiControl.userContests.result)
             {
                 int currank = Convert.ToInt32(contest.rank);
@@ -276,7 +294,6 @@ namespace UserInterface
                     maxUp = ratingchange;
                 if (ratingchange < 0 && -maxDown < -ratingchange)
                     maxDown = ratingchange;
-
             }
             if (ApiControl.userContests.result.Length == 0)
             {
