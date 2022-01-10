@@ -22,8 +22,8 @@ namespace UserInterface.CFControls.Models
                 {
                     Title="",
                     Values = Vals,
-                    PointGeometry = DefaultGeometries.Square,
-                    PointGeometrySize = 10
+                    PointGeometry = DefaultGeometries.Circle,
+                    PointGeometrySize = 5
                 }
             };
             XLValues = xVals;
