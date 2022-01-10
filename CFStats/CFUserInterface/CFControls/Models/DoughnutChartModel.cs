@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace UserInterface.CFControls.Models
 {
-    public class PieChartModel
+    public class DoughnutChartModel
     {
         public SeriesCollection PieValues { get; set; }
 
-        public PieChartModel(List<KeyValuePair<string,int>> vals,double borderThickness = 0)
+        public DoughnutChartModel(List<KeyValuePair<string, int>> vals, double borderThickness = 0)
         {
             PieValues = new SeriesCollection();
 
-            foreach(var i in vals)
+            foreach (var i in vals)
             {
                 var curSeries = new PieSeries()
                 {

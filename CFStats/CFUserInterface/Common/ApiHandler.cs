@@ -17,9 +17,8 @@ namespace UserInterface
         private static SortedDictionary<string, int> tagsMap = new SortedDictionary<string, int>();
         private static SortedDictionary<string, int> verdictMap = new SortedDictionary<string, int>();
         private static SortedDictionary<string, ProblemModel> problemMap = new SortedDictionary<string, ProblemModel>();
-        
         private static SortedDictionary<string, string> contestMap = new SortedDictionary<string, string>();
-
+        private static SortedDictionary<string, int> levelsMap = new SortedDictionary<string, int>();
 
         public static ApiStatus LoadApiControl(string handle)
         {
@@ -64,6 +63,7 @@ namespace UserInterface
         public static SortedDictionary<int, int> ProblemsRatingMap => problemsRatingMap;
         public static SortedDictionary<string, int> TagsMap => tagsMap;
         public static SortedDictionary<string, int> VerdictMap => verdictMap;
+        public static SortedDictionary<string, int> LevelsMap => levelsMap;
 
         //contestData
         public static string BestRank => GetContestData(ContestDataSelector.BESTRANK).ToString();
@@ -108,6 +108,7 @@ namespace UserInterface
                 var curVerdict = problems.verdict.ToString();
 
                 var curProblemRating = problems.problem.rating;
+                var curProblemLevel = problems.problem.index;
                 var curTags = problems.problem.tags;
                 var curParticipantType = problems.author.participantType.ToString();
 
@@ -142,6 +143,15 @@ namespace UserInterface
                             problemsRatingMap.Add(curProblemRating, 0);
                         }
                         problemsRatingMap[curProblemRating]++;
+                    }
+
+                    if (curProblemLevel != null)
+                    {
+                        if (!levelsMap.ContainsKey(curProblemLevel))
+                        {
+                            levelsMap.Add(curProblemLevel, 0);
+                        }
+                        levelsMap[curProblemLevel]++;
                     }
 
                     foreach (var tag in curTags)
@@ -214,6 +224,7 @@ namespace UserInterface
             tagsMap.Clear();
             verdictMap.Clear();
             problemMap.Clear();
+            levelsMap.Clear();
             contestMap.Clear();
         }
 

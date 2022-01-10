@@ -1,14 +1,37 @@
-﻿<Page x:Class="UserInterface.ProblemPageOne"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:uc="clr-namespace:UserInterface.CFControls"
+      xmlns:local="clr-namespace:UserInterface" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" x:Class="UserInterface.ProblemPageOne"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProblemPageOne">
+    <Page.DataContext>
+        <local:ProblemPageOneViewModel/>
+    </Page.DataContext>
     <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight}">
         <Grid>
-            <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center" Text="Page One" FontSize="50"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Background="#192f4d" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="10,20,10,20" Grid.ColumnSpan="2">
+                <StackPanel>
+                    <Label FontFamily="Consolas" FontWeight="Bold" Foreground="#9eb3c7" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="Verdict" FontSize="15" Width="1000"/>
+                    <uc:DoughnutChart DoughnutValues="{Binding Path=PieValues}" PieInnerRadius="40" Background="{x:Null}" Height="200"  />
+                </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card Background="#192f4d" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="10,0,10,20" Grid.Row="1" Grid.ColumnSpan="1">
+                <StackPanel>
+                    <Label FontFamily="Consolas" FontWeight="Bold" Foreground="#9eb3c7" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="Problem Ratings vs Problems Solved" FontSize="15" Width="1000"/>
+                    <uc:HorizontalBarGraph  BarValues="{Binding Path=BarValues}" XValues="{Binding Path=XValues}" YValues="{Binding Path=YValues}" Height="250"/>                
+                </StackPanel>
+            </materialDesign:Card>
         </Grid>
     </materialDesign:TransitioningContent>
 </Page>

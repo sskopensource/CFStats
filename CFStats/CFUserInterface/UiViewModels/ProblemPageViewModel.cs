@@ -72,7 +72,7 @@ namespace UserInterface
                 list.Add(new KeyValuePair<string, int>(curVerdict, i.Value));
             }
             list.Sort((x, y) => (y.Value.CompareTo(x.Value)));
-            pieChart = new PieChartModel(list);
+            pieChart = new PieChartModel(list,2);
         }
         public string[] XValues => barGraph.XValues;
         public Func<int, string> YValues => barGraph.YValues;
