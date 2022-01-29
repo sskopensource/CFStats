@@ -11,4 +11,14 @@ namespace UserInterface
         public int wrongAttempts { get; set; }
         public int correctAttempts { get; set; }
     }
+
+    public class ContestModel
+    {
+        public int CurrentRating { get; set; }
+        public string ContestId { get; set; }
+        public string ContestName { get; set; }
+        public int ContestRank { get; set; }
+        public int RatingChange { get; set; }
+
+    }
 }
