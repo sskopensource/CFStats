@@ -27,6 +27,7 @@ namespace UserInterface
             worstRank = new LongBrickModel() { ValueLabel = ApiHandler.WorstRank, TextLabel = "Worst Rank" };
             maxUp = new LongBrickModel() { ValueLabel = ApiHandler.MaxUp, TextLabel = "Max Up" };
             maxDown = new LongBrickModel() { ValueLabel = ApiHandler.MaxDown, TextLabel = "Max Down" };
+
             InitializeLineGraph();
         }
 
