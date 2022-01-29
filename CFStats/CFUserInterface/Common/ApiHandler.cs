@@ -83,19 +83,27 @@ namespace UserInterface
 
         private static void FillContestSet()
         {
-            ContestModel contestLineData = new ContestModel();
-            contestLineData.ContestId = contest.contestId;
-            contestLineData.ContestName = contest.contestName;
-            contestLineData.ContestRank = contest.rank;
-            contestLineData.RatingChange = (Convert.ToInt32((contest.newRating)) - Convert.ToInt32(contest.oldRating)).ToString();
+            if (ApiControl.userStatus.result.Length == 0)
+            {
+                return;
+            }
+
+            foreach (var contest in ApiControl.userContests.result)
+            {
+                ContestModel contestLineData = new ContestModel();
+                contestLineData.ContestId = contest.contestId;
+                contestLineData.ContestName = contest.contestName;
+                contestLineData.ContestRank = contest.rank;
+                contestLineData.RatingChange = (Convert.ToInt32((contest.newRating)) - Convert.ToInt32(contest.oldRating)).ToString();
 
 
-            contestMap[contest.ratingUpdateTimeSeconds.ToString()] = contestLineData;
+                contestMap[contest.ratingUpdateTimeSeconds.ToString()] = contestLineData;
 
-            Console.WriteLine(contestLineData.ContestId);
-            Console.WriteLine(contestLineData.ContestName);
-            Console.WriteLine(contestLineData.RatingChange);
-            Console.WriteLine(contestLineData.ContestRank);
+                Console.WriteLine(contestLineData.ContestId);
+                Console.WriteLine(contestLineData.ContestName);
+                Console.WriteLine(contestLineData.RatingChange);
+                Console.WriteLine(contestLineData.ContestRank);
+            }
         }
 
         private static void FillProblemSet()
