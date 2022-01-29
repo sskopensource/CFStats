@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace UserInterface
 {    
     public static class ApiHandler
@@ -18,7 +19,7 @@ namespace UserInterface
         private static SortedDictionary<string, int> verdictMap = new SortedDictionary<string, int>();
         private static SortedDictionary<string, ProblemModel> problemMap = new SortedDictionary<string, ProblemModel>();
         
-        private static SortedDictionary<string, string> contestMap = new SortedDictionary<string, string>();
+        private static SortedDictionary<string, ContestModel> contestMap = new SortedDictionary<string, ContestModel>();
 
 
         public static ApiStatus LoadApiControl(string handle)
@@ -70,7 +71,7 @@ namespace UserInterface
         public static string WorstRank => GetContestData(ContestDataSelector.WORSTRANK).ToString();
         public static string MaxUp => GetContestData(ContestDataSelector.MAXUP).ToString();
         public static string MaxDown => GetContestData(ContestDataSelector.MAXDOWN).ToString();
-        public static SortedDictionary<string, string> ContestMap => contestMap;
+        public static SortedDictionary<string, ContestModel> ContestMap => contestMap;
 
         //Fill ProblemSet ,ContestSet and ProblemratingMap
         private static void FillSets()
@@ -90,7 +91,19 @@ namespace UserInterface
 
             foreach (var contest in ApiControl.userContests.result)
             {
-                contestMap[contest.ratingUpdateTimeSeconds.ToString()] = contest.newRating.ToString();
+                ContestModel contestLineData = new ContestModel();
+                contestLineData.ContestId = contest.contestId;
+                contestLineData.ContestName = contest.contestName;
+                contestLineData.ContestRank = contest.rank;
+                contestLineData.RatingChange = (Convert.ToInt32((contest.newRating))- Convert.ToInt32( contest.oldRating)).ToString();
+
+
+                contestMap[contest.ratingUpdateTimeSeconds.ToString()] = contestLineData;
+
+                Console.WriteLine(contestLineData.ContestId);
+                Console.WriteLine(contestLineData.ContestName);
+                Console.WriteLine(contestLineData.RatingChange);
+                Console.WriteLine(contestLineData.ContestRank);
             }                  
         }
 
