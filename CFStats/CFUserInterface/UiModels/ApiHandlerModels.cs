@@ -16,8 +16,8 @@ namespace UserInterface
     {
         public string ContestId { get; set; }
         public string ContestName { get; set; }
-        public string ContestRank { get; set; }
-        public string RatingChange { get; set; }
+        public int ContestRank { get; set; }
+        public int RatingChange { get; set; }
 
     }
 }

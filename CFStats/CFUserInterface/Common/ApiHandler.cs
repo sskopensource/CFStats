@@ -93,16 +93,10 @@ namespace UserInterface
                 ContestModel contestLineData = new ContestModel();
                 contestLineData.ContestId = contest.contestId;
                 contestLineData.ContestName = contest.contestName;
-                contestLineData.ContestRank = contest.rank;
-                contestLineData.RatingChange = (Convert.ToInt32((contest.newRating)) - Convert.ToInt32(contest.oldRating)).ToString();
-
+                contestLineData.ContestRank = Convert.ToInt32(contest.rank);
+                contestLineData.RatingChange = (Convert.ToInt32((contest.newRating)) - Convert.ToInt32(contest.oldRating));
 
                 contestMap[contest.ratingUpdateTimeSeconds.ToString()] = contestLineData;
-
-                Console.WriteLine(contestLineData.ContestId);
-                Console.WriteLine(contestLineData.ContestName);
-                Console.WriteLine(contestLineData.RatingChange);
-                Console.WriteLine(contestLineData.ContestRank);
             }
         }
 
