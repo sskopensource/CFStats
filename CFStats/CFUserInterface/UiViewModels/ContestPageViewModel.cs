@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserInterface.CFControls;
 using UserInterface.CFControls.Models;
 
 namespace UserInterface
@@ -26,7 +27,6 @@ namespace UserInterface
             worstRank = new LongBrickModel() { ValueLabel = ApiHandler.WorstRank, TextLabel = "Worst Rank" };
             maxUp = new LongBrickModel() { ValueLabel = ApiHandler.MaxUp, TextLabel = "Max Up" };
             maxDown = new LongBrickModel() { ValueLabel = ApiHandler.MaxDown, TextLabel = "Max Down" };
-
             InitializeLineGraph();
         }
 
@@ -34,12 +34,12 @@ namespace UserInterface
         {
             var map = ApiHandler.ContestMap;
             string[] XAxisTime = new string[map.Count];
-            ChartValues<int> chartValues = new ChartValues<int>();
+            int[] chartValues = new int[map.Count];
 
             int indx = 0;
             foreach (var i in map)
             {
-                chartValues.Add(Convert.ToInt32(i.Value));
+                chartValues[indx] = Convert.ToInt32(i.Value);
                 XAxisTime[indx] = i.Key;
                 indx++;
             }
@@ -47,8 +47,7 @@ namespace UserInterface
         }
 
         public string[] XLValues => lineGraph.XLValues;
-        public Func<double, string> YLValues => lineGraph.YLValues;
-        public SeriesCollection LineValues => lineGraph.LineValues;
+        public ChartValues<LineGraphToolTipModel> LineValues => lineGraph.LineValues;
 
     }
 }

@@ -34,22 +34,13 @@ namespace UserInterface.CFControls
 
         public static readonly DependencyProperty XValuesProperty = DependencyProperty.Register("XLValues", typeof(string[]), typeof(LineGraph));
 
-        public SeriesCollection LineValues
+        public ChartValues<LineGraphToolTipModel> LineValues
         {
-            get { return (SeriesCollection)GetValue(BarValuesProperty); }
-            set { SetValue(BarValuesProperty, value); }
+            get { return (ChartValues<LineGraphToolTipModel>)GetValue(LineValuesProperty); }
+            set { SetValue(LineValuesProperty, value); }
         }
 
-        public static readonly DependencyProperty BarValuesProperty = DependencyProperty.Register("LineValues", typeof(SeriesCollection), typeof(LineGraph));
-
-        public Func<double, string> YLValues
-        {
-            get { return (Func<double, string>)GetValue(YValuesProperty); }
-            set { SetValue(YValuesProperty, value); }
-        }
-
-        public static readonly DependencyProperty YValuesProperty = DependencyProperty.Register("YLValues", typeof(Func<double, string>), typeof(LineGraph));
-
+        public static readonly DependencyProperty LineValuesProperty = DependencyProperty.Register("LineValues", typeof(ChartValues<LineGraphToolTipModel>), typeof(LineGraph));
     }
 }
    

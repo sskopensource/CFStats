@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,22 @@ namespace UserInterface.Common
             };
             if(map.ContainsKey(rank))return map[rank];
             return "Black";
+        }
+
+        public static string EpochToDateTime(long epochTime)
+        {
+            DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(epochTime);
+            DateTime dt = dateTimeOffset.DateTime;
+            var date = dt.ToString("MMM yyyy", DateTimeFormatInfo.InvariantInfo);
+            return date;
+        }
+
+        public static string EpochToFullDateTime(long epochTime)
+        {
+            DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(epochTime);
+            DateTime dt = dateTimeOffset.DateTime;
+            var date = dt.ToString("dd MMM yyyy", DateTimeFormatInfo.InvariantInfo);
+            return date;
         }
     }
 }
