@@ -117,11 +117,15 @@
     <Compile Include="CFControls\LineGraph.xaml.cs">
       <DependentUpon>LineGraph.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CFControls\LineGraphTooltip.xaml.cs">
+      <DependentUpon>LineGraphTooltip.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CFControls\Models\AngularGaugeModel.cs" />
     <Compile Include="CFControls\Models\BarGraphModel.cs" />
     <Compile Include="CFControls\Models\DoughnutChartModel.cs" />
     <Compile Include="CFControls\Models\HorizontalBarGraphModel.cs" />
     <Compile Include="CFControls\Models\LineGraphModel.cs" />
+    <Compile Include="CFControls\Models\LineGraphTooltipModel.cs" />
     <Compile Include="CFControls\Models\PieChartModel.cs" />
     <Compile Include="CFControls\PieChart.xaml.cs">
       <DependentUpon>PieChart.xaml</DependentUpon>
@@ -170,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CFControls\HorizontalBarGraph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CFControls\LineGraphTooltip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

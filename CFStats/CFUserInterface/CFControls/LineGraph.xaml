@@ -7,13 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid  Margin="10,10,10,10">
-        <lvc:CartesianChart Series="{Binding LineValues}" >
+        <lvc:CartesianChart Zoom="X" LegendLocation="None">
+            <lvc:CartesianChart.Series>
+                <lvc:LineSeries Title="" Values="{Binding LineValues}"></lvc:LineSeries>
+            </lvc:CartesianChart.Series>
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Time" Labels="{Binding XLValues}"></lvc:Axis>
+                <lvc:Axis Labels="{Binding XLValues}"></lvc:Axis>
             </lvc:CartesianChart.AxisX>
-            <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="User Rating" LabelFormatter="{Binding YLValues}"></lvc:Axis>
-            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.DataTooltip>
+                <local:LineGraphTooltip/>
+            </lvc:CartesianChart.DataTooltip>
         </lvc:CartesianChart>
     </Grid>
 </UserControl>

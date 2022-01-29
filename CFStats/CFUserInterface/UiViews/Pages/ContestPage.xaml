@@ -36,13 +36,12 @@
             <materialDesign:Card Background="#192f4d" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="10,20,10,20" Grid.Column="1">
                 <StackPanel>
                     <Label FontFamily="Consolas" FontWeight="Bold" Foreground="#9eb3c7" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="Verdict" FontSize="15" Width="1000"/>
-                    <!--<uc:PieChart PieValues="{Binding PieValues}" Background="{x:Null}" Height="212" />-->
                 </StackPanel>
             </materialDesign:Card>
             <materialDesign:Card Background="#192f4d" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="20,0,10,10" Grid.Row="1" Grid.ColumnSpan="2">
                 <StackPanel>
                     <Label FontFamily="Consolas" FontWeight="Bold" Foreground="#9eb3c7" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="Ratings vs Contest" FontSize="15" Width="1000"/>
-                    <uc:LineGraph Grid.Row="1" Grid.ColumnSpan="2" LineValues="{Binding Path=LineValues}" XLValues="{Binding Path=XLValues}" YLValues="{Binding Path=YLValues}" Height="245"/>
+                    <uc:LineGraph Grid.Row="1" Grid.ColumnSpan="2" LineValues="{Binding Path=LineValues}" XLValues="{Binding Path=XLValues}" Height="245"/>
                     </StackPanel>
             </materialDesign:Card>
         </Grid>

@@ -19,7 +19,7 @@ namespace Api
         public string contestName { get; set; }
         public string handle { get; set; }
         public string rank { get; set; }
-        public string ratingUpdateTimeSeconds { get; set; }
+        public long ratingUpdateTimeSeconds { get; set; }
         public string oldRating { get; set; }
         public string newRating { get; set; }
     

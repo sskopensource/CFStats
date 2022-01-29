@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserInterface.CFControls;
 using UserInterface.CFControls.Models;
 
 namespace UserInterface
@@ -33,22 +34,11 @@ namespace UserInterface
         private void InitializeLineGraph()
         {
             var map = ApiHandler.ContestMap;
-            string[] XAxisTime = new string[map.Count];
-            ChartValues<int> chartValues = new ChartValues<int>();
-
-            int indx = 0;
-            foreach (var i in map)
-            {
-                chartValues.Add(Convert.ToInt32(i.Value));
-                XAxisTime[indx] = i.Key;
-                indx++;
-            }
-            lineGraph = new LineGraphModel(XAxisTime, chartValues);
+            lineGraph = new LineGraphModel(map);
         }
 
         public string[] XLValues => lineGraph.XLValues;
-        public Func<double, string> YLValues => lineGraph.YLValues;
-        public SeriesCollection LineValues => lineGraph.LineValues;
+        public ChartValues<LineGraphToolTipModel> LineValues => lineGraph.LineValues;
 
     }
 }
