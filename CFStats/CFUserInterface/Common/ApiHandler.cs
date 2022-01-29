@@ -90,13 +90,13 @@ namespace UserInterface
 
             foreach (var contest in ApiControl.userContests.result)
             {
-                ContestModel contestLineData = new ContestModel();
-                contestLineData.ContestId = contest.contestId;
-                contestLineData.ContestName = contest.contestName;
-                contestLineData.ContestRank = Convert.ToInt32(contest.rank);
-                contestLineData.RatingChange = (Convert.ToInt32((contest.newRating)) - Convert.ToInt32(contest.oldRating));
+                ContestModel contestData = new ContestModel();
+                contestData.ContestId = contest.contestId;
+                contestData.ContestName = contest.contestName;
+                contestData.ContestRank = Convert.ToInt32(contest.rank);
+                contestData.RatingChange = (Convert.ToInt32((contest.newRating)) - Convert.ToInt32(contest.oldRating));
 
-                contestMap[contest.ratingUpdateTimeSeconds.ToString()] = contestLineData;
+                contestMap[contest.ratingUpdateTimeSeconds.ToString()] = contestData;
             }
         }
 
