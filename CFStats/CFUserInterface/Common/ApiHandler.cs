@@ -91,6 +91,8 @@ namespace UserInterface
             foreach (var contest in ApiControl.userContests.result)
             {
                 ContestModel contestData = new ContestModel();
+
+                contestData.CurrentRating=Convert.ToInt32(contest.newRating);
                 contestData.ContestId = contest.contestId;
                 contestData.ContestName = contest.contestName;
                 contestData.ContestRank = Convert.ToInt32(contest.rank);

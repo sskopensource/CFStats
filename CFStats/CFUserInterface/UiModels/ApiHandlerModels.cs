@@ -14,6 +14,7 @@ namespace UserInterface
 
     public class ContestModel
     {
+        public int CurrentRating { get; set; }
         public string ContestId { get; set; }
         public string ContestName { get; set; }
         public int ContestRank { get; set; }
