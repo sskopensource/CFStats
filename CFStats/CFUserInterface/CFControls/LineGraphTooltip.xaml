@@ -12,13 +12,24 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="{x:Type wpf:DataPointViewModel}">
                         <StackPanel Margin="2">
-                            <TextBlock Text="{Binding ChartPoint.Instance.(local:LineGraphToolTipModel.Rating)}" 
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock FontWeight="ExtraBold" Text="=" 
+                                   Margin="5 0 0 0" VerticalAlignment="Center" Foreground="Black"/>
+                                <TextBlock FontWeight="DemiBold" Grid.Column="1" Text="{Binding ChartPoint.Instance.(local:LineGraphToolTipModel.Rating)}" 
+                                   Margin="2 0 0 0" VerticalAlignment="Center" Foreground="Black"/>
+                                <TextBlock FontWeight="DemiBold" Grid.Column="2" Text="{Binding ChartPoint.Instance.(local:LineGraphToolTipModel.RatingChange)}" 
+                                Margin="5 0 0 0" VerticalAlignment="Center" Foreground="Black"/>
+                            </Grid>
+                            <TextBlock FontWeight="DemiBold" Text="{Binding ChartPoint.Instance.(local:LineGraphToolTipModel.Rank)}" 
                                Margin="5 0 0 0" VerticalAlignment="Center" Foreground="Black"/>
-                            <TextBlock Text="{Binding ChartPoint.Instance.(local:LineGraphToolTipModel.Rank)}" 
-                               Margin="5 0 0 0" VerticalAlignment="Center" Foreground="Black"/>
-                            <TextBlock Text="{Binding ChartPoint.Instance.(local:LineGraphToolTipModel.ContestName)}" 
-                               Margin="5 0 0 0" VerticalAlignment="Center" Foreground="Black"/>
-                            <TextBlock Text="{Binding ChartPoint.Instance.(local:LineGraphToolTipModel.Date)}" 
+                            <TextBlock FontWeight="DemiBold" TextDecorations="Underline" Text="{Binding ChartPoint.Instance.(local:LineGraphToolTipModel.ContestName)}" 
+                               Margin="5 0 0 0" VerticalAlignment="Center" Foreground="Blue"/>
+                            <TextBlock FontWeight="DemiBold" Text="{Binding ChartPoint.Instance.(local:LineGraphToolTipModel.Date)}" 
                                Margin="5 0 0 0" VerticalAlignment="Center" Foreground="Black"/>
                         </StackPanel>
                     </DataTemplate>

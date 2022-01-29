@@ -34,17 +34,7 @@ namespace UserInterface
         private void InitializeLineGraph()
         {
             var map = ApiHandler.ContestMap;
-            string[] XAxisTime = new string[map.Count];
-            int[] chartValues = new int[map.Count];
-
-            int indx = 0;
-            foreach (var i in map)
-            {
-                chartValues[indx] = Convert.ToInt32(i.Value);
-                XAxisTime[indx] = i.Key;
-                indx++;
-            }
-            lineGraph = new LineGraphModel(XAxisTime, chartValues);
+            lineGraph = new LineGraphModel(map);
         }
 
         public string[] XLValues => lineGraph.XLValues;

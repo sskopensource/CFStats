@@ -11,6 +11,7 @@ namespace UserInterface.CFControls
         public string Date { get; set; }
         public string ContestName { get; set; }
         public int Rating { get; set; }
-        public int Rank { get;set; }
+        public string Rank { get;set; }
+        public string RatingChange { get; set; }
     }
 }
